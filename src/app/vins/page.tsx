@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { imgPath } from "@/lib/imgPath";
 import { wines, type Wine } from "@/data/wines";
+import RevealOnScroll from "@/components/RevealOnScroll";
 
 const DOMAINES = [
   {
@@ -115,60 +116,60 @@ export default function VinsPage() {
                   <p className="label-caps text-amber">{group.appellation}</p>
                 </div>
                 {group.wines.map((wine, i) => (
-                  <Link
-                    key={wine.id}
-                    href={`/vins/${wine.id}`}
-                    className={`grid md:grid-cols-2 gap-0 min-h-[300px] group ${
-                      i % 2 === 0 ? "" : "md:[direction:rtl]"
-                    }`}
-                  >
-                    {/* Image */}
-                    <div
-                      className={`relative bg-dust overflow-hidden min-h-[220px] ${
-                        i % 2 === 0 ? "" : "md:[direction:ltr]"
+                  <RevealOnScroll key={wine.id}>
+                    <Link
+                      href={`/vins/${wine.id}`}
+                      className={`grid md:grid-cols-2 gap-0 min-h-[300px] group ${
+                        i % 2 === 0 ? "" : "md:[direction:rtl]"
                       }`}
                     >
-                      {wine.photo ? (
-                        <Image
-                          src={imgPath(wine.photo)}
-                          alt={wine.name}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-700"
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                        />
-                      ) : (
-                        <div className="absolute inset-0 flex items-center justify-center bg-[#EDE8E2]">
-                          <div className="w-3 h-20 bg-ink/15 rounded-t-sm" />
-                        </div>
-                      )}
-                      <div className="absolute inset-0 bg-ink/10" />
-                    </div>
-
-                    {/* Texte */}
-                    <div
-                      className={`flex flex-col justify-center px-10 md:px-14 py-10 bg-cream ${
-                        i % 2 === 0 ? "" : "md:[direction:ltr]"
-                      }`}
-                    >
-                      {wine.cru && (
-                        <p className="label-caps text-stone mb-2 capitalize">{wine.cru}</p>
-                      )}
-                      <h3
-                        className="text-2xl md:text-3xl text-ink font-normal mb-3 leading-tight group-hover:text-amber transition-colors"
-                        style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+                      {/* Image */}
+                      <div
+                        className={`relative bg-[#EDE8E2] overflow-hidden min-h-[220px] ${
+                          i % 2 === 0 ? "" : "md:[direction:ltr]"
+                        }`}
                       >
-                        {wine.name}
-                      </h3>
-                      {wine.description && (
-                        <p className="body-sm text-ink/60 leading-loose">
-                          {excerpt(wine.description)}
-                        </p>
-                      )}
-                      {!wine.inStock && (
-                        <span className="label-caps text-stone/50 mt-4">Épuisé</span>
-                      )}
-                    </div>
-                  </Link>
+                        {wine.photo ? (
+                          <Image
+                            src={imgPath(wine.photo)}
+                            alt={wine.name}
+                            fill
+                            className="object-contain p-12 group-hover:scale-105 transition-transform duration-700"
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                          />
+                        ) : (
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="w-3 h-20 bg-ink/15 rounded-t-sm" />
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Texte */}
+                      <div
+                        className={`flex flex-col justify-center px-10 md:px-14 py-10 bg-cream ${
+                          i % 2 === 0 ? "" : "md:[direction:ltr]"
+                        }`}
+                      >
+                        {wine.cru && (
+                          <p className="label-caps text-stone mb-2 capitalize">{wine.cru}</p>
+                        )}
+                        <h3
+                          className="text-2xl md:text-3xl text-ink font-normal mb-3 leading-tight group-hover:text-amber transition-colors"
+                          style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+                        >
+                          {wine.name}
+                        </h3>
+                        {wine.description && (
+                          <p className="body-sm text-ink/60 leading-loose">
+                            {excerpt(wine.description)}
+                          </p>
+                        )}
+                        {!wine.inStock && (
+                          <span className="label-caps text-stone/50 mt-4">Épuisé</span>
+                        )}
+                      </div>
+                    </Link>
+                  </RevealOnScroll>
                 ))}
               </div>
             ))}

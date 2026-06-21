@@ -63,21 +63,16 @@
   opacity: 1;
 }
 
-@keyframes zoom-towards {
-  from {
-    transform: scale(0.86);
-    opacity: 0.6;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
+/* ── Reveal-on-scroll (zoom-in) ───────────────────────────────────────────── */
+.reveal-zoom {
+  opacity: 0;
+  transform: scale(0.88);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.domain-zoom {
-  animation: zoom-towards linear both;
-  animation-timeline: view();
-  animation-range: entry 0% entry 60%;
+.reveal-zoom-visible {
+  opacity: 1;
+  transform: scale(1);
 }
 
 @layer utilities {
