@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getWineBySlug } from "@/data/wines";
 import { useCart } from "@/context/CartContext";
+import { imgPath } from "@/lib/imgPath";
 
 const COLOR_LABEL: Record<string, string> = {
   blanc: "Vin Blanc",
@@ -41,7 +42,7 @@ export default function WineClient({ slug }: { slug: string }) {
       <div className="grid md:grid-cols-2 gap-0 min-h-[70vh]">
         <div className="relative bg-dust flex items-center justify-center min-h-[420px]">
           {wine.photo ? (
-            <Image src={wine.photo} alt={wine.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+            <Image src={imgPath(wine.photo!)} alt={wine.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
           ) : (
             <div className="flex items-center justify-center h-full opacity-20 py-20">
               <div className="flex flex-col items-center">

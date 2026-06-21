@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { imgPath } from "@/lib/imgPath";
 
 const domaines = [
   {
@@ -59,7 +60,7 @@ export default function DomainesPage() {
               }`}
             >
               <Image
-                src={d.photo}
+                src={imgPath(d.photo)}
                 alt={d.name}
                 fill
                 className="object-cover opacity-80 hover:opacity-100 transition-opacity duration-500"
@@ -97,7 +98,7 @@ export default function DomainesPage() {
       {/* Section Louis-Bénigne — photo pleine largeur avec texte superposé */}
       <div className="relative min-h-[480px] flex items-center overflow-hidden">
         <Image
-          src="/photos/histoire-lb.jpg"
+          src={imgPath("/photos/histoire-lb.jpg")}
           alt="Louis-Bénigne Ternynck"
           fill
           className="object-cover object-center"

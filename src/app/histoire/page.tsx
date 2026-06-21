@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { imgPath } from "@/lib/imgPath";
 
 const timeline = [
   {
@@ -60,7 +61,7 @@ export default function HistoirePage() {
       {/* Portrait */}
       <div className="relative h-[60vh] md:h-[75vh] mb-24 overflow-hidden bg-[#2A3520]">
         <Image
-          src="/photos/portrait-famille.jpg"
+          src={imgPath("/photos/portrait-famille.jpg")}
           alt="Laurent et Marie-Noëlle Ternynck dans leurs vignes"
           fill
           className="object-cover opacity-80"
@@ -91,7 +92,7 @@ export default function HistoirePage() {
                 }`}
               >
                 <Image
-                  src={item.photo}
+                  src={imgPath(item.photo)}
                   alt={item.title}
                   fill
                   className="object-cover"

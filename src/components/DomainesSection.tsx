@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { imgPath } from "@/lib/imgPath";
 
 const domaines = [
   {
@@ -56,7 +57,7 @@ export default function DomainesSection() {
             }`}
           >
             <Image
-              src={d.photo}
+              src={imgPath(d.photo)}
               alt={d.name}
               fill
               className="object-cover opacity-40 group-hover:opacity-60 group-hover:scale-105 transition-all duration-700 ease-out"

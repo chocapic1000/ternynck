@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { imgPath } from "@/lib/imgPath";
 import Link from "next/link";
 import WineCard from "@/components/WineCard";
 import DomainesSection from "@/components/DomainesSection";
@@ -29,7 +30,7 @@ export default function HomePage() {
         {/* Background image */}
         <div className="absolute inset-0 bg-[#2A3520]">
           <Image
-            src="/photos/hero.jpg"
+            src={imgPath("/photos/hero.jpg")}
             alt="Vignes au coucher du soleil, Domaine Ternynck"
             fill
             className="object-cover opacity-80"
@@ -89,7 +90,7 @@ export default function HomePage() {
       <section className="grid md:grid-cols-2 min-h-[560px]">
         <div className="relative min-h-[340px] md:min-h-0 bg-[#2A3520] order-2 md:order-1">
           <Image
-            src="/photos/philosophie.jpg"
+            src={imgPath("/photos/philosophie.jpg")}
             alt="Laurent Ternynck dans ses vignes à l'aube"
             fill
             className="object-cover"
@@ -159,7 +160,7 @@ export default function HomePage() {
       <section className="relative py-28 px-8 md:px-12 bg-ink overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <Image
-            src="/photos/vendanges.jpg"
+            src={imgPath("/photos/vendanges.jpg")}
             alt=""
             fill
             className="object-cover"

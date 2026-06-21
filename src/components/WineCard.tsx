@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Wine } from "@/data/wines";
+import { imgPath } from "@/lib/imgPath";
 
 const COLOR_DOT: Record<Wine["color"], string> = {
   blanc: "bg-amber/60",
@@ -33,7 +34,7 @@ export default function WineCard({ wine }: { wine: Wine }) {
       >
         {wine.photo ? (
           <Image
-            src={wine.photo}
+            src={imgPath(wine.photo)}
             alt={wine.name}
             fill
             className="object-contain p-3 group-hover:scale-105 transition-transform duration-500"

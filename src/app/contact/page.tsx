@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { imgPath } from "@/lib/imgPath";
 
 const VISIT_TYPES = ["Dégustation"];
 
@@ -116,7 +117,7 @@ export default function ContactPage() {
       {/* ── En-tête avec photo de fond ── */}
       <div className="relative h-72 md:h-[420px] overflow-hidden">
         <Image
-          src="/photos/histoire-irancy.jpg"
+          src={imgPath("/photos/histoire-irancy.jpg")}
           alt="Vignes Domaine Ternynck"
           fill
           className="object-cover object-center"

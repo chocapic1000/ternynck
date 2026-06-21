@@ -3,7 +3,7 @@ const nextConfig = {
   output: "export",
   basePath: "/ternynck",
   images: {
-    loaderFile: "./src/imageLoader.ts",
+    unoptimized: true,
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {

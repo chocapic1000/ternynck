@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { imgPath } from "@/lib/imgPath";
 import { wines } from "@/data/wines";
 
 const COLOR_LABEL: Record<string, string> = {
@@ -32,7 +33,7 @@ export default function VinsPage() {
       {/* ── Hero ── */}
       <div className="relative h-64 md:h-80 overflow-hidden">
         <Image
-          src="/photos/vendanges.jpg"
+          src={imgPath("/photos/vendanges.jpg")}
           alt="Vendanges Ternynck"
           fill
           className="object-cover object-center"
@@ -71,7 +72,7 @@ export default function VinsPage() {
             <div className="grid md:grid-cols-2 min-h-[280px]">
               <div className="relative overflow-hidden min-h-[200px]">
                 <Image
-                  src={domaine.photo}
+                  src={imgPath(domaine.photo)}
                   alt={domaine.name}
                   fill
                   className="object-cover"
@@ -115,7 +116,7 @@ export default function VinsPage() {
                         <div className="w-10 h-14 relative flex-shrink-0 bg-[#EDE8E2] overflow-hidden">
                           {wine.photo ? (
                             <Image
-                              src={wine.photo}
+                              src={imgPath(wine.photo!)}
                               alt={wine.name}
                               fill
                               className="object-contain p-1"

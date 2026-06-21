@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { imgPath } from "@/lib/imgPath";
 import WineCard from "@/components/WineCard";
 import { wines } from "@/data/wines";
 import type { Label } from "@/data/wines";
@@ -9,13 +10,13 @@ const DOMAINES: { label: Label; name: string; subtitle: string; photo: string }[
     label: "mauperthuis",
     name: "Domaine de Mauperthuis",
     subtitle: "Irancy · Saint-Bris · Bourgogne",
-    photo: "/photos/domaine-mauperthuis.jpg",
+    photo: imgPath("/photos/domaine-mauperthuis.jpg"),
   },
   {
     label: "marronniers",
     name: "Domaine des Marronniers",
     subtitle: "Chablis · Crémant · Bourgogne",
-    photo: "/photos/domaine-marronniers.jpg",
+    photo: imgPath("/photos/domaine-marronniers.jpg"),
   },
 ];
 
@@ -27,7 +28,7 @@ export default function BoutiquePage() {
       {/* ── Bannière hero ── */}
       <div className="relative h-72 md:h-96 overflow-hidden">
         <Image
-          src="/photos/vendanges.jpg"
+          src={imgPath("/photos/vendanges.jpg")}
           alt="Vendanges"
           fill
           className="object-cover object-center"
@@ -91,7 +92,7 @@ export default function BoutiquePage() {
               {idx === 0 && !label && (
                 <div className="relative h-40 md:h-56 overflow-hidden">
                   <Image
-                    src="/photos/philosophie.jpg"
+                    src={imgPath("/photos/philosophie.jpg")}
                     alt=""
                     fill
                     className="object-cover object-center"
