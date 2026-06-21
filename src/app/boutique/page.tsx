@@ -19,12 +19,8 @@ const DOMAINES: { label: Label; name: string; subtitle: string; photo: string }[
   },
 ];
 
-export default function BoutiquePage({
-  searchParams,
-}: {
-  searchParams: { label?: string };
-}) {
-  const { label } = searchParams;
+export default function BoutiquePage() {
+  const label: string | undefined = undefined;
 
   return (
     <div className="min-h-screen bg-cream">
