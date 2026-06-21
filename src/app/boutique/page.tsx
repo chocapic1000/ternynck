@@ -20,7 +20,7 @@ const FILTERS: { id: FilterId; label: string }[] = [
 function matchesFilter(wine: (typeof wines)[number], filter: FilterId) {
   if (filter === "tous") return true;
   if (filter === "mauperthuis" || filter === "marronniers") {
-    return wine.labels.includes(filter);
+    return wine.labels[0] === filter;
   }
   if (filter === "bulle") return wine.color === "bulle" || wine.color === "rose";
   return wine.color === filter;
