@@ -3,13 +3,6 @@ import Image from "next/image";
 import type { Wine, Label } from "@/data/wines";
 import { imgPath } from "@/lib/imgPath";
 
-const COLOR_DOT: Record<Wine["color"], string> = {
-  blanc: "bg-amber/60",
-  rouge: "bg-red-900/80",
-  bulle: "bg-stone",
-  rose: "bg-rose-300/80",
-};
-
 const BOTTLE_COLOR: Record<Wine["color"], string> = {
   blanc: "bg-sage/50",
   rouge: "bg-ink",
@@ -27,18 +20,12 @@ const DOMAIN_BADGE: Record<Label, string> = {
   marronniers: "bg-sage text-cream",
 };
 
-function stripAOC(appellation: string) {
-  return appellation.replace(/\s*AOC\s*/g, "").trim();
-}
-
 export default function WineCard({
   wine,
   showDomainBadge = false,
-  showPrice = true,
 }: {
   wine: Wine;
   showDomainBadge?: boolean;
-  showPrice?: boolean;
 }) {
   return (
     <Link
@@ -109,14 +96,7 @@ export default function WineCard({
           className="text-stone text-[13px] mt-3"
           style={{ fontFamily: "var(--font-body)" }}
         >
-          {showPrice ? (
-            `${wine.price} €`
-          ) : (
-            <>
-              {stripAOC(wine.appellation)}
-              {wine.cru && <span className="ml-2 text-amber/70 capitalize">{wine.cru}</span>}
-            </>
-          )}
+          {wine.price} €
         </p>
       </div>
     </Link>
