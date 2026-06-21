@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { imgPath } from "@/lib/imgPath";
-import { wines } from "@/data/wines";
-import WineCard from "@/components/WineCard";
+import { wines, type Wine } from "@/data/wines";
 
 const DOMAINES = [
   {
@@ -20,6 +19,31 @@ const DOMAINES = [
     description: "Du Petit Chablis au Grand Cru Valmur, en passant par les Premiers Crus et le Crémant de Bourgogne.",
   },
 ];
+
+function stripAOC(appellation: string) {
+  return appellation.replace(/\s*AOC\s*/g, "").trim();
+}
+
+function excerpt(text: string | undefined, max = 130) {
+  if (!text) return "";
+  const firstSentence = text.split(/(?<=[.!?])\s/)[0];
+  if (firstSentence.length <= max) return firstSentence;
+  return text.slice(0, max).trim() + "…";
+}
+
+function groupByAppellation(domaineWines: Wine[]) {
+  const order: string[] = [];
+  const groups = new Map<string, Wine[]>();
+  for (const wine of domaineWines) {
+    const key = stripAOC(wine.appellation);
+    if (!groups.has(key)) {
+      groups.set(key, []);
+      order.push(key);
+    }
+    groups.get(key)!.push(wine);
+  }
+  return order.map((key) => ({ appellation: key, wines: groups.get(key)! }));
+}
 
 export default function VinsPage() {
   return (
@@ -40,25 +64,15 @@ export default function VinsPage() {
             className="text-cream text-4xl md:text-6xl font-normal leading-tight"
             style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
           >
-            Notre catalogue
+            Nos terroirs
           </h1>
         </div>
       </div>
 
-      {/* ── Domaines ── */}
+      {/* ── Domaines, par appellation / lieu ── */}
       {DOMAINES.map((domaine) => {
         const domaineWines = wines.filter((w) => w.labels[0] === domaine.label);
-        const blancs = domaineWines.filter((w) => w.color === "blanc" && w.category === "standard");
-        const rouges = domaineWines.filter((w) => w.color === "rouge" && w.category === "standard");
-        const bulles = domaineWines.filter((w) => w.color === "bulle" || w.color === "rose");
-        const amphores = domaineWines.filter((w) => w.category === "amphore");
-
-        const groups = [
-          { label: "Blancs", wines: blancs },
-          { label: "Rouges", wines: rouges },
-          { label: "Crémant & Rosé", wines: bulles },
-          { label: "Collection Amphore", wines: amphores },
-        ].filter((g) => g.wines.length > 0);
+        const groups = groupByAppellation(domaineWines);
 
         return (
           <section key={domaine.label} className="border-b border-dust last:border-0">
@@ -89,24 +103,75 @@ export default function VinsPage() {
                   href={`/boutique?label=${domaine.label}`}
                   className="inline-flex items-center gap-3 label-caps text-amber border-b border-amber pb-0.5 w-fit hover:opacity-70 transition-opacity"
                 >
-                  Commander →
+                  Voir en boutique →
                 </Link>
               </div>
             </div>
 
-            {/* Grilles de vins par famille */}
-            <div className="px-8 md:px-16 py-14 bg-cream">
-              {groups.map((group) => (
-                <div key={group.label} className="mb-14 last:mb-0">
-                  <p className="label-caps text-amber mb-6">{group.label}</p>
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-8">
-                    {group.wines.map((wine) => (
-                      <WineCard key={wine.id} wine={wine} showPrice={false} />
-                    ))}
-                  </div>
+            {/* Vins, regroupés par terroir / lieu-dit */}
+            {groups.map((group) => (
+              <div key={group.appellation}>
+                <div className="px-8 md:px-12 pt-12 pb-2">
+                  <p className="label-caps text-amber">{group.appellation}</p>
                 </div>
-              ))}
-            </div>
+                {group.wines.map((wine, i) => (
+                  <Link
+                    key={wine.id}
+                    href={`/vins/${wine.id}`}
+                    className={`grid md:grid-cols-2 gap-0 min-h-[300px] group ${
+                      i % 2 === 0 ? "" : "md:[direction:rtl]"
+                    }`}
+                  >
+                    {/* Image */}
+                    <div
+                      className={`relative bg-dust overflow-hidden min-h-[220px] ${
+                        i % 2 === 0 ? "" : "md:[direction:ltr]"
+                      }`}
+                    >
+                      {wine.photo ? (
+                        <Image
+                          src={imgPath(wine.photo)}
+                          alt={wine.name}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-700"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 flex items-center justify-center bg-[#EDE8E2]">
+                          <div className="w-3 h-20 bg-ink/15 rounded-t-sm" />
+                        </div>
+                      )}
+                      <div className="absolute inset-0 bg-ink/10" />
+                    </div>
+
+                    {/* Texte */}
+                    <div
+                      className={`flex flex-col justify-center px-10 md:px-14 py-10 bg-cream ${
+                        i % 2 === 0 ? "" : "md:[direction:ltr]"
+                      }`}
+                    >
+                      {wine.cru && (
+                        <p className="label-caps text-stone mb-2 capitalize">{wine.cru}</p>
+                      )}
+                      <h3
+                        className="text-2xl md:text-3xl text-ink font-normal mb-3 leading-tight group-hover:text-amber transition-colors"
+                        style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+                      >
+                        {wine.name}
+                      </h3>
+                      {wine.description && (
+                        <p className="body-sm text-ink/60 leading-loose">
+                          {excerpt(wine.description)}
+                        </p>
+                      )}
+                      {!wine.inStock && (
+                        <span className="label-caps text-stone/50 mt-4">Épuisé</span>
+                      )}
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            ))}
           </section>
         );
       })}
