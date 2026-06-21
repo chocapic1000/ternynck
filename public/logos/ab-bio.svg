@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Fond vert AB -->
+  <rect width="200" height="200" fill="#009B4D"/>
+  <!-- Germe / pousse au-dessus du AB -->
+  <g transform="translate(100, 28)">
+    <!-- Tige -->
+    <line x1="0" y1="22" x2="0" y2="4" stroke="white" stroke-width="3" stroke-linecap="round"/>
+    <!-- Feuille gauche -->
+    <path d="M0 14 C-12 10 -16 2 -8 0 C-4 -1 0 6 0 14Z" fill="white"/>
+    <!-- Feuille droite -->
+    <path d="M0 14 C12 10 16 2 8 0 C4 -1 0 6 0 14Z" fill="white"/>
+    <!-- Bourgeon haut -->
+    <ellipse cx="0" cy="1" rx="3.5" ry="5" fill="white"/>
+  </g>
+  <!-- Lettres AB -->
+  <text x="100" y="140"
+        text-anchor="middle"
+        fill="white"
+        font-size="95"
+        font-weight="900"
+        font-family="Arial Black, Arial"
+        letter-spacing="-4">AB</text>
+  <!-- AGRICULTURE BIOLOGIQUE -->
+  <text x="100" y="163" text-anchor="middle" fill="white" font-size="13.5" font-weight="700" font-family="Arial" letter-spacing="0.8">AGRICULTURE</text>
+  <text x="100" y="181" text-anchor="middle" fill="white" font-size="13.5" font-weight="700" font-family="Arial" letter-spacing="0.8">BIOLOGIQUE</text>
+</svg>

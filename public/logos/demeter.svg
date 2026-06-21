@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 160">
+  <!-- Fond orange -->
+  <rect width="280" height="160" fill="#F07800"/>
+  <!-- Vague verte en bas -->
+  <path d="M0 110 Q70 88 140 102 Q210 116 280 94 L280 160 L0 160Z" fill="#2A7A3A"/>
+  <!-- "demeter" en blanc, style arrondi et gras -->
+  <text x="140" y="95"
+        text-anchor="middle"
+        fill="white"
+        font-size="68"
+        font-weight="900"
+        font-family="Arial Rounded MT Bold, Comic Sans MS, Arial Black, Arial"
+        letter-spacing="-1">demeter</text>
+</svg>

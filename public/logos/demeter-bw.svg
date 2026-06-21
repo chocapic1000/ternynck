@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240">
+  <!-- Ovale extérieur -->
+  <ellipse cx="100" cy="105" rx="95" ry="100" fill="none" stroke="#1a1a1a" stroke-width="6"/>
+  <!-- Ovale intérieur -->
+  <ellipse cx="100" cy="105" rx="83" ry="88" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+
+  <!-- DEMETER texte en arc -->
+  <path id="arc-top" d="M 20,105 A 80,80 0 0,1 180,105" fill="none"/>
+  <text font-size="18" font-weight="900" font-family="Arial Black, Arial" fill="#1a1a1a" letter-spacing="8">
+    <textPath href="#arc-top" startOffset="8%">DEMETER</textPath>
+  </text>
+
+  <!-- Symbole fleur centrale -->
+  <g transform="translate(100, 108)">
+    <!-- Tige verticale -->
+    <line x1="0" y1="-38" x2="0" y2="28" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round"/>
+    <!-- Pétale gauche haut -->
+    <path d="M0,-10 C-22,-18 -30,-38 -14,-42 C-4,-44 0,-28 0,-10Z" fill="#1a1a1a"/>
+    <!-- Pétale droit haut -->
+    <path d="M0,-10 C22,-18 30,-38 14,-42 C4,-44 0,-28 0,-10Z" fill="#1a1a1a"/>
+    <!-- Pétale gauche bas -->
+    <path d="M0,10 C-22,18 -28,36 -12,38 C-2,39 0,22 0,10Z" fill="#1a1a1a"/>
+    <!-- Pétale droit bas -->
+    <path d="M0,10 C22,18 28,36 12,38 C2,39 0,22 0,10Z" fill="#1a1a1a"/>
+    <!-- Petit cercle -->
+    <circle cx="0" cy="-10" r="5" fill="#1a1a1a"/>
+  </g>
+
+  <!-- ® -->
+  <text x="177" y="28" font-size="14" font-family="Arial" fill="#1a1a1a">®</text>
+
+  <!-- bio-dynamic en cursive -->
+  <text x="100" y="218" text-anchor="middle" fill="#1a1a1a" font-size="26" font-style="italic" font-family="Georgia, serif" letter-spacing="1">bio-dynamic</text>
+  <!-- ™ -->
+  <text x="185" y="210" font-size="13" font-family="Arial" fill="#1a1a1a">™</text>
+</svg>
