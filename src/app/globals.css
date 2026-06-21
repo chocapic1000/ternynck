@@ -75,6 +75,16 @@
   transform: scale(1);
 }
 
+/* ── Fade-on-scroll (crossfade between full-screen sections) ─────────────── */
+.fade-section {
+  opacity: 0.1;
+  transition: opacity 1s ease;
+}
+
+.fade-section.fade-active {
+  opacity: 1;
+}
+
 @layer utilities {
   .label-caps {
     font-family: var(--font-body);
