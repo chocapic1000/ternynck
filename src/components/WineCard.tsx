@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import type { Wine } from "@/data/wines";
+import type { Wine, Label } from "@/data/wines";
 import { imgPath } from "@/lib/imgPath";
 
 const COLOR_DOT: Record<Wine["color"], string> = {
@@ -17,11 +17,27 @@ const BOTTLE_COLOR: Record<Wine["color"], string> = {
   rose: "bg-rose-300/60",
 };
 
+const DOMAIN_LABEL: Record<Label, string> = {
+  mauperthuis: "Mauperthuis",
+  marronniers: "Marronniers",
+};
+
+const DOMAIN_BADGE: Record<Label, string> = {
+  mauperthuis: "bg-amber text-cream",
+  marronniers: "bg-sage text-cream",
+};
+
 function stripAOC(appellation: string) {
   return appellation.replace(/\s*AOC\s*/g, "").trim();
 }
 
-export default function WineCard({ wine }: { wine: Wine }) {
+export default function WineCard({
+  wine,
+  showDomainBadge = false,
+}: {
+  wine: Wine;
+  showDomainBadge?: boolean;
+}) {
   return (
     <Link
       href={`/vins/${wine.id}`}
@@ -66,6 +82,15 @@ export default function WineCard({ wine }: { wine: Wine }) {
             style={{ fontFamily: "var(--font-body)" }}
           >
             Amphore
+          </span>
+        )}
+
+        {showDomainBadge && (
+          <span
+            className={`absolute top-3 right-3 text-[9px] tracking-widest uppercase px-2 py-1 ${DOMAIN_BADGE[wine.labels[0]]}`}
+            style={{ fontFamily: "var(--font-body)" }}
+          >
+            {DOMAIN_LABEL[wine.labels[0]]}
           </span>
         )}
       </div>
