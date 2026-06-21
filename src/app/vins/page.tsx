@@ -119,13 +119,13 @@ export default function VinsPage() {
                   <RevealOnScroll key={wine.id}>
                     <Link
                       href={`/vins/${wine.id}`}
-                      className={`grid md:grid-cols-2 gap-0 min-h-[300px] group ${
+                      className={`grid md:grid-cols-2 gap-0 h-screen group ${
                         i % 2 === 0 ? "" : "md:[direction:rtl]"
                       }`}
                     >
                       {/* Image */}
                       <div
-                        className={`relative bg-[#EDE8E2] overflow-hidden min-h-[220px] ${
+                        className={`relative bg-[#EDE8E2] overflow-hidden h-full ${
                           i % 2 === 0 ? "" : "md:[direction:ltr]"
                         }`}
                       >
@@ -134,7 +134,7 @@ export default function VinsPage() {
                             src={imgPath(wine.photo)}
                             alt={wine.name}
                             fill
-                            className="object-contain p-12 group-hover:scale-105 transition-transform duration-700"
+                            className="object-contain p-20 group-hover:scale-105 transition-transform duration-700"
                             sizes="(max-width: 768px) 100vw, 50vw"
                           />
                         ) : (
@@ -146,26 +146,26 @@ export default function VinsPage() {
 
                       {/* Texte */}
                       <div
-                        className={`flex flex-col justify-center px-10 md:px-14 py-10 bg-cream ${
+                        className={`h-full flex flex-col justify-center px-10 md:px-16 py-10 bg-cream ${
                           i % 2 === 0 ? "" : "md:[direction:ltr]"
                         }`}
                       >
                         {wine.cru && (
-                          <p className="label-caps text-stone mb-2 capitalize">{wine.cru}</p>
+                          <p className="label-caps text-stone mb-4 capitalize">{wine.cru}</p>
                         )}
                         <h3
-                          className="text-2xl md:text-3xl text-ink font-normal mb-3 leading-tight group-hover:text-amber transition-colors"
+                          className="text-4xl md:text-6xl text-ink font-normal mb-6 leading-tight group-hover:text-amber transition-colors"
                           style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
                         >
                           {wine.name}
                         </h3>
                         {wine.description && (
-                          <p className="body-sm text-ink/60 leading-loose">
-                            {excerpt(wine.description)}
+                          <p className="text-ink/60 leading-loose max-w-md" style={{ fontFamily: "var(--font-body)", fontSize: "15px" }}>
+                            {excerpt(wine.description, 220)}
                           </p>
                         )}
                         {!wine.inStock && (
-                          <span className="label-caps text-stone/50 mt-4">Épuisé</span>
+                          <span className="label-caps text-stone/50 mt-6">Épuisé</span>
                         )}
                       </div>
                     </Link>
