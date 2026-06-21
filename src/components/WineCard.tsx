@@ -34,9 +34,11 @@ function stripAOC(appellation: string) {
 export default function WineCard({
   wine,
   showDomainBadge = false,
+  showPrice = true,
 }: {
   wine: Wine;
   showDomainBadge?: boolean;
+  showPrice?: boolean;
 }) {
   return (
     <Link
@@ -107,7 +109,14 @@ export default function WineCard({
           className="text-stone text-[13px] mt-3"
           style={{ fontFamily: "var(--font-body)" }}
         >
-          {wine.price} €
+          {showPrice ? (
+            `${wine.price} €`
+          ) : (
+            <>
+              {stripAOC(wine.appellation)}
+              {wine.cru && <span className="ml-2 text-amber/70 capitalize">{wine.cru}</span>}
+            </>
+          )}
         </p>
       </div>
     </Link>
