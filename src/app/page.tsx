@@ -114,9 +114,9 @@ export default function HomePage() {
             naturellement la maturité des raisins.
           </p>
           <div className="flex items-center gap-5 flex-wrap">
-            <img src="/logos/bio.png" alt="Agriculture Biologique" className="h-16 w-auto flex-shrink-0" />
-            <img src="/logos/demeter2.png" alt="Demeter Bio-Dynamic" className="h-16 w-auto flex-shrink-0" />
-            <img src="/logos/demeter.png" alt="Demeter Biodynamie" className="h-16 w-auto flex-shrink-0" />
+            <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/logos/bio.png`} alt="Agriculture Biologique" className="h-16 w-auto flex-shrink-0" />
+            <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/logos/demeter2.png`} alt="Demeter Bio-Dynamic" className="h-16 w-auto flex-shrink-0" />
+            <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/logos/demeter.png`} alt="Demeter Biodynamie" className="h-16 w-auto flex-shrink-0" />
             <p className="label-caps text-sage">Biologique, Biodynamique, Vitiforesterie</p>
           </div>
         </div>
