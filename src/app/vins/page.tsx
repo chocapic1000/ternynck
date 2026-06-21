@@ -146,20 +146,12 @@ export default function VinsPage() {
                           </p>
                         </div>
 
-                        {/* Prix + stock */}
-                        <div className="flex flex-col items-end gap-1 flex-shrink-0">
-                          <p
-                            className="text-ink text-[15px]"
-                            style={{ fontFamily: "var(--font-display)" }}
-                          >
-                            {wine.price} €
-                          </p>
-                          {!wine.inStock && (
-                            <span className="text-[10px] tracking-widest uppercase text-stone/50" style={{ fontFamily: "var(--font-body)" }}>
-                              Épuisé
-                            </span>
-                          )}
-                        </div>
+                        {/* Stock */}
+                        {!wine.inStock && (
+                          <span className="text-[10px] tracking-widest uppercase text-stone/50 flex-shrink-0" style={{ fontFamily: "var(--font-body)" }}>
+                            Épuisé
+                          </span>
+                        )}
 
                         <span className="text-stone/30 group-hover:text-amber transition-colors ml-1">→</span>
                       </Link>
