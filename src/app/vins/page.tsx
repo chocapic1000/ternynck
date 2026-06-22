@@ -18,22 +18,16 @@ const DOMAINES = [
   },
 ];
 
-// Pool de photos de vignes/domaine tournant à chaque vin pour éviter de répéter
-// toujours la même image de fond. Inclut les photos jamais encore utilisées sur
-// le site (fontaine-goby, gabrielle).
+// Pool de photos de vignes/vendanges tournant à chaque vin, pour éviter de
+// répéter toujours la même image de fond. Uniquement des photos jamais
+// utilisées ailleurs sur le site.
 const BACKDROP_POOL = [
-  "/photos/vendanges.jpg",
   "/photos/domaine-fontaine-goby.jpg",
-  "/photos/histoire-irancy.jpg",
+  "/photos/vignoble-gel-aube.jpg",
   "/photos/domaine-gabrielle.jpg",
-  "/photos/histoire-1993.jpg",
-  "/photos/philosophie.jpg",
-  "/photos/histoire-marronniers.jpg",
-  "/photos/domaine-mauperthuis.jpg",
-  "/photos/histoire-vitiforesterie.jpg",
-  "/photos/domaine-marronniers.jpg",
-  "/photos/histoire-bio.jpg",
-  "/photos/histoire-lb.jpg",
+  "/photos/cuverie-vendanges.jpg",
+  "/photos/vendanges-mauperthuis-seau.jpg",
+  "/photos/vendanges-coucher-soleil.jpg",
 ];
 
 function stripAOC(appellation: string) {
