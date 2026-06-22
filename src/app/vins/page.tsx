@@ -48,6 +48,18 @@ function groupByAppellation(domaineWines: Wine[]) {
   return order.map((key) => ({ appellation: key, wines: groups.get(key)! }));
 }
 
+// Les amphores forment toujours leur propre groupe, affiché en dernier,
+// pour ne jamais se mélanger avec un vin standard de la même appellation.
+function buildGroups(domaineWines: Wine[]) {
+  const standard = domaineWines.filter((w) => w.category !== "amphore");
+  const amphores = domaineWines.filter((w) => w.category === "amphore");
+  const groups = groupByAppellation(standard);
+  if (amphores.length > 0) {
+    groups.push({ appellation: "Collection Amphore", wines: amphores });
+  }
+  return groups;
+}
+
 export default function VinsPage() {
   let backdropIndex = 0;
 
@@ -55,7 +67,7 @@ export default function VinsPage() {
     <div className="min-h-screen bg-ink">
       {DOMAINES.map((domaine) => {
         const domaineWines = wines.filter((w) => w.labels[0] === domaine.label);
-        const groups = groupByAppellation(domaineWines);
+        const groups = buildGroups(domaineWines);
 
         return (
           <div key={domaine.label}>
@@ -69,10 +81,10 @@ export default function VinsPage() {
                 priority
               />
               <div className="absolute inset-0 bg-ink/60" />
-              <div className="relative z-10 px-10 md:px-20 max-w-3xl">
+              <div className="relative z-10 px-10 md:px-20 max-w-5xl">
                 <p className="label-caps text-amber mb-5">{domaine.subtitle}</p>
                 <h1
-                  className="text-cream text-5xl md:text-7xl font-normal leading-tight"
+                  className="text-cream text-3xl md:text-6xl font-normal leading-tight whitespace-nowrap"
                   style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
                 >
                   {domaine.name}
@@ -100,7 +112,7 @@ export default function VinsPage() {
 
                       <div className="relative z-10 grid md:grid-cols-2 items-center gap-10 px-10 md:px-20 max-w-6xl mx-auto w-full">
                         {/* Bouteille */}
-                        <div className="relative h-[80vh] flex items-center justify-center order-2 md:order-1">
+                        <div className="relative h-[92vh] flex items-center justify-center order-2 md:order-1">
                           {wine.photo ? (
                             <div
                               className="relative w-full h-full"
@@ -113,7 +125,7 @@ export default function VinsPage() {
                                 src={imgPath(wine.photo)}
                                 alt={wine.name}
                                 fill
-                                className="object-contain p-2"
+                                className="object-contain"
                                 sizes="(max-width: 768px) 100vw, 50vw"
                               />
                             </div>
@@ -138,12 +150,20 @@ export default function VinsPage() {
                           {!wine.inStock && (
                             <span className="label-caps text-cream/30 mt-6 inline-block">Épuisé</span>
                           )}
-                          <a
-                            href="#"
-                            className="label-caps text-amber border-b border-amber/40 pb-0.5 mt-8 inline-block hover:opacity-70 transition-opacity"
-                          >
-                            Fiche technique · Technical sheet
-                          </a>
+                          <div className="flex flex-wrap gap-6 mt-8">
+                            <a
+                              href="#"
+                              className="label-caps text-amber border-b border-amber/40 pb-0.5 hover:opacity-70 transition-opacity"
+                            >
+                              Fiche technique
+                            </a>
+                            <a
+                              href="#"
+                              className="label-caps text-amber border-b border-amber/40 pb-0.5 hover:opacity-70 transition-opacity"
+                            >
+                              Technical sheet
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </section>

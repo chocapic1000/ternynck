@@ -122,6 +122,20 @@ export const wines: Wine[] = [
     photo: "https://images.squarespace-cdn.com/content/v1/5e89a0e7cbe1c339cd01fd20/1601556452950-N0N8GMME0Q7WE2BAZEFU/Chablis+Grand+Cru+Valmur.jpeg",
   },
 
+  // ─── ROSÉ · MAUPERTHUIS (en tête) ────────────────────────────────────────────
+  {
+    id: "rose",
+    name: "Rosé",
+    appellation: "Bourgogne AOC",
+    color: "rose",
+    category: "standard",
+    labels: ["mauperthuis"],
+    price: 15,
+    description: "Pinot noir vinifié en saignée. Robe rose pâle aux reflets saumonés, nez délicat de fraise et de groseille. Bouche fraîche et gourmande, finale vive. Apéritif, cuisine d'été, salades de fruits rouges. Servir à 8–10 °C.",
+    inStock: true,
+    photo: "https://images.squarespace-cdn.com/content/v1/5e89a0e7cbe1c339cd01fd20/1685521864102-FU1O9MTW1KVTJIOK0FMT/ros%C3%A9.JPG",
+  },
+
   // ─── BLANCS · MAUPERTHUIS UNIQUEMENT ────────────────────────────────────────
   {
     id: "saint-bris",
@@ -237,7 +251,7 @@ export const wines: Wine[] = [
   },
   {
     id: "palotte",
-    name: "L'Irancy Palotte",
+    name: "Irancy Palotte",
     appellation: "Irancy AOC",
     color: "rouge",
     category: "standard",
@@ -247,20 +261,6 @@ export const wines: Wine[] = [
     cru: "village",
     description: "Robe pourpre bien soutenue tirant légèrement sur le grenat. Bouquet très fruité : cassis, cerise griotte, mûre. Tannins légers et fins, structure ferme et veloutée. Côtes de bœuf grillées, volailles en cocotte. Élevage 18 mois en fûts, non filtré, non collé. Servir à 15 °C. Garde 15 ans.",
     photo: "https://images.squarespace-cdn.com/content/v1/5e89a0e7cbe1c339cd01fd20/1601559353141-594DL7WWU5SR2KW5UBTQ/palotte.jpg",
-  },
-
-  // ─── ROSÉ · MAUPERTHUIS ──────────────────────────────────────────────────────
-  {
-    id: "rose",
-    name: "Rosé",
-    appellation: "Bourgogne AOC",
-    color: "rose",
-    category: "standard",
-    labels: ["mauperthuis"],
-    price: 15,
-    description: "Pinot noir vinifié en saignée. Robe rose pâle aux reflets saumonés, nez délicat de fraise et de groseille. Bouche fraîche et gourmande, finale vive. Apéritif, cuisine d'été, salades de fruits rouges. Servir à 8–10 °C.",
-    inStock: true,
-    photo: "https://images.squarespace-cdn.com/content/v1/5e89a0e7cbe1c339cd01fd20/1685521864102-FU1O9MTW1KVTJIOK0FMT/ros%C3%A9.JPG",
   },
 
   // ─── COLLECTION AMPHORE · MAUPERTHUIS ───────────────────────────────────────
