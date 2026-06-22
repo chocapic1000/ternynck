@@ -1,45 +1,6 @@
 import Image from "next/image";
 import { imgPath } from "@/lib/imgPath";
-import FadeOnScroll from "@/components/FadeOnScroll";
-
-const timeline = [
-  {
-    year: "1993",
-    title: "Les premières vignes",
-    text: "Laurent plante ses 35 premiers ares sur les terres de François Choné. Deux ans plus tard, en 1995, sort le premier millésime : 500 bouteilles.",
-    photo: "/photos/histoire-1993.jpg",
-  },
-  {
-    year: "2009",
-    title: "Irancy — Veaupessiot, Mazelot, Palotte",
-    text: "Reprise de vignes en Irancy sur des terroirs d'exception.",
-    photo: "/photos/histoire-irancy.jpg",
-  },
-  {
-    year: "2013",
-    title: "Domaine des Marronniers",
-    text: "Reprise du Domaine des Marronniers. Accès au Chablisien.",
-    photo: "/photos/histoire-marronniers.jpg",
-  },
-  {
-    year: "2018",
-    title: "Conversion biologique & biodynamique",
-    text: "Décision de convertir l'ensemble des domaines. Certification officielle demandée en 2019 pour Fontaine-Goby et Mauperthuis, en 2020 pour Marronniers.",
-    photo: "/photos/histoire-bio.jpg",
-  },
-  {
-    year: "2022",
-    title: "Certifications & vitiforesterie",
-    text: "Fontaine-Goby et Mauperthuis certifiés bio. Des arbres sont plantés entre les rangs de vignes pour recréer un équilibre biologique vivant.",
-    photo: "/photos/histoire-vitiforesterie.jpg",
-  },
-  {
-    year: "2025",
-    title: "La nouvelle génération",
-    text: "Louis-Bénigne, fils de Laurent et Marie-Noëlle, crée son propre domaine en Irancy. En conversion biodynamique.",
-    photo: "/photos/histoire-lb.jpg",
-  },
-];
+import HistoireTimeline from "@/components/HistoireTimeline";
 
 export default function HistoirePage() {
   return (
@@ -76,39 +37,8 @@ export default function HistoirePage() {
         </div>
       </div>
 
-      {/* Timeline, plein écran avec fondu au défilement */}
-      <div className="bg-ink">
-        {timeline.map((item) => (
-          <FadeOnScroll key={item.year}>
-            <section className="relative min-h-screen overflow-hidden flex items-center py-20">
-              <Image
-                src={imgPath(item.photo)}
-                alt=""
-                fill
-                className="object-cover opacity-30"
-                aria-hidden
-              />
-              <div className="absolute inset-0 bg-ink/60" />
-
-              <div className="relative z-10 px-10 md:px-20 max-w-4xl mx-auto w-full">
-                <p className="font-sans font-bold text-[100px] md:text-[160px] text-cream/10 leading-none mb-4 select-none">
-                  {item.year}
-                </p>
-                <p className="label-caps text-amber mb-4">{item.year}</p>
-                <h2
-                  className="text-4xl md:text-6xl text-cream font-normal mb-6 leading-tight"
-                  style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
-                >
-                  {item.title}
-                </h2>
-                <p className="text-cream/55 leading-loose max-w-xl" style={{ fontFamily: "var(--font-body)", fontSize: "15px" }}>
-                  {item.text}
-                </p>
-              </div>
-            </section>
-          </FadeOnScroll>
-        ))}
-      </div>
+      {/* Frise chronologique balayable */}
+      <HistoireTimeline />
     </div>
   );
 }
