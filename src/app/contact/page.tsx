@@ -4,6 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import { imgPath } from "@/lib/imgPath";
 
+const MAPS_URL = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("3 Grande Rue de Chablis, 89800 Préhy, France");
+
 const VISIT_TYPES = ["Dégustation"];
 
 const CRENEAUX = [
@@ -158,12 +160,24 @@ export default function ContactPage() {
                 >
                   {info.label}
                 </p>
-                <p
-                  className="text-ink text-[15px] leading-relaxed whitespace-pre-line"
-                  style={{ fontFamily: "var(--font-body)" }}
-                >
-                  {info.value}
-                </p>
+                {info.label === "Adresse" ? (
+                  <a
+                    href={MAPS_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-ink text-[15px] leading-relaxed whitespace-pre-line hover:text-amber transition-colors"
+                    style={{ fontFamily: "var(--font-body)" }}
+                  >
+                    {info.value}
+                  </a>
+                ) : (
+                  <p
+                    className="text-ink text-[15px] leading-relaxed whitespace-pre-line"
+                    style={{ fontFamily: "var(--font-body)" }}
+                  >
+                    {info.value}
+                  </p>
+                )}
               </div>
             ))}
           </div>

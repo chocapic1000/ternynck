@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+const MAPS_URL = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("3 Grande Rue de Chablis, 89800 Préhy, France");
+
 const domaines = [
   { name: "Mauperthuis", href: "/boutique?label=mauperthuis" },
   { name: "Marronniers", href: "/boutique?label=marronniers" },
@@ -87,9 +89,16 @@ export default function Footer() {
               </a>
             </li>
             <li className="body-sm text-cream/30">Lundi au Vendredi, 9h à 17h</li>
-            <li className="body-sm text-cream/30 leading-relaxed">
-              3 Grande Rue de Chablis<br />
-              89800 Préhy, France
+            <li>
+              <a
+                href={MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="body-sm text-cream/30 hover:text-cream/60 transition-colors leading-relaxed"
+              >
+                3 Grande Rue de Chablis<br />
+                89800 Préhy, France
+              </a>
             </li>
           </ul>
         </div>
