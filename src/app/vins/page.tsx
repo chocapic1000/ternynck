@@ -68,6 +68,7 @@ type View = "diaporama" | "grille";
 
 export default function VinsPage() {
   const [view, setView] = useState<View>("diaporama");
+  const [selectedWine, setSelectedWine] = useState<Wine | null>(null);
   let backdropIndex = 0;
 
   return (
@@ -124,7 +125,7 @@ export default function VinsPage() {
                 </h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-14">
                   {domaineWines.map((wine) => (
-                    <VinsGridCard key={wine.id} wine={wine} />
+                    <VinsGridCard key={wine.id} wine={wine} onSelect={setSelectedWine} />
                   ))}
                 </div>
               </div>
@@ -233,6 +234,72 @@ export default function VinsPage() {
             </div>
           );
         })
+      )}
+
+      {/* Affichage détaillé d'une bouteille (vue grille) */}
+      {selectedWine && (
+        <div
+          className="fixed inset-0 z-50 bg-ink/90 flex items-center justify-center px-6 py-10"
+          onClick={() => setSelectedWine(null)}
+        >
+          <button
+            onClick={() => setSelectedWine(null)}
+            aria-label="Fermer"
+            className="absolute top-6 right-6 md:top-10 md:right-10 text-cream/50 hover:text-amber transition-colors text-3xl"
+          >
+            ×
+          </button>
+
+          <div
+            className="relative grid md:grid-cols-2 items-center gap-10 max-w-5xl w-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="relative h-[60vh] md:h-[80vh] flex items-center justify-center">
+              {selectedWine.photo ? (
+                <Image
+                  src={imgPath(selectedWine.photo)}
+                  alt={selectedWine.name}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              ) : (
+                <div className="w-4 h-44 bg-cream/10 rounded-t-sm" />
+              )}
+            </div>
+
+            <div>
+              <h3
+                className="text-3xl md:text-5xl text-cream font-normal mb-6 leading-tight"
+                style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+              >
+                {selectedWine.name}
+              </h3>
+              {selectedWine.description && (
+                <p className="text-cream/55 leading-loose max-w-md" style={{ fontFamily: "var(--font-body)", fontSize: "15px" }}>
+                  {selectedWine.description}
+                </p>
+              )}
+              {!selectedWine.inStock && (
+                <span className="label-caps text-cream/30 mt-6 inline-block">Épuisé</span>
+              )}
+              <div className="flex flex-wrap gap-6 mt-8">
+                <a
+                  href="#"
+                  className="label-caps text-amber border-b border-amber/40 pb-0.5 hover:opacity-70 transition-opacity"
+                >
+                  Fiche technique
+                </a>
+                <a
+                  href="#"
+                  className="label-caps text-amber border-b border-amber/40 pb-0.5 hover:opacity-70 transition-opacity"
+                >
+                  Technical sheet
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

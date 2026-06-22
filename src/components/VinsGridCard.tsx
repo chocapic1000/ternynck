@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 import type { Wine, Label } from "@/data/wines";
 import { imgPath } from "@/lib/imgPath";
@@ -15,16 +14,18 @@ function stripAOC(appellation: string) {
 export default function VinsGridCard({
   wine,
   showDomainBadge = false,
+  onSelect,
 }: {
   wine: Wine;
   showDomainBadge?: boolean;
+  onSelect: (wine: Wine) => void;
 }) {
   return (
-    <Link
-      href={`/vins/${wine.id}`}
-      className="group flex flex-col items-center text-center hover:-translate-y-1 transition-transform duration-300"
+    <button
+      onClick={() => onSelect(wine)}
+      className="group flex flex-col items-center text-center hover:-translate-y-1 transition-transform duration-300 w-full"
     >
-      <div className="relative w-full aspect-[3/4]">
+      <div className="relative w-full h-64 sm:h-80 md:h-96">
         {wine.photo ? (
           <Image
             src={imgPath(wine.photo)}
@@ -73,6 +74,6 @@ export default function VinsGridCard({
       <p className="text-cream/40 text-[12px] mt-1" style={{ fontFamily: "var(--font-body)" }}>
         {stripAOC(wine.appellation)}
       </p>
-    </Link>
+    </button>
   );
 }
