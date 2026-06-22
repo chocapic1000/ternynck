@@ -5,12 +5,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
     formats: ["image/avif", "image/webp"],
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "images.squarespace-cdn.com",
-      },
-    ],
   },
   env: {
     NEXT_PUBLIC_BASE_PATH: "/ternynck",
