@@ -114,23 +114,13 @@ export default function VinsPage() {
                         {/* Bouteille */}
                         <div className="relative h-[92vh] flex items-center justify-center order-2 md:order-1">
                           {wine.photo ? (
-                            wine.category === "amphore" ? (
-                              <div
-                                className="relative w-full h-full"
-                                style={{
-                                  maskImage: "radial-gradient(ellipse 50% 65% at center, black 10%, transparent 92%)",
-                                  WebkitMaskImage: "radial-gradient(ellipse 50% 65% at center, black 10%, transparent 92%)",
-                                }}
-                              >
-                                <Image
-                                  src={imgPath(wine.photo)}
-                                  alt={wine.name}
-                                  fill
-                                  className="object-contain"
-                                  sizes="(max-width: 768px) 100vw, 50vw"
-                                />
-                              </div>
-                            ) : (
+                            <div
+                              className="relative w-full h-full"
+                              style={{
+                                maskImage: "radial-gradient(ellipse 55% 65% at center, black 45%, transparent 78%)",
+                                WebkitMaskImage: "radial-gradient(ellipse 55% 65% at center, black 45%, transparent 78%)",
+                              }}
+                            >
                               <Image
                                 src={imgPath(wine.photo)}
                                 alt={wine.name}
@@ -138,7 +128,7 @@ export default function VinsPage() {
                                 className="object-contain"
                                 sizes="(max-width: 768px) 100vw, 50vw"
                               />
-                            )
+                            </div>
                           ) : (
                             <div className="w-4 h-44 bg-cream/10 rounded-t-sm" />
                           )}
