@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { imgPath } from "@/lib/imgPath";
+import FadeOnScroll from "@/components/FadeOnScroll";
 
 const timeline = [
   {
@@ -42,9 +43,9 @@ const timeline = [
 
 export default function HistoirePage() {
   return (
-    <div className="pt-32 pb-24">
+    <div>
       {/* Hero */}
-      <div className="px-8 md:px-12 mb-20">
+      <div className="pt-32 px-8 md:px-12 mb-20">
         <p className="label-caps text-amber mb-5">— L'histoire</p>
         <h1 className="font-serif text-5xl md:text-7xl text-ink font-normal leading-[1.05] max-w-3xl">
           Du vin comme on transmet
@@ -75,50 +76,38 @@ export default function HistoirePage() {
         </div>
       </div>
 
-      {/* Timeline */}
-      <div className="px-8 md:px-12">
-        <div className="max-w-4xl mx-auto space-y-0">
-          {timeline.map((item, i) => (
-            <div
-              key={item.year}
-              className={`grid md:grid-cols-2 gap-0 min-h-[380px] ${
-                i % 2 === 0 ? "" : "md:[direction:rtl]"
-              }`}
-            >
-              {/* Image */}
-              <div
-                className={`relative bg-dust overflow-hidden min-h-[260px] ${
-                  i % 2 === 0 ? "" : "md:[direction:ltr]"
-                }`}
-              >
-                <Image
-                  src={imgPath(item.photo)}
-                  alt={item.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-ink/10" />
-              </div>
+      {/* Timeline, plein écran avec fondu au défilement */}
+      <div className="bg-ink">
+        {timeline.map((item) => (
+          <FadeOnScroll key={item.year}>
+            <section className="relative min-h-screen overflow-hidden flex items-center py-20">
+              <Image
+                src={imgPath(item.photo)}
+                alt=""
+                fill
+                className="object-cover opacity-30"
+                aria-hidden
+              />
+              <div className="absolute inset-0 bg-ink/60" />
 
-              {/* Text */}
-              <div
-                className={`flex flex-col justify-center px-10 py-14 ${
-                  i % 2 === 0 ? "bg-cream" : "bg-dust md:[direction:ltr]"
-                }`}
-              >
-                <p className="font-sans font-bold text-[64px] text-ink/10 leading-none mb-4 select-none">
+              <div className="relative z-10 px-10 md:px-20 max-w-4xl mx-auto w-full">
+                <p className="font-sans font-bold text-[100px] md:text-[160px] text-cream/10 leading-none mb-4 select-none">
                   {item.year}
                 </p>
-                <p className="label-caps text-amber mb-3">{item.year}</p>
-                <h2 className="font-serif text-2xl text-ink font-normal mb-4">
+                <p className="label-caps text-amber mb-4">{item.year}</p>
+                <h2
+                  className="text-4xl md:text-6xl text-cream font-normal mb-6 leading-tight"
+                  style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+                >
                   {item.title}
                 </h2>
-                <p className="body-sm text-ink/60 leading-loose">{item.text}</p>
+                <p className="text-cream/55 leading-loose max-w-xl" style={{ fontFamily: "var(--font-body)", fontSize: "15px" }}>
+                  {item.text}
+                </p>
               </div>
-            </div>
-          ))}
-        </div>
+            </section>
+          </FadeOnScroll>
+        ))}
       </div>
     </div>
   );
