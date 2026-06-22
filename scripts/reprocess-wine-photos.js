@@ -40,8 +40,11 @@ async function removeBg(inputBuffer) {
     tryPush(x, y - 1);
   }
 
-  const tLow = 200;
-  const tHigh = 248;
+  // Bande de transition resserrée : un seuil trop large (200-248) laisse un
+  // liseré clair semi-transparent visible sur fond sombre. 235-250 ne couvre
+  // plus que l'antialiasing réel du bord, pas les zones claires de l'étiquette.
+  const tLow = 235;
+  const tHigh = 250;
   for (let y = 0; y < h; y++) {
     for (let x = 0; x < w; x++) {
       const i = y * w + x;
