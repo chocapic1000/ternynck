@@ -46,6 +46,7 @@ const timeline = [
 export default function HistoireTimeline() {
   const [active, setActive] = useState(0);
   const touchStartX = useRef<number | null>(null);
+  const wheelLocked = useRef(false);
 
   const goTo = (i: number) => setActive(Math.max(0, Math.min(timeline.length - 1, i)));
 
@@ -59,6 +60,18 @@ export default function HistoireTimeline() {
       goTo(active + (delta < 0 ? 1 : -1));
     }
     touchStartX.current = null;
+  }
+
+  function onWheel(e: React.WheelEvent) {
+    // Balayage au pavé tactile : deltaX horizontal. On verrouille pendant la
+    // durée de l'animation pour qu'un seul geste ne saute pas plusieurs années.
+    if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) return;
+    if (Math.abs(e.deltaX) < 25 || wheelLocked.current) return;
+    wheelLocked.current = true;
+    goTo(active + (e.deltaX > 0 ? 1 : -1));
+    setTimeout(() => {
+      wheelLocked.current = false;
+    }, 600);
   }
 
   return (
@@ -96,6 +109,7 @@ export default function HistoireTimeline() {
         style={{ transform: `translateX(-${active * 100}%)` }}
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
+        onWheel={onWheel}
       >
         {timeline.map((item) => (
           <div key={item.year} className="relative w-full h-full flex-shrink-0 flex items-center">
