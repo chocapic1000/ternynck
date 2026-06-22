@@ -112,15 +112,23 @@ export default function VinsPage() {
 
                       <div className="relative z-10 grid md:grid-cols-2 items-center gap-10 px-10 md:px-20 max-w-6xl mx-auto w-full">
                         {/* Bouteille */}
-                        <div className="relative h-[55vh] flex items-center justify-center order-2 md:order-1">
+                        <div className="relative h-[80vh] flex items-center justify-center order-2 md:order-1">
                           {wine.photo ? (
-                            <Image
-                              src={imgPath(wine.photo)}
-                              alt={wine.name}
-                              fill
-                              className="object-contain p-10"
-                              sizes="(max-width: 768px) 100vw, 50vw"
-                            />
+                            <div
+                              className="relative w-full h-full"
+                              style={{
+                                maskImage: "radial-gradient(ellipse 55% 65% at center, black 45%, transparent 78%)",
+                                WebkitMaskImage: "radial-gradient(ellipse 55% 65% at center, black 45%, transparent 78%)",
+                              }}
+                            >
+                              <Image
+                                src={imgPath(wine.photo)}
+                                alt={wine.name}
+                                fill
+                                className="object-contain p-2"
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                              />
+                            </div>
                           ) : (
                             <div className="w-4 h-44 bg-cream/10 rounded-t-sm" />
                           )}
