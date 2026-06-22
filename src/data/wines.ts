@@ -17,6 +17,20 @@ export interface Wine {
 }
 
 export const wines: Wine[] = [
+  // ─── CRÉMANT · MARRONNIERS (en tête) ─────────────────────────────────────────
+  {
+    id: "cremant",
+    name: "Crémant de Bourgogne",
+    appellation: "Crémant de Bourgogne AOC",
+    color: "bulle",
+    category: "standard",
+    labels: ["marronniers"],
+    price: 15,
+    inStock: true,
+    description: "Belle robe dorée, cordons fins de bulles. Arômes de fleurs blanches (aubépines), de pralin et de brioche. Bouche fraîche, saline et minérale, finale sapide et rafraîchissante. Brut Nature, sans dosage. Apéritifs et fruits de mer. Servir à 8 °C.",
+    photo: "https://images.squarespace-cdn.com/content/v1/5e89a0e7cbe1c339cd01fd20/1601621184500-5VD5N0P96JDOIH646AFM/Cremant.jpeg",
+  },
+
   // ─── BLANCS · MARRONNIERS (+ Mauperthuis pour PC et Chablis base) ───────────
   {
     id: "petit-chablis",
@@ -118,6 +132,7 @@ export const wines: Wine[] = [
     labels: ["mauperthuis"],
     price: 14,
     inStock: true,
+    description: "Seule appellation de Bourgogne à base de Sauvignon. Robe pâle aux reflets verts, nez expressif et aromatique — buis, agrumes, fruits de la passion. Bouche vive et désaltérante, belle fraîcheur en finale. Apéritif, fruits de mer, chèvre frais. Servir à 10–12 °C. Garde 2–3 ans.",
     photo: "https://images.squarespace-cdn.com/content/v1/5e89a0e7cbe1c339cd01fd20/1602146451749-72BFIQ8UAIHN7T8WUBJ8/Saint+Bris.jpg",
   },
   {
@@ -178,6 +193,7 @@ export const wines: Wine[] = [
     labels: ["mauperthuis"],
     price: 24,
     inStock: true,
+    description: "Pinot noir issu d'une parcelle de vieilles vignes. Robe rubis profonde, nez de fruits noirs mûrs et de sous-bois. Bouche ample, tannins enrobés, belle persistance aromatique. Viandes rouges, volailles en sauce, fromages affinés. Servir à 15–16 °C. Garde 5–8 ans.",
     photo: "https://images.squarespace-cdn.com/content/v1/5e89a0e7cbe1c339cd01fd20/1601559257712-ADGAIC9O93TWEX3RDLUA/Renouel.jpg",
   },
   {
@@ -233,27 +249,16 @@ export const wines: Wine[] = [
     photo: "https://images.squarespace-cdn.com/content/v1/5e89a0e7cbe1c339cd01fd20/1601559353141-594DL7WWU5SR2KW5UBTQ/palotte.jpg",
   },
 
-  // ─── BULLES & ROSÉ · MARRONNIERS ────────────────────────────────────────────
-  {
-    id: "cremant",
-    name: "Crémant de Bourgogne",
-    appellation: "Crémant de Bourgogne AOC",
-    color: "bulle",
-    category: "standard",
-    labels: ["marronniers"],
-    price: 15,
-    inStock: true,
-    description: "Belle robe dorée, cordons fins de bulles. Arômes de fleurs blanches (aubépines), de pralin et de brioche. Bouche fraîche, saline et minérale, finale sapide et rafraîchissante. Brut Nature, sans dosage. Apéritifs et fruits de mer. Servir à 8 °C.",
-    photo: "https://images.squarespace-cdn.com/content/v1/5e89a0e7cbe1c339cd01fd20/1601621184500-5VD5N0P96JDOIH646AFM/Cremant.jpeg",
-  },
+  // ─── ROSÉ · MAUPERTHUIS ──────────────────────────────────────────────────────
   {
     id: "rose",
     name: "Rosé",
     appellation: "Bourgogne AOC",
     color: "rose",
     category: "standard",
-    labels: ["marronniers"],
+    labels: ["mauperthuis"],
     price: 15,
+    description: "Pinot noir vinifié en saignée. Robe rose pâle aux reflets saumonés, nez délicat de fraise et de groseille. Bouche fraîche et gourmande, finale vive. Apéritif, cuisine d'été, salades de fruits rouges. Servir à 8–10 °C.",
     inStock: true,
     photo: "https://images.squarespace-cdn.com/content/v1/5e89a0e7cbe1c339cd01fd20/1685521864102-FU1O9MTW1KVTJIOK0FMT/ros%C3%A9.JPG",
   },

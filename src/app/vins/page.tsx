@@ -40,12 +40,6 @@ function stripAOC(appellation: string) {
   return appellation.replace(/\s*AOC\s*/g, "").trim();
 }
 
-function excerpt(text: string | undefined, max = 220) {
-  if (!text) return "";
-  if (text.length <= max) return text;
-  return text.slice(0, max).trim() + "…";
-}
-
 function groupByAppellation(domaineWines: Wine[]) {
   const order: string[] = [];
   const groups = new Map<string, Wine[]>();
@@ -100,7 +94,7 @@ export default function VinsPage() {
 
                 return (
                   <FadeOnScroll key={wine.id}>
-                    <section className="relative h-screen overflow-hidden flex items-center">
+                    <section className="relative min-h-screen overflow-hidden flex items-center py-20">
                       <Image
                         src={imgPath(backdrop)}
                         alt=""
@@ -117,8 +111,8 @@ export default function VinsPage() {
                             <div
                               className="relative w-full h-full"
                               style={{
-                                maskImage: "radial-gradient(ellipse 55% 65% at center, black 45%, transparent 78%)",
-                                WebkitMaskImage: "radial-gradient(ellipse 55% 65% at center, black 45%, transparent 78%)",
+                                maskImage: "radial-gradient(ellipse 50% 65% at center, black 10%, transparent 92%)",
+                                WebkitMaskImage: "radial-gradient(ellipse 50% 65% at center, black 10%, transparent 92%)",
                               }}
                             >
                               <Image
@@ -136,10 +130,6 @@ export default function VinsPage() {
 
                         {/* Texte */}
                         <div className="order-1 md:order-2">
-                          <p className="label-caps text-amber mb-4">
-                            {group.appellation}
-                            {wine.cru && <span className="capitalize"> — {wine.cru}</span>}
-                          </p>
                           <h3
                             className="text-4xl md:text-6xl text-cream font-normal mb-6 leading-tight"
                             style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
@@ -148,12 +138,18 @@ export default function VinsPage() {
                           </h3>
                           {wine.description && (
                             <p className="text-cream/55 leading-loose max-w-md" style={{ fontFamily: "var(--font-body)", fontSize: "15px" }}>
-                              {excerpt(wine.description)}
+                              {wine.description}
                             </p>
                           )}
                           {!wine.inStock && (
                             <span className="label-caps text-cream/30 mt-6 inline-block">Épuisé</span>
                           )}
+                          <a
+                            href="#"
+                            className="label-caps text-amber border-b border-amber/40 pb-0.5 mt-8 inline-block hover:opacity-70 transition-opacity"
+                          >
+                            Fiche technique · Technical sheet
+                          </a>
                         </div>
                       </div>
                     </section>
