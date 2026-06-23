@@ -4,6 +4,7 @@ import Link from "next/link";
 import WineCard from "@/components/WineCard";
 import DomainesSection from "@/components/DomainesSection";
 import Bottle3D from "@/components/Bottle3D";
+import HeroContent from "@/components/HeroContent";
 import { featuredWines } from "@/data/wines";
 
 const domaines = [
@@ -27,56 +28,7 @@ export default function HomePage() {
   return (
     <>
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section className="relative h-dvh overflow-hidden">
-        {/* Background image */}
-        <div className="absolute inset-0 bg-[#2A3520]">
-          <Image
-            src={imgPath("/photos/hero.jpg")}
-            alt="Vignes au coucher du soleil, Domaine Ternynck"
-            fill
-            className="object-cover opacity-80"
-            priority
-            sizes="100vw"
-          />
-        </div>
-
-        {/* Gradient léger uniquement en bas pour lisibilité du texte */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ink/50" />
-
-        {/* Content positionné à la jonction vigne/bois (~50% du haut) */}
-        <div
-          className="absolute z-10 px-8 md:px-12 max-w-2xl"
-          style={{ top: "44%" }}
-        >
-          <p
-            className="mb-4 text-[11px] tracking-[0.28em] uppercase text-white"
-            style={{ fontFamily: "var(--font-body)", textShadow: "0 1px 4px rgba(0,0,0,0.6)" }}
-          >
-            Chablis, Irancy, Bourgogne, depuis 1993
-          </p>
-          <h1
-            className="text-cream text-5xl md:text-7xl leading-[1.06] font-normal mb-6"
-            style={{ fontFamily: "var(--font-display)", fontWeight: 500, textShadow: "0 2px 12px rgba(0,0,0,0.4)" }}
-          >
-            Famille Ternynck
-          </h1>
-          <p
-            className="text-cream/70 max-w-md mb-8 leading-loose text-[13px]"
-            style={{ fontFamily: "var(--font-body)", textShadow: "0 1px 4px rgba(0,0,0,0.5)" }}
-          >
-            Vins biologiques et biodynamiques du nord de la Bourgogne.
-            Viticulture vivante, terroirs d'exception, domaine familial.
-          </p>
-          <Link
-            href="/domaines"
-            className="inline-flex items-center gap-3 text-cream border-b border-cream/40 pb-1 hover:border-amber hover:text-amber transition-colors text-[10px] tracking-[0.22em] uppercase"
-            style={{ fontFamily: "var(--font-body)" }}
-          >
-            Découvrir le domaine <span>→</span>
-          </Link>
-        </div>
-
-      </section>
+      <HeroContent />
 
       {/* ── SÉPARATEUR ──────────────────────────────────────────────────────── */}
       <div className="bg-dust h-5" />
