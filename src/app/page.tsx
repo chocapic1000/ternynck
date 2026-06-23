@@ -3,6 +3,7 @@ import { imgPath } from "@/lib/imgPath";
 import Link from "next/link";
 import WineCard from "@/components/WineCard";
 import DomainesSection from "@/components/DomainesSection";
+import Bottle3D from "@/components/Bottle3D";
 import { featuredWines } from "@/data/wines";
 
 const domaines = [
@@ -82,6 +83,26 @@ export default function HomePage() {
 
       {/* ── DOMAINES ────────────────────────────────────────────────────────── */}
       <DomainesSection />
+
+      {/* ── SÉPARATEUR ──────────────────────────────────────────────────────── */}
+      <div className="bg-dust h-5" />
+
+      {/* ── VITRINE 3D ───────────────────────────────────────────────────────── */}
+      <section className="bg-ink py-20 px-8 md:px-12 text-center">
+        <p className="label-caps text-amber mb-4">Notre savoir-faire</p>
+        <h2
+          className="text-cream text-3xl md:text-4xl font-normal mb-3"
+          style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+        >
+          La bouteille en 3D
+        </h2>
+        <p className="text-cream/40 text-[13px] mb-10" style={{ fontFamily: "var(--font-body)" }}>
+          Glissez pour la faire tourner
+        </p>
+        <div className="flex justify-center">
+          <Bottle3D className="relative w-72 h-[420px] md:h-[520px]" />
+        </div>
+      </section>
 
       {/* ── SÉPARATEUR ──────────────────────────────────────────────────────── */}
       <div className="bg-dust h-5" />
