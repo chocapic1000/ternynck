@@ -6,12 +6,13 @@ import { imgPath } from "@/lib/imgPath";
 import WineCard from "@/components/WineCard";
 import { wines } from "@/data/wines";
 
-type FilterId = "tous" | "mauperthuis" | "marronniers" | "blanc" | "rouge" | "bulle";
+type FilterId = "tous" | "mauperthuis" | "marronniers" | "lebon" | "blanc" | "rouge" | "bulle";
 
 const FILTERS: { id: FilterId; label: string }[] = [
   { id: "tous", label: "Tous" },
   { id: "mauperthuis", label: "Mauperthuis" },
   { id: "marronniers", label: "Marronniers" },
+  { id: "lebon", label: "Louis Lebon" },
   { id: "blanc", label: "Blancs" },
   { id: "rouge", label: "Rouges" },
   { id: "bulle", label: "Crémant & Rosé" },
@@ -19,7 +20,7 @@ const FILTERS: { id: FilterId; label: string }[] = [
 
 function matchesFilter(wine: (typeof wines)[number], filter: FilterId) {
   if (filter === "tous") return true;
-  if (filter === "mauperthuis" || filter === "marronniers") {
+  if (filter === "mauperthuis" || filter === "marronniers" || filter === "lebon") {
     return wine.labels[0] === filter;
   }
   if (filter === "bulle") return wine.color === "bulle" || wine.color === "rose";

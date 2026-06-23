@@ -13,11 +13,13 @@ const BOTTLE_COLOR: Record<Wine["color"], string> = {
 const DOMAIN_LABEL: Record<Label, string> = {
   mauperthuis: "Mauperthuis",
   marronniers: "Marronniers",
+  lebon: "Louis Lebon",
 };
 
 const DOMAIN_BADGE: Record<Label, string> = {
   mauperthuis: "bg-amber text-cream",
   marronniers: "bg-sage text-cream",
+  lebon: "bg-stone text-ink",
 };
 
 export default function WineCard({

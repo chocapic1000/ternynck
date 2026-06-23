@@ -1,4 +1,4 @@
-export type Label = "mauperthuis" | "marronniers";
+export type Label = "mauperthuis" | "marronniers" | "lebon";
 export type Color = "blanc" | "rouge" | "bulle" | "rose";
 export type Category = "standard" | "amphore";
 
@@ -120,6 +120,41 @@ export const wines: Wine[] = [
     cru: "grand cru",
     description: "Robe or, Grand Cru Valmur qui convaincra par sa puissance et sa complexité. Arômes de poires, de mirabelle et de toffee extrêmement puissants. Avec l'âge, le terroir kimméridgien révèle des notes minérales de pierres mouillées et des arômes tropicaux. Huîtres chaudes, Saint-Jacques, ris de veau, poissons en sauce. Garde 10 ans.",
     photo: "/photos/wines/chablis-grand-cru-valmur.png",
+  },
+
+  // ─── DOMAINE LOUIS LEBON ──────────────────────────────────────────────────────
+  {
+    id: "lebon-chablis",
+    name: "Chablis Vieilles Vignes",
+    appellation: "Chablis AOC",
+    color: "blanc",
+    category: "standard",
+    labels: ["lebon"],
+    price: 18,
+    inStock: true,
+    photo: "/photos/wines/lebon-chablis.png",
+  },
+  {
+    id: "lebon-irancy",
+    name: "Irancy Vieilles Vignes",
+    appellation: "Irancy AOC",
+    color: "rouge",
+    category: "standard",
+    labels: ["lebon"],
+    price: 18,
+    inStock: true,
+    photo: "/photos/wines/lebon-irancy.png",
+  },
+  {
+    id: "lebon-brulis",
+    name: "Les Brûlis",
+    appellation: "Bourgogne AOC",
+    color: "rouge",
+    category: "standard",
+    labels: ["lebon"],
+    price: 14,
+    inStock: true,
+    photo: "/photos/wines/lebon-brulis.png",
   },
 
   // ─── ROSÉ · MAUPERTHUIS (en tête) ────────────────────────────────────────────

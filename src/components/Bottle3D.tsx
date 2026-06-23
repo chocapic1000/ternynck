@@ -2,28 +2,47 @@
 
 import { Suspense, useEffect, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useGLTF, OrbitControls, Center } from "@react-three/drei";
+import { useGLTF, OrbitControls, Center, Bounds } from "@react-three/drei";
 import type { Group } from "three";
 import { imgPath } from "@/lib/imgPath";
 
-function RotatingModel() {
+function RotatingModel({
+  modelPath,
+  spin,
+  rotationY = 0,
+}: {
+  modelPath: string;
+  spin: boolean;
+  rotationY?: number;
+}) {
   const group = useRef<Group>(null);
-  const { scene } = useGLTF(imgPath("/models/bottle-mauperthuis.glb"));
+
+  const { scene } = useGLTF(imgPath(modelPath));
 
   useFrame((_, delta) => {
-    if (group.current) group.current.rotation.y += delta * 0.4;
+    if (group.current && spin) group.current.rotation.y += delta * 0.4;
   });
 
   return (
     <Center>
-      <group ref={group}>
+      <group ref={group} rotation={[0, rotationY, 0]}>
         <primitive object={scene} />
       </group>
     </Center>
   );
 }
 
-export default function Bottle3D({ className = "" }: { className?: string }) {
+export default function Bottle3D({
+  className = "",
+  modelPath = "/models/bottle-mauperthuis.glb",
+  spin = true,
+  rotationY = 0,
+}: {
+  className?: string;
+  modelPath?: string;
+  spin?: boolean;
+  rotationY?: number;
+}) {
   // Si le conteneur n'a pas encore sa taille finale au montage (polices pas
   // chargées, mise en page pas stabilisée), le canvas R3F peut rester bloqué
   // à sa taille par défaut (300×150). Un signal "resize" différé force le
@@ -35,12 +54,14 @@ export default function Bottle3D({ className = "" }: { className?: string }) {
 
   return (
     <div className={className}>
-      <Canvas camera={{ position: [0, 0, 3.2], fov: 35 }}>
+      <Canvas camera={{ fov: 35 }}>
         <ambientLight intensity={1.1} />
         <directionalLight position={[2, 3, 4]} intensity={1.4} />
         <directionalLight position={[-2, -1, -3]} intensity={0.5} />
         <Suspense fallback={null}>
-          <RotatingModel />
+          <Bounds fit clip observe margin={1.2}>
+            <RotatingModel modelPath={modelPath} spin={spin} rotationY={rotationY} />
+          </Bounds>
         </Suspense>
         <OrbitControls enableZoom={false} enablePan={false} />
       </Canvas>

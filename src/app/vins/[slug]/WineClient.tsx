@@ -4,7 +4,7 @@ import { useState } from "react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { getWineBySlug } from "@/data/wines";
+import { getWineBySlug, type Label } from "@/data/wines";
 import { useCart } from "@/context/CartContext";
 import { imgPath } from "@/lib/imgPath";
 
@@ -14,6 +14,14 @@ const COLOR_LABEL: Record<string, string> = {
   bulle: "Crémant",
   rose: "Rosé",
 };
+
+const DOMAIN_LABEL: Record<Label, string> = {
+  mauperthuis: "Mauperthuis",
+  marronniers: "Marronniers",
+  lebon: "Louis Lebon",
+};
+
+const BIODYNAMIC_DOMAINS: Label[] = ["mauperthuis", "marronniers"];
 
 export default function WineClient({ slug }: { slug: string }) {
   const wine = getWineBySlug(slug);
@@ -66,7 +74,7 @@ export default function WineClient({ slug }: { slug: string }) {
           <dl className="grid grid-cols-2 gap-4 mb-8 py-6 border-y border-dust">
             <div>
               <dt className="label-caps text-stone mb-1">Domaine</dt>
-              <dd className="body-sm text-ink capitalize">{wine.labels.join(", ")}</dd>
+              <dd className="body-sm text-ink">{wine.labels.map((l) => DOMAIN_LABEL[l]).join(", ")}</dd>
             </div>
             <div>
               <dt className="label-caps text-stone mb-1">Appellation</dt>
@@ -78,10 +86,12 @@ export default function WineClient({ slug }: { slug: string }) {
                 <dd className="body-sm text-ink capitalize">{wine.cru}</dd>
               </div>
             )}
-            <div>
-              <dt className="label-caps text-stone mb-1">Agriculture</dt>
-              <dd className="body-sm text-ink">Biodynamique</dd>
-            </div>
+            {wine.labels.some((l) => BIODYNAMIC_DOMAINS.includes(l)) && (
+              <div>
+                <dt className="label-caps text-stone mb-1">Agriculture</dt>
+                <dd className="body-sm text-ink">Biodynamique</dd>
+              </div>
+            )}
           </dl>
 
           {wine.description && (
