@@ -48,9 +48,9 @@ export default function WineClient({ slug }: { slug: string }) {
       </div>
 
       <div className="grid md:grid-cols-2 gap-0 min-h-[70vh]">
-        <div className="relative bg-dust flex items-center justify-center min-h-[420px]">
+        <div className="relative bg-dust flex items-center justify-center min-h-[420px] py-10">
           {wine.photo ? (
-            <Image src={imgPath(wine.photo!)} alt={wine.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+            <Image src={imgPath(wine.photo!)} alt={wine.name} fill className="object-contain" sizes="(max-width: 768px) 100vw, 50vw" />
           ) : (
             <div className="flex items-center justify-center h-full opacity-20 py-20">
               <div className="flex flex-col items-center">
