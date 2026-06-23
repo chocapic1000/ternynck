@@ -27,7 +27,7 @@ export default function HomePage() {
   return (
     <>
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section className="relative h-screen overflow-hidden">
+      <section className="relative h-dvh overflow-hidden">
         {/* Background image */}
         <div className="absolute inset-0 bg-[#2A3520]">
           <Image
