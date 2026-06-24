@@ -515,7 +515,7 @@ export const VINTAGES: Record<VintageGroup, VintageEntry[]> = {
     {
       year: 2025,
       title: "Un îlot de blanc sous la canicule",
-      text: "Sur ce climat presque en monopole, îlot de chardonnay au cœur d'une commune presque exclusivement rouge, les deux canicules de l'été ont concentré le raisin avant les pluies de début septembre. Un Renouel tendu, vendangé juste à temps.",
+      text: "Sur ce minuscule îlot de chardonnay au cœur d'une commune presque exclusivement rouge, les deux canicules de l'été ont concentré le raisin avant les pluies de début septembre. Un Renouel tendu, vendangé juste à temps.",
     },
     {
       year: 2024,

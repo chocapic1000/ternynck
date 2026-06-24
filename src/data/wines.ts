@@ -35,7 +35,7 @@ export interface Wine {
   labels: Label[];
   price: number;
   inStock: boolean;
-  cru?: string; // "grand cru" | "1er cru" | "village" | "monopole"
+  cru?: string; // "grand cru" | "1er cru" | "village"
   description?: string;
   photo?: string;
   vintageGroup: VintageGroup; // appellation de référence pour la chronique de millésime
@@ -262,11 +262,10 @@ export const wines: Wine[] = [
     labels: ["mauperthuis"],
     price: 24,
     inStock: true,
-    cru: "monopole",
-    description: "Chardonnay issu d'une parcelle quasi en monopole sur le climat de Renouel, l'un des très rares îlots de blanc plantés au cœur d'Irancy, commune presque exclusivement vouée au pinot noir. Robe or pâle, nez minéral et floral, bouche tendue portée par les marnes kimméridgiennes. Coquillages, poissons, fromages de chèvre. Servir à 12 °C. Garde 5–8 ans.",
+    description: "Chardonnay issu du climat de Renouel, l'un des très rares îlots de blanc plantés au cœur d'Irancy, commune presque exclusivement vouée au pinot noir. Robe or pâle, nez minéral et floral, bouche tendue portée par les marnes kimméridgiennes. Coquillages, poissons, fromages de chèvre. Servir à 12 °C. Garde 5–8 ans.",
     photo: "/photos/wines/renouel.png",
     vintageGroup: "renouel-blanc",
-    vintageNote: "Sur ce terroir d'exception, presque en monopole, le chardonnay de Renouel offre un contrepoint blanc inattendu au cœur d'une commune vouée au rouge.",
+    vintageNote: "Sur ce terroir d'exception, le chardonnay de Renouel offre un contrepoint blanc inattendu au cœur d'une commune vouée au rouge.",
   },
   {
     id: "irancy",
