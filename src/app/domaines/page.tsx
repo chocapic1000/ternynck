@@ -11,7 +11,6 @@ const domaines = [
       "Le domaine fondateur. Laurent y a planté ses premières vignes en 1993 sur des sols calcaires du Jurassique, en pente douce face au sud. Aujourd'hui le cœur rouge de la famille — Irancy, César, Palotte — y prend toute son expression.",
     photo: "/photos/domaine-mauperthuis.jpg",
     accent: "bg-[#3A4A2A]",
-    label: "mauperthuis",
   },
   {
     id: "marronniers",
@@ -21,7 +20,6 @@ const domaines = [
       "Acquis en 2013, le Domaine des Marronniers apporte à la famille ses bâtiments, son matériel et surtout ses blancs : Petit Chablis, Chablis, Vieilles Vignes, Premiers Crus et le grand Valmur en Grand Cru.",
     photo: "/photos/domaine-marronniers.jpg",
     accent: "bg-[#4A3A2A]",
-    label: "marronniers",
   },
   {
     id: "fontaine-goby",
@@ -31,7 +29,6 @@ const domaines = [
       "Évolution naturelle du Domaine des Marronniers, le Domaine Fontaine-Goby tire son nom de la fontaine qui alimentait jadis le lavoir du hameau de Civry-sur-Serin, à Préhy. La vigne y est conduite en agroforesterie, entre haies et arbres fruitiers, avec des animaux pour entretenir les sols — une viticulture vivante, certifiée biologique et biodynamique Demeter depuis 2022. C'est ici que la famille vinifie ses cuvées en amphore, où le grès laisse le fruit s'exprimer sans le marquer de bois.",
     photo: "/photos/domaine-fontaine-goby.jpg",
     accent: "bg-[#2A3640]",
-    label: "fontaine-goby",
   },
 ];
 
@@ -94,14 +91,12 @@ export default function DomainesPage() {
               <p className="body-sm text-ink/60 leading-loose mb-8">
                 {d.description}
               </p>
-              {d.label && (
-                <Link
-                  href={`/vins?domaine=${d.label}`}
-                  className="inline-flex items-center gap-3 label-caps text-amber border-b border-amber pb-0.5 w-fit hover:opacity-70 transition-opacity"
-                >
-                  Voir les vins →
-                </Link>
-              )}
+              <Link
+                href={`/vins?domaine=${d.id}`}
+                className="inline-flex items-center gap-3 label-caps text-amber border-b border-amber pb-0.5 w-fit hover:opacity-70 transition-opacity"
+              >
+                Voir les vins →
+              </Link>
             </div>
           </div>
         ))}

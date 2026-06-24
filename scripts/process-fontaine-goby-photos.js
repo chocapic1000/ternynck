@@ -20,6 +20,10 @@ const FILES = {
   "fontaine-goby-rose": "rosé.jpg",
 };
 
+// Seule rosé.jpg a un fin liseré coloré en bordure qui bloque le flood-fill
+// depuis les bords ; les autres sources ont déjà un fond blanc propre.
+const NEEDS_MARGIN_CROP = new Set(["fontaine-goby-rose"]);
+
 async function removeBg(inputBuffer) {
   const { data, info } = await sharp(inputBuffer).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
   const { width: w, height: h, channels } = info;
@@ -81,18 +85,18 @@ async function removeBg(inputBuffer) {
   return sharp(data, { raw: { width: w, height: h, channels } });
 }
 
-(async () => {
-  fs.mkdirSync(outDir, { recursive: true });
-  for (const [id, srcName] of Object.entries(FILES)) {
-    const srcPath = path.join(srcDir, srcName);
-    const outFile = path.join(outDir, `${id}.png`);
-    try {
-      const rawBuf = fs.readFileSync(srcPath);
-      const meta = await sharp(rawBuf).metadata();
-      // Certaines sources ont un fin liseré coloré en bordure (ex: rosé.jpg) qui
-      // bloque le flood-fill depuis les bords ; on rogne une marge de sécurité avant.
+async function processOne(id, srcName) {
+  const srcPath = path.join(srcDir, srcName);
+  const outFile = path.join(outDir, `${id}.png`);
+  try {
+    const rawBuf = fs.readFileSync(srcPath);
+    const pipeline = sharp(rawBuf);
+    const meta = await pipeline.metadata();
+
+    let buf = rawBuf;
+    if (NEEDS_MARGIN_CROP.has(id)) {
       const margin = Math.round(Math.min(meta.width, meta.height) * 0.02);
-      const buf = await sharp(rawBuf)
+      buf = await pipeline
         .extract({
           left: margin,
           top: margin,
@@ -100,16 +104,22 @@ async function removeBg(inputBuffer) {
           height: meta.height - margin * 2,
         })
         .toBuffer();
-      const img = await removeBg(buf);
-      const trimmed = img.trim({ threshold: 12 });
-      const resized = trimmed.resize({ width: 1400, withoutEnlargement: true });
-      const outBuf = await resized
-        .png({ palette: false, compressionLevel: 9, adaptiveFiltering: true })
-        .toBuffer();
-      fs.writeFileSync(outFile, outBuf);
-      console.log("OK", id, `${Math.round(outBuf.length / 1024)}KB`);
-    } catch (err) {
-      console.error("FAIL", id, srcName, err.message);
     }
+
+    const img = await removeBg(buf);
+    const trimmed = img.trim({ threshold: 12 });
+    const resized = trimmed.resize({ width: 1400, withoutEnlargement: true });
+    const outBuf = await resized
+      .png({ palette: false, compressionLevel: 9, adaptiveFiltering: true })
+      .toBuffer();
+    fs.writeFileSync(outFile, outBuf);
+    console.log("OK", id, `${Math.round(outBuf.length / 1024)}KB`);
+  } catch (err) {
+    console.error("FAIL", id, srcName, err.message);
   }
+}
+
+(async () => {
+  fs.mkdirSync(outDir, { recursive: true });
+  await Promise.all(Object.entries(FILES).map(([id, srcName]) => processOne(id, srcName)));
 })();

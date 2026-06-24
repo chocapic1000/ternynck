@@ -73,24 +73,28 @@ function buildGroups(domaineWines: Wine[]) {
 
 type View = "diaporama" | "grille";
 
+const domaineAnchorId = (label: string) => `domaine-${label}`;
+
 export default function VinsPage() {
   const [view, setView] = useState<View>("diaporama");
   const [selectedWine, setSelectedWine] = useState<Wine | null>(null);
   let backdropIndex = 0;
 
   // Permet d'arriver directement sur les vins d'un domaine précis depuis
-  // les liens "Découvrir" de la homepage (/vins?domaine=mauperthuis).
+  // les liens "Découvrir" de la homepage (/vins?domaine=mauperthuis). Ne
+  // s'exécute qu'au montage : la query string ne change pas tant qu'on reste
+  // sur la page (ex. en basculant grille/diaporama).
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const domaine = params.get("domaine");
     if (!domaine) return;
-    const target = document.getElementById(`domaine-${domaine}`);
+    const target = document.getElementById(domaineAnchorId(domaine));
     if (target) {
       requestAnimationFrame(() => {
         target.scrollIntoView({ behavior: "instant" as ScrollBehavior, block: "start" });
       });
     }
-  }, [view]);
+  }, []);
 
   return (
     <div className="min-h-screen bg-ink">
@@ -136,7 +140,7 @@ export default function VinsPage() {
           {DOMAINES.map((domaine) => {
             const domaineWines = wines.filter((w) => w.labels[0] === domaine.label);
             return (
-              <div key={domaine.label} id={`domaine-${domaine.label}`} className="mb-20 max-w-6xl mx-auto">
+              <div key={domaine.label} id={domaineAnchorId(domaine.label)} className="mb-20 max-w-6xl mx-auto">
                 <p className="label-caps text-amber mb-3">{domaine.subtitle}</p>
                 <h2
                   className="text-cream text-3xl md:text-4xl font-normal mb-10"
@@ -159,7 +163,7 @@ export default function VinsPage() {
           const groups = buildGroups(domaineWines);
 
           return (
-            <div key={domaine.label} id={`domaine-${domaine.label}`}>
+            <div key={domaine.label} id={domaineAnchorId(domaine.label)}>
               {/* ── Intro domaine, plein écran ── */}
               <section className="relative h-screen overflow-hidden flex items-center">
                 <Image
