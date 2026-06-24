@@ -77,19 +77,6 @@ export default function VinsPage() {
       {/* Sélecteur de vue */}
       <div className="fixed top-24 right-6 md:right-10 z-30 flex items-center gap-1 bg-ink/70 backdrop-blur-sm border border-cream/15 rounded-full p-1">
         <button
-          onClick={() => setView("diaporama")}
-          aria-label="Vue diaporama"
-          title="Vue diaporama"
-          className={`p-2 rounded-full transition-colors ${
-            view === "diaporama" ? "bg-amber text-ink" : "text-cream/50 hover:text-cream"
-          }`}
-        >
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <rect x="1" y="3" width="14" height="10" rx="1" stroke="currentColor" strokeWidth="1.3" />
-            <path d="M6.5 5.5L10.5 8L6.5 10.5V5.5Z" fill="currentColor" />
-          </svg>
-        </button>
-        <button
           onClick={() => setView("grille")}
           aria-label="Vue grille"
           title="Vue grille"
@@ -107,6 +94,19 @@ export default function VinsPage() {
             <rect x="1" y="10.7" width="4.3" height="4.3" stroke="currentColor" strokeWidth="1.3" />
             <rect x="5.85" y="10.7" width="4.3" height="4.3" stroke="currentColor" strokeWidth="1.3" />
             <rect x="10.7" y="10.7" width="4.3" height="4.3" stroke="currentColor" strokeWidth="1.3" />
+          </svg>
+        </button>
+        <button
+          onClick={() => setView("diaporama")}
+          aria-label="Vue diaporama"
+          title="Vue diaporama"
+          className={`p-2 rounded-full transition-colors ${
+            view === "diaporama" ? "bg-amber text-ink" : "text-cream/50 hover:text-cream"
+          }`}
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <rect x="1" y="3" width="14" height="10" rx="1" stroke="currentColor" strokeWidth="1.3" />
+            <path d="M6.5 5.5L10.5 8L6.5 10.5V5.5Z" fill="currentColor" />
           </svg>
         </button>
       </div>

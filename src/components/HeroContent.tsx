@@ -53,13 +53,13 @@ export default function HeroContent() {
       >
         <div className="max-w-2xl flex flex-col items-center">
           <h1
-            className="text-cream text-5xl md:text-7xl leading-[1.06] font-normal mb-4"
+            className="text-cream text-5xl md:text-7xl leading-[1.06] font-normal mb-5"
             style={{ fontFamily: "var(--font-display)", fontWeight: 500, textShadow: "0 2px 12px rgba(0,0,0,0.4)" }}
           >
             Famille Ternynck
           </h1>
           <p
-            className="mb-6 text-[11px] tracking-[0.28em] uppercase text-amber"
+            className="mb-5 text-[11px] tracking-[0.28em] uppercase text-amber"
             style={{ fontFamily: "var(--font-body)", textShadow: "0 1px 4px rgba(0,0,0,0.6)" }}
           >
             Chablis, Irancy, Bourgogne, depuis 1993

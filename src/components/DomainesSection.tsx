@@ -10,21 +10,18 @@ const domaines = [
   {
     id: "mauperthuis",
     name: "Domaine de\nMauperthuis",
-    region: "Irancy , Saint-Bris , Bourgogne",
     photo: "/photos/domaine-mauperthuis.jpg",
     href: "/boutique?label=mauperthuis",
   },
   {
     id: "marronniers",
     name: "Domaine des\nMarronniers",
-    region: "Chablis , Crémant , Bourgogne",
     photo: "/photos/domaine-marronniers.jpg",
     href: "/boutique?label=marronniers",
   },
   {
     id: "fontaine-goby",
     name: "Domaine\nFontaine-Goby",
-    region: "Bourgogne , Bio depuis 2019",
     photo: "/photos/domaine-fontaine-goby.jpg",
     href: "/domaines",
   },
@@ -40,23 +37,20 @@ function DomainePanel({ d }: { d: (typeof domaines)[number] }) {
         src={imgPath(d.photo)}
         alt={d.name}
         fill
-        className="object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-700 ease-out"
+        className="object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700 ease-out"
         sizes="55vw"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/55 to-transparent" />
       <div className="absolute inset-0 bg-amber/0 group-hover:bg-amber/5 transition-colors duration-500" />
 
-      <div className="absolute bottom-0 left-0 pl-10 pr-6 pb-14">
-        <p className="label-caps text-amber mb-4" style={{ letterSpacing: "0.22em" }}>
-          {d.region}
-        </p>
+      <div className="absolute bottom-0 left-0 pl-10 pr-6 pb-12">
         <p
-          className="text-cream text-3xl md:text-[2.4rem] leading-tight whitespace-pre-line"
+          className="text-cream text-2xl md:text-3xl italic leading-tight"
           style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
         >
-          {d.name}
+          {d.name.replace("\n", " ")}
         </p>
-        <p className="label-caps text-cream/30 mt-5 group-hover:text-amber transition-colors duration-300">
+        <p className="label-caps text-amber mt-4 group-hover:opacity-70 transition-opacity duration-300">
           Découvrir →
         </p>
       </div>

@@ -7,10 +7,6 @@ const DOMAIN_LABEL: Record<Label, string> = {
   marronniers: "Marronniers",
 };
 
-function stripAOC(appellation: string) {
-  return appellation.replace(/\s*AOC\s*/g, "").trim();
-}
-
 export default function VinsGridCard({
   wine,
   showDomainBadge = false,
@@ -71,9 +67,6 @@ export default function VinsGridCard({
       >
         {wine.name}
       </h3>
-      <p className="text-cream/40 text-[12px] mt-1" style={{ fontFamily: "var(--font-body)" }}>
-        {stripAOC(wine.appellation)}
-      </p>
     </button>
   );
 }
