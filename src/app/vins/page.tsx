@@ -6,6 +6,7 @@ import { imgPath } from "@/lib/imgPath";
 import { wines, type Wine } from "@/data/wines";
 import FadeOnScroll from "@/components/FadeOnScroll";
 import VinsGridCard from "@/components/VinsGridCard";
+import WineVintages from "@/components/WineVintages";
 
 const DOMAINES = [
   {
@@ -224,6 +225,7 @@ export default function VinsPage() {
                                 Technical sheet
                               </a>
                             </div>
+                            <WineVintages wine={wine} dark />
                           </div>
                         </div>
                       </section>
@@ -239,7 +241,7 @@ export default function VinsPage() {
       {/* Affichage détaillé d'une bouteille (vue grille) */}
       {selectedWine && (
         <div
-          className="fixed inset-0 z-50 bg-ink/90 flex items-center justify-center px-6 py-10"
+          className="fixed inset-0 z-50 bg-ink/90 flex items-center justify-center px-6 py-10 overflow-y-auto"
           onClick={() => setSelectedWine(null)}
         >
           <button
@@ -297,6 +299,7 @@ export default function VinsPage() {
                   Technical sheet
                 </a>
               </div>
+              <WineVintages wine={selectedWine} dark />
             </div>
           </div>
         </div>

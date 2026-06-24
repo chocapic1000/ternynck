@@ -2,6 +2,21 @@ export type Label = "mauperthuis" | "marronniers";
 export type Color = "blanc" | "rouge" | "bulle" | "rose";
 export type Category = "standard" | "amphore";
 
+// Regroupement par appellation réelle, utilisé pour la chronique de
+// millésime : deux vins de la même appellation vivent le même climat, mais
+// pas forcément de la même façon qu'un autre vin de la même couleur.
+export type VintageGroup =
+  | "petit-chablis"
+  | "chablis"
+  | "chablis-1er-cru"
+  | "chablis-grand-cru"
+  | "saint-bris"
+  | "irancy"
+  | "bourgogne-blanc"
+  | "bourgogne-rouge"
+  | "cremant"
+  | "rose";
+
 export interface Wine {
   id: string;
   name: string;
@@ -14,6 +29,7 @@ export interface Wine {
   cru?: string; // "grand cru" | "1er cru" | "village"
   description?: string;
   photo?: string;
+  vintageGroup: VintageGroup; // appellation de référence pour la chronique de millésime
   vintageNote?: string; // accent propre à la cuvée, affiché dans la section Millésimes
 }
 
@@ -30,6 +46,7 @@ export const wines: Wine[] = [
     inStock: true,
     description: "Belle robe dorée, cordons fins de bulles. Arômes de fleurs blanches (aubépines), de pralin et de brioche. Bouche fraîche, saline et minérale, finale sapide et rafraîchissante. Brut Nature, sans dosage. Apéritifs et fruits de mer. Servir à 8 °C.",
     photo: "/photos/wines/cremant.png",
+    vintageGroup: "cremant",
     vintageNote: "Élaboré en Brut Nature sans dosage, le Crémant traduit fidèlement la tension du millésime, vendangé parmi les premiers pour préserver fraîcheur et finesse de bulle.",
   },
 
@@ -45,6 +62,7 @@ export const wines: Wine[] = [
     inStock: true,
     description: "Belle robe or pâle aux reflets verts. Nez puissant, iodé et frais, floral et minéral — amandes fraîches, noisettes, agrumes, fleurs blanches. Bouche équilibrée, attaque charnue, finale nerveuse et acidulée. Accords : fruits de mer, poissons, viandes blanches. Garde 2–4 ans.",
     photo: "/photos/wines/petit-chablis.png",
+    vintageGroup: "petit-chablis",
     vintageNote: "Sur les sols caillouteux du Petit Chablis, ce vin de soif amplifie chaque année le caractère salin et nerveux du millésime.",
   },
   {
@@ -58,6 +76,7 @@ export const wines: Wine[] = [
     inStock: true,
     description: "Belle robe or pâle aux reflets verts. Nez puissant, iodé et frais, floral et minéral — amandes fraîches, noisettes, agrumes, fleurs blanches. Bouche équilibrée, attaque charnue, finale nerveuse et acidulée.",
     photo: "/photos/wines/chablis.png",
+    vintageGroup: "chablis",
     vintageNote: "Le Chablis tout court reste le miroir le plus fidèle de l'année : c'est ici que se lit le plus directement le profil du millésime.",
   },
   {
@@ -72,6 +91,7 @@ export const wines: Wine[] = [
     cru: "village",
     description: "Belle couleur dorée aux pâles reflets verts. Notes minérales, de mirabelle et de coquilles d'huîtres concassées. Vanille et citron vert à l'aération. Bouche structurée, saline, fraîche, finale persistante. Fruits de mer, charcuteries fines. Garde 10 ans.",
     photo: "/photos/wines/chablis-vv.png",
+    vintageGroup: "chablis",
     vintageNote: "Les vieilles vignes apportent une densité qui amortit les écarts du millésime, donnant toujours une matière plus ample et plus persistante.",
   },
   {
@@ -86,6 +106,7 @@ export const wines: Wine[] = [
     cru: "village",
     description: "Belle couleur dorée aux pâles reflets verts. Minéralité, mirabelle et coquilles d'huîtres concassées. Vanille et agrumes verts à l'aération. Bouche structurée, salinité marquée, texture soyeuse et fraîcheur. Fruits de mer, charcuteries, apéritif. Développera sa complexité durant les dix prochaines années.",
     photo: "/photos/wines/chablis-vv-malantes.png",
+    vintageGroup: "chablis",
     vintageNote: "Sur le climat des Malantes, la minéralité du Kimméridgien creuse encore l'empreinte du millésime, entre tension et salinité.",
   },
   {
@@ -100,6 +121,7 @@ export const wines: Wine[] = [
     cru: "1er cru",
     description: "Jolie robe or, délicat, fin et minéral. Ample et souple, arômes minéraux très marqués par le terroir caillouteux des Butteaux. Vin ciselé, puissant et raffiné, milieu de bouche élargi. Huîtres chaudes, Saint-Jacques poêlées, ris de veau, viandes blanches, poissons en sauce. Garde 8–10 ans.",
     photo: "/photos/wines/chablis-1er-montmains.png",
+    vintageGroup: "chablis-1er-cru",
     vintageNote: "Le terroir caillouteux des Butteaux à Montmains sculpte un vin ciselé, où la patte du millésime se révèle surtout en milieu de bouche.",
   },
   {
@@ -114,6 +136,7 @@ export const wines: Wine[] = [
     cru: "1er cru",
     description: "Robe or clair d'une belle intensité. Nez frais, fin et subtil dominé par des arômes de silex, de sureau et de noisettes. Bouche ronde et équilibrée, fruitée, finale sur la mandarine et le caramel. Discret et raffiné, privilégiant la finesse et la longueur. Ris de veau, viandes blanches, poissons. Garde 8–10 ans.",
     photo: "/photos/wines/chablis-1er-cote-jouan.png",
+    vintageGroup: "chablis-1er-cru",
     vintageNote: "Plus discret et raffiné, ce climat révèle les millésimes les plus fins par sa longueur en bouche plutôt que par sa puissance.",
   },
   {
@@ -128,6 +151,7 @@ export const wines: Wine[] = [
     cru: "grand cru",
     description: "Robe or, Grand Cru Valmur qui convaincra par sa puissance et sa complexité. Arômes de poires, de mirabelle et de toffee extrêmement puissants. Avec l'âge, le terroir kimméridgien révèle des notes minérales de pierres mouillées et des arômes tropicaux. Huîtres chaudes, Saint-Jacques, ris de veau, poissons en sauce. Garde 10 ans.",
     photo: "/photos/wines/chablis-grand-cru-valmur.png",
+    vintageGroup: "chablis-grand-cru",
     vintageNote: "Le Grand Cru Valmur a la capacité de digérer les années difficiles comme les plus généreuses, et de toujours gagner en complexité avec le temps.",
   },
 
@@ -143,6 +167,7 @@ export const wines: Wine[] = [
     description: "Pinot noir vinifié en saignée. Robe rose pâle aux reflets saumonés, nez délicat de fraise et de groseille. Bouche fraîche et gourmande, finale vive. Apéritif, cuisine d'été, salades de fruits rouges. Servir à 8–10 °C.",
     inStock: true,
     photo: "/photos/wines/rose.png",
+    vintageGroup: "rose",
     vintageNote: "Vinifié en saignée dès les premiers jours de vendange, ce rosé capte l'instantané du millésime avant que la météo de fin de saison ne s'en mêle.",
   },
 
@@ -158,6 +183,7 @@ export const wines: Wine[] = [
     inStock: true,
     description: "Seule appellation de Bourgogne à base de Sauvignon. Robe pâle aux reflets verts, nez expressif et aromatique — buis, agrumes, fruits de la passion. Bouche vive et désaltérante, belle fraîcheur en finale. Apéritif, fruits de mer, chèvre frais. Servir à 10–12 °C. Garde 2–3 ans.",
     photo: "/photos/wines/saint-bris.png",
+    vintageGroup: "saint-bris",
     vintageNote: "Seul sauvignon de Bourgogne, le Saint-Bris réagit vite aux variations de l'année, entre aromatique exubérante et fraîcheur retenue.",
   },
   {
@@ -171,6 +197,7 @@ export const wines: Wine[] = [
     inStock: true,
     description: "L'âme du terroir. Arômes de fleurs blanches (aubépine) et minéralité. Bouche fraîche et fleurie dévoilant sa complexité. Accompagne poissons, fromages de chèvre et desserts. Garde 3–5 ans.",
     photo: "/photos/wines/truffieres.png",
+    vintageGroup: "bourgogne-blanc",
     vintageNote: "Sur le terroir des Truffières, la floraison précoce ou tardive de l'année se ressent directement dans l'équilibre entre fleurs blanches et minéralité.",
   },
   {
@@ -183,6 +210,7 @@ export const wines: Wine[] = [
     price: 19,
     inStock: false,
     description: "Robe jaune d'une belle brillance. Bouquet complexe et raffiné : fruits secs, pêche, cacahuètes et épices. Bouche structurée et ample, notes fruitées rehaussées de minéralité, subtils arômes toastés et caramel. Viandes blanches en sauce, poissons, Saint-Jacques. Garde 5–10 ans.",
+    vintageGroup: "bourgogne-blanc",
     vintageNote: "Cette réserve assemble plusieurs parcelles pour gommer les aléas du millésime et offrir un profil plus constant, structuré et toasté.",
   },
 
@@ -198,6 +226,7 @@ export const wines: Wine[] = [
     inStock: true,
     description: "Pinot noir fruité à la robe pourpre. Corbeille de petits fruits rouges et noirs — fraise, cerise, cassis, myrtille. Tannins souples, bouche fraîche et sapide. Apéritifs, charcuteries, grillades. Servir légèrement frais à 14 °C. Garde 2–3 ans.",
     photo: "/photos/wines/les-brulis.png",
+    vintageGroup: "bourgogne-rouge",
     vintageNote: "Pinot noir gourmand et fruité, Les Brûlis exprime sans détour le degré de maturité atteint chaque année.",
   },
   {
@@ -211,6 +240,7 @@ export const wines: Wine[] = [
     inStock: true,
     description: "Robe pourpre soutenue aux reflets grenats. Bouquet très fruité : cassis, cerise, griottine, mûre. Tannins fondus, structure ferme et veloutée. Pâtés en croûte, volailles, bœuf braisé, fromages affinés. Servir à 15 °C. Garde 5–10 ans.",
     photo: "/photos/wines/grande-reserve-pinot-noir.png",
+    vintageGroup: "bourgogne-rouge",
     vintageNote: "Assemblage de plusieurs parcelles de pinot noir, cette réserve lisse les irrégularités du millésime au profit d'une structure veloutée constante.",
   },
   {
@@ -224,6 +254,7 @@ export const wines: Wine[] = [
     inStock: true,
     description: "Pinot noir issu d'une parcelle de vieilles vignes. Robe rubis profonde, nez de fruits noirs mûrs et de sous-bois. Bouche ample, tannins enrobés, belle persistance aromatique. Viandes rouges, volailles en sauce, fromages affinés. Servir à 15–16 °C. Garde 5–8 ans.",
     photo: "/photos/wines/renouel.png",
+    vintageGroup: "bourgogne-rouge",
     vintageNote: "Issu d'une parcelle de vieilles vignes, Renouel a la profondeur nécessaire pour transformer même les années compliquées en vins de garde intéressants.",
   },
   {
@@ -238,6 +269,7 @@ export const wines: Wine[] = [
     cru: "village",
     description: "Pinot noir et César à la robe pourpre, vieillis en fûts de chêne. Bouquet très fruité, ferme et velouté. Arômes de cassis, cerise griotte et mûre. Tannins intégrés, texture soyeuse, fraîcheur naturelle. Côtes de bœuf grillées, charcuteries, Camembert, Chaource, Cantal. Garde 10 ans.",
     photo: "/photos/wines/irancy.png",
+    vintageGroup: "irancy",
     vintageNote: "Assemblage de pinot noir et de césar vieilli en fûts, l'Irancy village révèle chaque année différemment l'équilibre entre fruit noir et tanin.",
   },
   {
@@ -252,6 +284,7 @@ export const wines: Wine[] = [
     cru: "village",
     description: "Robe grenat très colorée aux reflets violacés. Nez dominé par le fruit et les épices. Bouche onctueuse et fondue, fruits confits avec une pointe d'acidité. Structure solide. Bœuf bourguignon, canard aux pruneaux, gigot d'agneau de 7 h. Garde 10 ans.",
     photo: "/photos/wines/cesar.png",
+    vintageGroup: "irancy",
     vintageNote: "Cépage rare et tardif, le César est l'un des plus sensibles aux aléas climatiques de fin de saison à Irancy.",
   },
   {
@@ -266,6 +299,7 @@ export const wines: Wine[] = [
     cru: "village",
     description: "Robe pourpre intense aux reflets rubis. Puissants arômes de cerise, de violettes et de clous de girofle. Tannins soyeux et structurés, grande finesse et potentiel de garde exceptionnel. Viandes rouges saignantes, gibier. Servir à 16–18 °C. Garde 5–10 ans.",
     photo: "/photos/wines/mazelots.png",
+    vintageGroup: "irancy",
     vintageNote: "Sur le climat des Mazelots, la maturité phénolique varie sensiblement d'une année à l'autre, donnant des tanins tantôt soyeux, tantôt plus fermes.",
   },
   {
@@ -280,6 +314,7 @@ export const wines: Wine[] = [
     cru: "village",
     description: "Robe pourpre bien soutenue tirant légèrement sur le grenat. Bouquet très fruité : cassis, cerise griotte, mûre. Tannins légers et fins, structure ferme et veloutée. Côtes de bœuf grillées, volailles en cocotte. Élevage 18 mois en fûts, non filtré, non collé. Servir à 15 °C. Garde 15 ans.",
     photo: "/photos/wines/palotte.png",
+    vintageGroup: "irancy",
     vintageNote: "Non filtré et élevé 18 mois en fûts, le climat de Palotte porte une empreinte du millésime qui continue de se révéler longtemps après la mise en bouteille.",
   },
 
@@ -295,6 +330,7 @@ export const wines: Wine[] = [
     inStock: true,
     description: "Robe dorée aux reflets orangés. Notes de mandarines, zeste d'orange, réglisse, safran, muguet et rose. Bouche ample, finale sèche avec une légère structure tannique. Sauvignon Blanc vinifié en amphore de terre cuite. Viandes blanches, poissons, fromages de chèvre. Servir à 14 °C. Garde 8–10 ans.",
     photo: "/photos/wines/amphore-saint-bris.png",
+    vintageGroup: "saint-bris",
     vintageNote: "Vinifié en amphore de terre cuite, ce Saint-Bris laisse le millésime s'exprimer sans le filtre du bois, presque à nu.",
   },
   {
@@ -308,6 +344,7 @@ export const wines: Wine[] = [
     inStock: true,
     description: "Robe dorée aux reflets rosés. Notes d'abricot, de mangue confite, arômes iodés et poivrés, rose et acacia. Chardonnay vinifié en amphore de terre cuite toscane, 12 mois en macération sur peaux, sans soufre. Entrée en bouche ronde, saveurs d'orange, légère structure tannique. Blanquette de veau, pot-au-feu. Garde 8–10 ans.",
     photo: "/photos/wines/amphore-chablis.png",
+    vintageGroup: "chablis",
     vintageNote: "Macéré sur peaux en amphore toscane, ce Chardonnay hors norme amplifie les caractéristiques aromatiques propres à chaque année.",
   },
   {
@@ -321,6 +358,7 @@ export const wines: Wine[] = [
     inStock: true,
     description: "Robe rouge foncé aux reflets violets. Notes de cerises et de prunes, touches épicées de réglisse et de cacao, arômes subtils de violette. César vinifié en amphore de terre cuite toscane, 12 mois sans sulfites ajoutés, 6 mois en vieux fûts. Non filtré, non collé. Viandes rouges en sauce poivrée ou épicée. Servir à 14 °C. Garde 8–10 ans.",
     photo: "/photos/wines/amphore-cesar.png",
+    vintageGroup: "irancy",
     vintageNote: "Sans sulfites ajoutés et vinifié en amphore, ce César amphore est l'une des cuvées les plus directement liées aux conditions de l'année de récolte.",
   },
   {
@@ -334,6 +372,7 @@ export const wines: Wine[] = [
     inStock: true,
     description: "Robe rouge sombre aux reflets violacés. Notes de groseilles, zeste d'orange, poivre, cacao, rose et aubépine. Saveurs mêlant poivre et fruits rouges. Ample, finale légère, tannins subtils. Viandes rouges et fromages. Servir à 14 °C. Garde 8–10 ans.",
     photo: "/photos/wines/amphore-pinot-noir.png",
+    vintageGroup: "bourgogne-rouge",
     vintageNote: "Le pinot noir en amphore garde une fraîcheur et une buvabilité qui masquent les années plus généreuses en alcool, tout en révélant celles plus tendues.",
   },
 ];
