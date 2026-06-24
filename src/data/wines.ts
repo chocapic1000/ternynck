@@ -22,7 +22,7 @@ export type VintageGroup =
   | "montpierreux-blanc"
   | "montpierreux-rouge"
   | "bourgogne-rouge"
-  | "bourgogne-rouge-vv"
+  | "renouel-blanc"
   | "cremant"
   | "rose";
 
@@ -35,7 +35,7 @@ export interface Wine {
   labels: Label[];
   price: number;
   inStock: boolean;
-  cru?: string; // "grand cru" | "1er cru" | "village"
+  cru?: string; // "grand cru" | "1er cru" | "village" | "monopole"
   description?: string;
   photo?: string;
   vintageGroup: VintageGroup; // appellation de référence pour la chronique de millésime
@@ -252,19 +252,21 @@ export const wines: Wine[] = [
     vintageGroup: "montpierreux-rouge",
     vintageNote: "Planté sur ce même terroir de Montpierreux, cet assemblage de pinot noir lisse les irrégularités du millésime au profit d'une structure veloutée constante.",
   },
+  // ─── RENOUEL · MAUPERTHUIS (parcelle de blanc, terroir d'exception à Irancy) ─
   {
     id: "renouel",
     name: "Renouel",
     appellation: "Bourgogne AOC",
-    color: "rouge",
+    color: "blanc",
     category: "standard",
     labels: ["mauperthuis"],
     price: 24,
     inStock: true,
-    description: "Pinot noir issu d'une parcelle de vieilles vignes. Robe rubis profonde, nez de fruits noirs mûrs et de sous-bois. Bouche ample, tannins enrobés, belle persistance aromatique. Viandes rouges, volailles en sauce, fromages affinés. Servir à 15–16 °C. Garde 5–8 ans.",
+    cru: "monopole",
+    description: "Chardonnay issu d'une parcelle quasi en monopole sur le climat de Renouel, l'un des très rares îlots de blanc plantés au cœur d'Irancy, commune presque exclusivement vouée au pinot noir. Robe or pâle, nez minéral et floral, bouche tendue portée par les marnes kimméridgiennes. Coquillages, poissons, fromages de chèvre. Servir à 12 °C. Garde 5–8 ans.",
     photo: "/photos/wines/renouel.png",
-    vintageGroup: "bourgogne-rouge-vv",
-    vintageNote: "Issu d'une parcelle de vieilles vignes, Renouel a la profondeur nécessaire pour transformer même les années compliquées en vins de garde intéressants.",
+    vintageGroup: "renouel-blanc",
+    vintageNote: "Sur ce terroir d'exception, presque en monopole, le chardonnay de Renouel offre un contrepoint blanc inattendu au cœur d'une commune vouée au rouge.",
   },
   {
     id: "irancy",

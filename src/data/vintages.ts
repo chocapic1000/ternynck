@@ -511,36 +511,36 @@ export const VINTAGES: Record<VintageGroup, VintageEntry[]> = {
     },
   ],
 
-  "bourgogne-rouge-vv": [
+  "renouel-blanc": [
     {
       year: 2025,
-      title: "Canicules puis déluge de fin d'été",
-      text: "Les vieilles vignes de Renouel ont mieux résisté aux canicules de l'été grâce à leurs racines profondes, avant les pluies de septembre. Un vin dense, déjà taillé pour la garde.",
+      title: "Un îlot de blanc sous la canicule",
+      text: "Sur ce climat presque en monopole, îlot de chardonnay au cœur d'une commune presque exclusivement rouge, les deux canicules de l'été ont concentré le raisin avant les pluies de début septembre. Un Renouel tendu, vendangé juste à temps.",
     },
     {
       year: 2024,
-      title: "Une récolte rare, sauvée par la profondeur des racines",
-      text: "Comme ailleurs, les volumes ont chuté en 2024, mais la profondeur des vieilles vignes de Renouel a permis de limiter le stress hydrique et de conserver une matière de garde.",
+      title: "Une récolte rare sur une parcelle déjà rare",
+      text: "Le gel et la grêle ont aussi touché ce minuscule îlot de blanc, réduisant encore une récolte déjà confidentielle. Le peu de Renouel produit garde la minéralité kimméridgienne propre au climat.",
     },
     {
       year: 2023,
       title: "Un millésime solaire et généreux",
-      text: "Sur cette parcelle de vieilles vignes, la générosité de 2023 a donné un Renouel ample et déjà complexe, avec le potentiel de garde habituel de cette cuvée.",
+      text: "La générosité de 2023 a profité à cette parcelle d'exception : un Renouel mûr et rond, sans jamais perdre la tension propre aux marnes kimméridgiennes d'Irancy.",
     },
     {
       year: 2022,
       title: "Tension et concentration sous le soleil",
-      text: "La sécheresse a été mieux supportée par les vieilles vignes de Renouel que par de jeunes plants : un vin dense, structuré, taillé pour la garde.",
+      text: "La sécheresse a concentré le chardonnay sur ce terroir rare, donnant un Renouel plus solaire que d'habitude, tout en gardant sa minéralité caractéristique.",
     },
     {
       year: 2021,
       title: "Le gel historique du 5 avril",
-      text: "Le gel a touché Renouel comme le reste du vignoble, mais la réserve des vieilles vignes a permis de limiter la chute de rendement et de préserver une matière de garde malgré la fraîcheur du millésime.",
+      text: "Le gel du 5 avril a touché cette commune presque exclusivement rouge comme le reste de la Bourgogne. Sur ce minuscule îlot de blanc, la récolte a été particulièrement réduite, mais d'une grande pureté minérale.",
     },
     {
       year: 2020,
       title: "L'année la plus chaude jamais enregistrée",
-      text: "La sécheresse a été bien gérée par les vieilles vignes de Renouel, dont les racines profondes ont continué d'alimenter les grappes : un vin ample, promis à la garde.",
+      text: "Sur ce terroir d'exception, la sécheresse de 2020 a donné un Renouel mûr et rond, vendangé tôt pour préserver l'équilibre propre à cette parcelle rare de chardonnay en pays de pinot noir.",
     },
   ],
 
