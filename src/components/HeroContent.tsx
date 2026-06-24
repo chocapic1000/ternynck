@@ -45,13 +45,13 @@ export default function HeroContent() {
 
       {/* Contenu centré, qui s'efface vers le haut au défilement */}
       <div
-        className="absolute inset-0 z-10 flex items-center px-8 md:px-12"
+        className="absolute inset-0 z-10 flex items-center justify-center px-8 md:px-12 text-center"
         style={{
-          transform: `translateY(${-progress * 70}px)`,
-          opacity: 1 - progress * 0.85,
+          transform: `translateY(${-progress * 100}vh)`,
+          opacity: 1 - progress,
         }}
       >
-        <div className="max-w-2xl">
+        <div className="max-w-2xl flex flex-col items-center">
           <p
             className="mb-4 text-[11px] tracking-[0.28em] uppercase text-white"
             style={{ fontFamily: "var(--font-body)", textShadow: "0 1px 4px rgba(0,0,0,0.6)" }}

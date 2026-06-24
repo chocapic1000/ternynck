@@ -5,7 +5,6 @@ import { imgPath } from "@/lib/imgPath";
 const DOMAIN_LABEL: Record<Label, string> = {
   mauperthuis: "Mauperthuis",
   marronniers: "Marronniers",
-  lebon: "Louis Lebon",
 };
 
 function stripAOC(appellation: string) {

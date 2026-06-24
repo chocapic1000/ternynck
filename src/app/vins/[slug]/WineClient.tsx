@@ -18,7 +18,6 @@ const COLOR_LABEL: Record<string, string> = {
 const DOMAIN_LABEL: Record<Label, string> = {
   mauperthuis: "Mauperthuis",
   marronniers: "Marronniers",
-  lebon: "Louis Lebon",
 };
 
 const BIODYNAMIC_DOMAINS: Label[] = ["mauperthuis", "marronniers"];
