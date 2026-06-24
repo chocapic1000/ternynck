@@ -3,8 +3,12 @@
 import { useState } from "react";
 import Image from "next/image";
 import { imgPath } from "@/lib/imgPath";
+import { Map, MapMarker, MarkerContent, MarkerTooltip } from "@/components/ui/map";
 
 const MAPS_URL = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("3 Grande Rue de Chablis, 89800 Préhy, France");
+
+// 3 Grande Rue de Chablis, 89800 Préhy, France
+const DOMAINE_COORDS: [number, number] = [3.755332, 47.756766];
 
 const VISIT_TYPES = ["Dégustation"];
 
@@ -182,18 +186,16 @@ export default function ContactPage() {
             ))}
           </div>
 
-          {/* Carte Google Maps */}
-          <div className="relative w-full mb-10 overflow-hidden" style={{ aspectRatio: "4/3" }}>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2647.5!2d3.7283!3d47.7783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ee9c8d6f3b5c4f%3A0x0!2s3%20Grande%20Rue%20de%20Chablis%2C%2089800%20Pr%C3%A9hy%2C%20France!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr"
-              width="100%"
-              height="100%"
-              style={{ border: 0, position: "absolute", inset: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Carte Domaine Ternynck"
-            />
+          {/* Carte */}
+          <div className="relative w-full mb-10 overflow-hidden rounded-lg border border-dust" style={{ aspectRatio: "4/3" }}>
+            <Map center={DOMAINE_COORDS} zoom={14}>
+              <MapMarker longitude={DOMAINE_COORDS[0]} latitude={DOMAINE_COORDS[1]}>
+                <MarkerContent>
+                  <div className="size-4 rounded-full border-2 border-cream bg-amber shadow-md transition-transform hover:scale-110" />
+                </MarkerContent>
+                <MarkerTooltip>Famille Ternynck — Préhy</MarkerTooltip>
+              </MapMarker>
+            </Map>
           </div>
 
           {/* Accès */}
