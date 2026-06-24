@@ -18,9 +18,10 @@ const COLOR_LABEL: Record<string, string> = {
 const DOMAIN_LABEL: Record<Label, string> = {
   mauperthuis: "Mauperthuis",
   marronniers: "Marronniers",
+  "fontaine-goby": "Fontaine-Goby",
 };
 
-const BIODYNAMIC_DOMAINS: Label[] = ["mauperthuis", "marronniers"];
+const BIODYNAMIC_DOMAINS: Label[] = ["mauperthuis", "marronniers", "fontaine-goby"];
 
 export default function WineClient({ slug }: { slug: string }) {
   const wine = getWineBySlug(slug);

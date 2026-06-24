@@ -511,6 +511,72 @@ export const VINTAGES: Record<VintageGroup, VintageEntry[]> = {
     },
   ],
 
+  "bourgogne-blanc": [
+    {
+      year: 2025,
+      title: "Canicules puis déluge de fin d'été",
+      text: "Le chardonnay régional a profité de la concentration des deux canicules de juin et fin août, avant des pluies orageuses début septembre qui ont imposé une vendange resserrée. Un blanc rond, ouvert, sans dureté.",
+    },
+    {
+      year: 2024,
+      title: "Entre canicules et orages, une récolte précieuse",
+      text: "Comme sur l'ensemble du vignoble, les volumes ont chuté en 2024, mais ce Bourgogne blanc garde, sur les raisins sauvés du tri, une fraîcheur et une pureté de fruit inattendues.",
+    },
+    {
+      year: 2023,
+      title: "Un millésime solaire et généreux",
+      text: "La générosité du millésime a donné un Bourgogne blanc mûr et rond dès sa jeunesse, sur des arômes de fleurs blanches et de poire bien mûre.",
+    },
+    {
+      year: 2022,
+      title: "Tension et concentration sous le soleil",
+      text: "La sécheresse a concentré le chardonnay régional, donnant un vin plus solaire que d'habitude, à la rondeur marquée mais à la fraîcheur préservée.",
+    },
+    {
+      year: 2021,
+      title: "Le gel historique du 5 avril",
+      text: "Le gel du 5 avril a réduit les volumes de chardonnay régional comme partout en Bourgogne. La cuvée 2021, plus rare, affiche une acidité plus marquée que les années solaires.",
+    },
+    {
+      year: 2020,
+      title: "L'année la plus chaude jamais enregistrée",
+      text: "La sécheresse de 2020 a donné un Bourgogne blanc mûr et généreux, vendangé tôt pour préserver l'équilibre entre rondeur et fraîcheur.",
+    },
+  ],
+
+  "bourgogne-grande-reserve": [
+    {
+      year: 2025,
+      title: "Canicules puis déluge de fin d'été",
+      text: "La sélection parcellaire qui compose la Grande Réserve a permis d'écarter les raisins les plus affectés par les pluies de septembre, pour un vin concentré et structuré malgré un millésime difficile en fin de cycle.",
+    },
+    {
+      year: 2024,
+      title: "Entre canicules et orages, une récolte précieuse",
+      text: "Le tri sévère imposé par la pression de mildiou a particulièrement profité à cette cuvée de sélection : volumes réduits, mais matière dense et précise sur les raisins retenus.",
+    },
+    {
+      year: 2023,
+      title: "Un grand millésime, ample et structuré",
+      text: "Conditions quasi idéales pour le pinot noir : la Grande Réserve 2023 affiche une densité tannique et une longueur supérieures à la moyenne, portées par un élevage plus long.",
+    },
+    {
+      year: 2022,
+      title: "Sécheresse marquée, sauvée par les pluies d'août",
+      text: "La concentration apportée par la sécheresse, suivie des pluies salvatrices d'août, donne une Grande Réserve dense et mûre, aux tanins déjà bien enrobés.",
+    },
+    {
+      year: 2021,
+      title: "Le gel historique du 5 avril",
+      text: "Le gel d'avril a réduit les volumes disponibles pour cette cuvée de sélection. La Grande Réserve 2021, plus rare, garde malgré tout une structure ferme et une belle fraîcheur de fruit.",
+    },
+    {
+      year: 2020,
+      title: "Sécheresse et récolte précoce",
+      text: "La sécheresse a concentré le pinot noir destiné à cette sélection parcellaire, donnant une Grande Réserve mûre et structurée, à la matière déjà dense dès sa jeunesse.",
+    },
+  ],
+
   "renouel-blanc": [
     {
       year: 2025,

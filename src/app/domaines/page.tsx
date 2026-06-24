@@ -23,6 +23,16 @@ const domaines = [
     accent: "bg-[#4A3A2A]",
     label: "marronniers",
   },
+  {
+    id: "fontaine-goby",
+    name: "Domaine Fontaine-Goby",
+    region: "Préhy · Chablisien",
+    description:
+      "Évolution naturelle du Domaine des Marronniers, le Domaine Fontaine-Goby tire son nom de la fontaine qui alimentait jadis le lavoir du hameau de Civry-sur-Serin, à Préhy. La vigne y est conduite en agroforesterie, entre haies et arbres fruitiers, avec des animaux pour entretenir les sols — une viticulture vivante, certifiée biologique et biodynamique Demeter depuis 2022. C'est ici que la famille vinifie ses cuvées en amphore, où le grès laisse le fruit s'exprimer sans le marquer de bois.",
+    photo: "/photos/domaine-fontaine-goby.jpg",
+    accent: "bg-[#2A3640]",
+    label: "fontaine-goby",
+  },
 ];
 
 export default function DomainesPage() {
@@ -35,7 +45,7 @@ export default function DomainesPage() {
           className="text-ink text-5xl md:text-6xl font-normal leading-tight max-w-2xl"
           style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
         >
-          Deux domaines,
+          Trois domaines,
           <br />
           la même philosophie.
         </h1>
@@ -84,12 +94,14 @@ export default function DomainesPage() {
               <p className="body-sm text-ink/60 leading-loose mb-8">
                 {d.description}
               </p>
-              <Link
-                href={`/boutique?label=${d.label}`}
-                className="inline-flex items-center gap-3 label-caps text-amber border-b border-amber pb-0.5 w-fit hover:opacity-70 transition-opacity"
-              >
-                Voir les vins →
-              </Link>
+              {d.label && (
+                <Link
+                  href={`/vins?domaine=${d.label}`}
+                  className="inline-flex items-center gap-3 label-caps text-amber border-b border-amber pb-0.5 w-fit hover:opacity-70 transition-opacity"
+                >
+                  Voir les vins →
+                </Link>
+              )}
             </div>
           </div>
         ))}

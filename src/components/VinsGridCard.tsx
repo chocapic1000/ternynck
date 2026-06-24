@@ -5,6 +5,7 @@ import { imgPath } from "@/lib/imgPath";
 const DOMAIN_LABEL: Record<Label, string> = {
   mauperthuis: "Mauperthuis",
   marronniers: "Marronniers",
+  "fontaine-goby": "Fontaine-Goby",
 };
 
 export default function VinsGridCard({

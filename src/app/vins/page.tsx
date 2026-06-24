@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { imgPath } from "@/lib/imgPath";
 import { wines, type Wine } from "@/data/wines";
@@ -20,6 +20,12 @@ const DOMAINES = [
     name: "Domaine des Marronniers",
     subtitle: "Chablis · Crémant · Bourgogne",
     photo: "/photos/domaine-marronniers.jpg",
+  },
+  {
+    label: "fontaine-goby" as const,
+    name: "Domaine Fontaine-Goby",
+    subtitle: "Préhy · Chablisien · Bourgogne",
+    photo: "/photos/domaine-fontaine-goby.jpg",
   },
 ];
 
@@ -72,6 +78,20 @@ export default function VinsPage() {
   const [selectedWine, setSelectedWine] = useState<Wine | null>(null);
   let backdropIndex = 0;
 
+  // Permet d'arriver directement sur les vins d'un domaine précis depuis
+  // les liens "Découvrir" de la homepage (/vins?domaine=mauperthuis).
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const domaine = params.get("domaine");
+    if (!domaine) return;
+    const target = document.getElementById(`domaine-${domaine}`);
+    if (target) {
+      requestAnimationFrame(() => {
+        target.scrollIntoView({ behavior: "instant" as ScrollBehavior, block: "start" });
+      });
+    }
+  }, [view]);
+
   return (
     <div className="min-h-screen bg-ink">
       {/* Sélecteur de vue */}
@@ -116,7 +136,7 @@ export default function VinsPage() {
           {DOMAINES.map((domaine) => {
             const domaineWines = wines.filter((w) => w.labels[0] === domaine.label);
             return (
-              <div key={domaine.label} className="mb-20 max-w-6xl mx-auto">
+              <div key={domaine.label} id={`domaine-${domaine.label}`} className="mb-20 max-w-6xl mx-auto">
                 <p className="label-caps text-amber mb-3">{domaine.subtitle}</p>
                 <h2
                   className="text-cream text-3xl md:text-4xl font-normal mb-10"
@@ -139,7 +159,7 @@ export default function VinsPage() {
           const groups = buildGroups(domaineWines);
 
           return (
-            <div key={domaine.label}>
+            <div key={domaine.label} id={`domaine-${domaine.label}`}>
               {/* ── Intro domaine, plein écran ── */}
               <section className="relative h-screen overflow-hidden flex items-center">
                 <Image

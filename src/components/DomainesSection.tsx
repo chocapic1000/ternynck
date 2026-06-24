@@ -11,13 +11,13 @@ const domaines = [
     id: "mauperthuis",
     name: "Domaine de\nMauperthuis",
     photo: "/photos/domaine-mauperthuis.jpg",
-    href: "/boutique?label=mauperthuis",
+    href: "/vins?domaine=mauperthuis",
   },
   {
     id: "marronniers",
     name: "Domaine des\nMarronniers",
     photo: "/photos/domaine-marronniers.jpg",
-    href: "/boutique?label=marronniers",
+    href: "/vins?domaine=marronniers",
   },
   {
     id: "fontaine-goby",
