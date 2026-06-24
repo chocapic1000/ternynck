@@ -7,17 +7,25 @@ export interface VintageEntry {
 }
 
 // Chroniques de millésime fondées sur les conditions climatiques réelles du
-// vignoble auxerrois (Chablis, Saint-Bris, Irancy) et de la Bourgogne plus
-// largement : sécheresse et récolte précoce de 2020, gel historique du
-// 5 avril 2021, sécheresse de 2022, abondance de 2023, gel et mildiou de
-// 2024. Chaque appellation réagit différemment à ces mêmes événements selon
-// son exposition, son sol et son cépage.
+// vignoble auxerrois (Chablis, Saint-Bris, Irancy) et sur les
+// caractéristiques propres à chaque climat / lieu-dit : exposition plein sud
+// des Malantes, sol argilo-calcaire abrité de Mazelots, coteau le plus
+// ensoleillé de Palotte face à la vallée de l'Yonne, terroir de Montpierreux,
+// etc. Événements réels traversés par tout le vignoble : sécheresse et
+// vendange précoce de 2020, gel historique du 5 avril 2021, sécheresse de
+// 2022, abondance de 2023, gel et mildiou de 2024, canicules suivies de
+// pluies diluviennes début septembre 2025.
 export const VINTAGES: Record<VintageGroup, VintageEntry[]> = {
   "petit-chablis": [
     {
+      year: 2025,
+      title: "Canicules puis déluge de fin d'été",
+      text: "Printemps précoce de deux semaines, deux vagues de canicule en juin puis fin août ont stressé ces parcelles ouvertes, avant des pluies orageuses spectaculaires début septembre. Vendanges resserrées juste avant la pluie pour préserver la tension de ce vin de soif.",
+    },
+    {
       year: 2024,
       title: "Une récolte rare, sauvée par la sélection",
-      text: "Sur ces plateaux ouverts, parmi les plus exposés du vignoble, le gel du 18 au 23 avril puis la grêle de début mai ont frappé fort. La pluie quasi doublée tout l'été a entretenu une pression de mildiou constante. Pertes considérables, mais un tri sévère a permis de sauver un vin frais et pur sur les rares grappes saines.",
+      text: "Sur ces plateaux ouverts, parmi les plus exposés du vignoble, le gel du 18 au 23 avril puis la grêle de début mai ont frappé fort. La pluie quasi doublée tout l'été a entretenu une pression de mildiou constante. Pertes considérables, mais un tri sévère a permis de sauver un vin frais et pur.",
     },
     {
       year: 2023,
@@ -37,10 +45,16 @@ export const VINTAGES: Record<VintageGroup, VintageEntry[]> = {
     {
       year: 2020,
       title: "L'année la plus chaude jamais enregistrée",
-      text: "Douze mois glissants parmi les plus chauds jamais mesurés à Chablis. La sécheresse a resserré les grains sur ces plateaux dès le cœur de l'été, pour une vendange parmi les plus précoces jamais enregistrées, dès le 22 août. Raisin sain, sans aucune pression sanitaire, donnant un vin équilibré malgré la chaleur.",
+      text: "Douze mois glissants parmi les plus chauds jamais mesurés à Chablis. La sécheresse a resserré les grains sur ces plateaux dès le cœur de l'été, pour une vendange parmi les plus précoces jamais enregistrées, dès le 22 août. Raisin sain, donnant un vin équilibré malgré la chaleur.",
     },
   ],
+
   chablis: [
+    {
+      year: 2025,
+      title: "Canicules puis déluge de fin d'été",
+      text: "Un printemps précoce de deux semaines, deux canicules en juin puis fin août, puis 120 à 130 mm de pluie en 36 heures début septembre : Chablis a été l'appellation la plus touchée par la pourriture cette année-là. Rendements supérieurs à 2024 mais sous la moyenne, pour un vin concentré par la chaleur et sauvé par un tri rigoureux avant le gros de la pluie.",
+    },
     {
       year: 2024,
       title: "Une récolte rare, sauvée par la sélection",
@@ -67,34 +81,145 @@ export const VINTAGES: Record<VintageGroup, VintageEntry[]> = {
       text: "Douze mois glissants parmi les plus chauds jamais mesurés à Chablis. La sécheresse a réduit les volumes de 20 à 30 %, mais sans aucune pression sanitaire : une récolte saine, vendangée dès le 22 août, donnant un vin classique et équilibré, autour de 12,5° naturels.",
     },
   ],
-  "chablis-1er-cru": [
+
+  "chablis-vv": [
+    {
+      year: 2025,
+      title: "Canicules puis déluge de fin d'été",
+      text: "Les vieilles vignes ont mieux résisté aux deux canicules de juin et fin août grâce à leurs racines profondes, avant que les pluies diluviennes de début septembre n'imposent un tri serré. Une cuvée dense malgré le millésime compliqué.",
+    },
     {
       year: 2024,
       title: "Une récolte rare, sauvée par la sélection",
-      text: "Mildiou et grêle ont aussi frappé les Premiers Crus, mais l'exposition de ces coteaux a permis, après un tri sévère, de sauver une matière étonnamment dense pour une si petite récolte.",
+      text: "Comme sur l'ensemble du climat, gel et grêle ont réduit la récolte, mais la profondeur des vieilles vignes a permis de limiter le stress hydrique et de conserver une matière plus ample que sur de jeunes plants.",
     },
     {
       year: 2023,
       title: "Un millésime solaire et généreux",
-      text: "Récolte généreuse et mûre comme partout dans le vignoble cette année-là, avec sur ces climats un supplément de profondeur et de tenue en bouche, porté par l'exposition des coteaux.",
+      text: "Année généreuse partout, mais sur ces vieilles vignes, la maturité s'est révélée plus lente et plus régulière, donnant un vin mûr sans jamais perdre sa colonne vertébrale acide.",
     },
     {
       year: 2022,
       title: "Tension et concentration sous le soleil",
-      text: "La sécheresse a concentré le raisin sur ces sols caillouteux peu profonds, donnant des vins puissants et denses malgré une année compliquée pour les volumes.",
+      text: "La sécheresse a moins marqué ces vignes aux racines profondes que sur de jeunes plants : un 2022 dense et persistant, sans dureté.",
     },
     {
       year: 2021,
       title: "Le gel historique du 5 avril",
-      text: "Le gel du 5 avril a aussi touché les Premiers Crus, mais leur situation en coteau a limité un peu les dégâts par rapport aux parcelles de fond de vallée. Petits volumes, mais une matière plus dense, portée par une acidité de grande fraîcheur.",
+      text: "Le gel du 5 avril a touché ces vieilles vignes comme le reste du vignoble, mais leur réserve naturelle a permis de limiter la chute de rendement par rapport aux jeunes parcelles voisines.",
     },
     {
       year: 2020,
       title: "L'année la plus chaude jamais enregistrée",
-      text: "Sur ces coteaux mieux exposés, la sécheresse a aussi resserré les baies, mais l'altitude et l'exposition ont mieux protégé la vigne de l'excès de chaleur. Un vin ample malgré le millésime sec, vendangé fin août.",
+      text: "La sécheresse a été mieux supportée par ces vieilles vignes aux racines profondes, qui ont continué à alimenter les grappes quand les jeunes plants souffraient déjà.",
     },
   ],
+
+  "chablis-vv-malantes": [
+    {
+      year: 2025,
+      title: "Plein sud sous la canicule",
+      text: "Plein sud, exposées au soleil toute la journée, les vignes des Malantes — parmi les plus vieilles du domaine, plantées en 1976 — ont accusé les deux vagues de chaleur de plein fouet. Maturité phénolique très avancée avant les pluies de septembre, pour un vin solaire et concentré.",
+    },
+    {
+      year: 2024,
+      title: "Une récolte rare, sauvée par l'exposition",
+      text: "Même sur ce coteau plein sud, le gel et la grêle ont laissé peu de raisin. Mais l'exposition des Malantes a permis une maturité plus complète que sur les autres climats du village, pour un vin étonnamment équilibré.",
+    },
+    {
+      year: 2023,
+      title: "Un millésime solaire et généreux",
+      text: "L'exposition plein sud des Malantes a amplifié la générosité du millésime : une cuvée mûre, presque solaire, portée par les plus vieilles vignes du domaine.",
+    },
+    {
+      year: 2022,
+      title: "Tension et concentration sous le soleil",
+      text: "Sur ce coteau qui reçoit le soleil toute la journée, la sécheresse de 2022 a poussé la maturité au maximum : un vin riche, ample, à la limite de l'exubérance pour un Chablis.",
+    },
+    {
+      year: 2021,
+      title: "Le gel historique du 5 avril",
+      text: "Même un coteau plein sud comme celui des Malantes n'a pas échappé au gel du 5 avril. Le peu de raisin récolté, sur des vignes plantées en 1976, a donné une matière dense malgré la fraîcheur du millésime.",
+    },
+    {
+      year: 2020,
+      title: "L'année la plus chaude jamais enregistrée",
+      text: "Plein sud et exposées toute la journée, les vignes des Malantes ont souffert de la sécheresse plus que d'autres climats plus frais. Une cuvée puissante et mûre, signature de ce coteau chaud.",
+    },
+  ],
+
+  "chablis-1er-montmains": [
+    {
+      year: 2025,
+      title: "Canicules puis déluge de fin d'été",
+      text: "Sur le terroir caillouteux des Butteaux à Montmains, les canicules de juin et fin août ont resserré les baies avant les pluies de début septembre. Un Montmains ciselé mais plus charnu qu'à l'habitude.",
+    },
+    {
+      year: 2024,
+      title: "Une récolte rare, sauvée par le drainage",
+      text: "Le mildiou et la grêle ont aussi frappé Montmains, mais le sol caillouteux des Butteaux draine bien l'excès d'eau : une petite récolte, mais un vin qui garde la précision habituelle du climat.",
+    },
+    {
+      year: 2023,
+      title: "Un millésime solaire et généreux",
+      text: "Sur ces sols caillouteux, la générosité de 2023 a donné un Montmains ample dès sa jeunesse, sans perdre le profil ciselé propre aux Butteaux.",
+    },
+    {
+      year: 2022,
+      title: "Tension minérale sous le soleil",
+      text: "La sécheresse a accentué le caractère minéral des Butteaux : un Montmains tendu, presque austère dans sa jeunesse, qui s'ouvrira avec le temps.",
+    },
+    {
+      year: 2021,
+      title: "Le gel historique du 5 avril",
+      text: "Le gel a réduit les volumes sur Montmains comme partout, mais le sol caillouteux des Butteaux a permis de préserver une matière dense malgré la fraîcheur du millésime.",
+    },
+    {
+      year: 2020,
+      title: "L'année la plus chaude jamais enregistrée",
+      text: "La sécheresse de 2020 a été bien gérée par les sols caillouteux de Montmains, drainants par nature : un vin ample malgré le manque d'eau, fidèle à la puissance habituelle du climat.",
+    },
+  ],
+
+  "chablis-1er-cote-jouan": [
+    {
+      year: 2025,
+      title: "Canicules puis déluge de fin d'été",
+      text: "Climat plus discret, Côte de Jouan a aussi subi les canicules et les pluies de septembre, mais sa finesse naturelle s'est traduite par un vin tout en longueur plutôt qu'en puissance, fidèle à son style.",
+    },
+    {
+      year: 2024,
+      title: "Une récolte rare, mais fidèle au style",
+      text: "Petite récolte comme partout, mais la discrétion de ce climat se prête bien aux années compliquées : un vin fin, sur la longueur plutôt que sur la matière.",
+    },
+    {
+      year: 2023,
+      title: "Un peu plus de chair, sans perdre la finesse",
+      text: "La générosité de 2023 a donné un peu plus de chair que d'habitude à ce climat habituellement discret, sans jamais sacrifier sa finesse caractéristique.",
+    },
+    {
+      year: 2022,
+      title: "Silex et noisette concentrés",
+      text: "La sécheresse a concentré les arômes de silex et de noisette propres à ce climat, pour un vin fin mais plus présent que d'ordinaire.",
+    },
+    {
+      year: 2021,
+      title: "Le gel historique du 5 avril",
+      text: "Le gel a réduit la récolte sur ce petit climat comme sur les autres. Le peu de Côte de Jouan vendangé garde toute la finesse et la longueur habituelles, sur une matière plus légère.",
+    },
+    {
+      year: 2020,
+      title: "L'année la plus chaude jamais enregistrée",
+      text: "Discret et raffiné, ce climat a transformé la sécheresse de 2020 en un supplément de maturité, sans perdre sa subtilité aromatique habituelle.",
+    },
+  ],
+
   "chablis-grand-cru": [
+    {
+      year: 2025,
+      title: "Même un Grand Cru sous le déluge",
+      text: "Même un Grand Cru comme Valmur n'a pas échappé aux pluies diluviennes de début septembre, mais le tri sévère et la profondeur du terroir kimméridgien ont permis de sauver un vin dense et puissant, qui demandera comme toujours de la patience.",
+    },
     {
       year: 2024,
       title: "Une récolte historiquement petite",
@@ -121,7 +246,13 @@ export const VINTAGES: Record<VintageGroup, VintageEntry[]> = {
       text: "Le Grand Cru a parfaitement digéré la sécheresse de 2020 : la profondeur du sol kimméridgien a amorti le stress hydrique, donnant un vin déjà très complet, promis à une belle garde.",
     },
   ],
+
   "saint-bris": [
+    {
+      year: 2025,
+      title: "Canicules puis déluge de fin d'été",
+      text: "Le Sauvignon, sensible à l'humidité, a souffert des pluies de début septembre après deux canicules qui avaient déjà concentré les baies. Un Saint-Bris 2025 plus rare, mais d'une intensité aromatique remarquable sur les raisins sauvés.",
+    },
     {
       year: 2024,
       title: "Une récolte rare, sauvée par la sélection",
@@ -148,88 +279,277 @@ export const VINTAGES: Record<VintageGroup, VintageEntry[]> = {
       text: "La sécheresse de 2020 a accentué le caractère aromatique du Sauvignon, donnant un Saint-Bris exubérant, sur les fruits exotiques, avec une fraîcheur préservée malgré la chaleur.",
     },
   ],
-  irancy: [
+
+  "irancy-village": [
+    {
+      year: 2025,
+      title: "Canicules puis déluge de fin d'été",
+      text: "L'assemblage qui fait l'Irancy village a permis de lisser les excès de ce millésime contrasté : chaleur concentrante en été, pluies diluantes en septembre. Un vin équilibré, fidèle au style classique de l'appellation.",
+    },
     {
       year: 2024,
       title: "Entre canicules et orages, une récolte précieuse",
-      text: "Après un hiver doux, le gel de printemps a entamé la floraison, puis l'été a alterné vagues de chaleur intense et orages violents. Les volumes sont restés modestes, mais les parcelles épargnées ont produit des pinots noirs et césars à la matière concentrée et au fruit très pur.",
+      text: "Hiver doux, gel de printemps sur la floraison, été alternant canicules et orages violents. Volumes modestes, mais l'assemblage pinot noir et césar a permis de conserver l'équilibre habituel de la cuvée village.",
     },
     {
       year: 2023,
       title: "Un grand millésime pour Irancy",
-      text: "Conditions climatiques quasi idéales pour la maturation : rendements en hausse, jusqu'à 54 hl/ha, sans perte de qualité. 2023 compte parmi les meilleurs millésimes récents pour les rouges d'Irancy, avec des vins d'une grande finesse et d'une belle complexité aromatique.",
+      text: "Conditions climatiques quasi idéales pour la maturation : un grand millésime pour l'Irancy village, avec des rendements en hausse sans perte de qualité, sur un fruit éclatant.",
     },
     {
       year: 2022,
       title: "Gel printanier puis sécheresse, sauvés par les pluies d'août",
-      text: "Le gel du début avril a entamé 20 à 30 % de la récolte à venir, puis la sécheresse et un vent constant ont ralenti la maturation tout l'été. Les pluies de la mi-août sont arrivées à point nommé pour relancer le cycle. Rendements moyens autour de 47 hl/ha, pour un millésime considéré comme l'un des plus réussis de la décennie.",
+      text: "Gel d'avril puis sécheresse estivale, sauvées par les pluies de mi-août : un Irancy village concentré, aux tannins mûrs, sur un millésime jugé parmi les plus réussis de la décennie.",
     },
     {
       year: 2021,
       title: "Le gel historique du 5 avril",
-      text: "Sur les parcelles basses d'Irancy, où le froid s'accumule la nuit, le gel du 5 avril a frappé durement. Sur l'ensemble de la Bourgogne, les pertes de pinot noir ont atteint la moitié à deux tiers de la récolte. Le peu de raisin vendangé donne un vin plus frais et plus léger, dans un style classique et digeste.",
+      text: "Le gel du 5 avril a frappé toute la commune, réduisant la récolte de moitié à deux tiers. L'assemblage village, même rare cette année-là, garde un style frais et digeste.",
     },
     {
       year: 2020,
       title: "Sécheresse et récolte précoce",
-      text: "La sécheresse a réduit les rendements de pinot noir jusqu'à 40 % selon les parcelles, mais sans pression sanitaire : un Irancy mûr, sain, vendangé tôt, dans un style charnu et équilibré.",
+      text: "La sécheresse a réduit les rendements de pinot noir jusqu'à 40 % selon les parcelles, mais sans pression sanitaire : un Irancy village mûr et sain, vendangé tôt.",
     },
   ],
-  "bourgogne-blanc": [
+
+  "irancy-cesar": [
+    {
+      year: 2025,
+      title: "Un cépage tardif exposé au déluge",
+      text: "Cépage tardif, le César a été particulièrement exposé aux pluies de début septembre après deux canicules déjà éprouvantes. Une cuvée rare cette année, mais à l'intensité aromatique et épicée préservée sur les raisins sauvés.",
+    },
+    {
+      year: 2024,
+      title: "Un cépage sensible aux aléas de fin de saison",
+      text: "Cépage rare et tardif, le César est l'un des plus sensibles aux aléas climatiques de fin de saison, et 2024 n'a pas fait exception : petite récolte, mais un fruit confit préservé sur les grappes triées.",
+    },
+    {
+      year: 2023,
+      title: "Une maturité enfin complète",
+      text: "La maturation idéale de 2023 a profité au César, cépage tardif habituellement à la peine pour mûrir complètement : une cuvée riche, épicée, l'une des plus réussies de la décennie.",
+    },
+    {
+      year: 2022,
+      title: "Concentration naturelle sous la sécheresse",
+      text: "La sécheresse a accentué la concentration déjà naturelle du César, cépage à peau épaisse : un vin onctueux, presque confit, typique des années chaudes.",
+    },
+    {
+      year: 2021,
+      title: "Le gel historique du 5 avril",
+      text: "Cépage tardif, le César a particulièrement souffert du gel d'avril puis de l'été frais et humide qui a suivi : une récolte minuscule, pour un vin plus vif et moins épicé qu'à l'accoutumée.",
+    },
+    {
+      year: 2020,
+      title: "Une maturité en avance sur son calendrier habituel",
+      text: "La sécheresse a avancé la maturité de ce cépage habituellement tardif, donnant un César mûr et concentré, sans attendre la fin de saison comme les autres années.",
+    },
+  ],
+
+  "irancy-mazelots": [
+    {
+      year: 2025,
+      title: "Abrité des vents, exposé à la canicule",
+      text: "Sur ce climat abrité des vents du nord, à mi-coteau, les deux canicules ont mûri le raisin en profondeur avant que les pluies de septembre ne viennent compliquer la fin de cycle. Tannins soyeux malgré tout, fidèles à la patte de Mazelots.",
+    },
+    {
+      year: 2024,
+      title: "Un sol argilo-calcaire mieux abrité",
+      text: "Le sol argilo-calcaire de Mazelots, abrité des vents dominants, a un peu mieux résisté au mildiou que les parcelles plus exposées du village. Petite récolte, mais des tannins fins, comme à l'habitude sur ce climat.",
+    },
+    {
+      year: 2023,
+      title: "Un grand millésime à mi-coteau",
+      text: "À mi-coteau, exposé sud-sud-ouest, Mazelots a profité pleinement de la générosité de 2023 : un vin aux tannins soyeux, déjà très harmonieux.",
+    },
+    {
+      year: 2022,
+      title: "Un sous-sol argileux qui retient l'eau",
+      text: "Le sol argileux en sous-sol de Mazelots a mieux retenu l'eau pendant la sécheresse qu'ailleurs sur la commune, limitant le stress hydrique malgré une année chaude.",
+    },
+    {
+      year: 2021,
+      title: "Le gel historique du 5 avril",
+      text: "Abrité des vents du nord, Mazelots a tout de même subi le gel du 5 avril comme l'ensemble de la commune. La petite récolte garde la finesse tannique habituelle du climat, sur une matière plus légère.",
+    },
+    {
+      year: 2020,
+      title: "Un sol qui limite le stress hydrique",
+      text: "Le sol argilo-calcaire de Mazelots, qui retient mieux l'eau que les sols les plus caillouteux, a permis de limiter le stress hydrique de la sécheresse de 2020.",
+    },
+  ],
+
+  "irancy-palotte": [
+    {
+      year: 2025,
+      title: "Le coteau le plus ensoleillé sous la canicule",
+      text: "Plein sud, face à la vallée de l'Yonne, Palotte a pleinement profité des deux canicules avant les pluies de septembre. Un vin aussi structuré et tannique qu'à l'accoutumée, peut-être l'un des plus réussis du millésime sur la commune.",
+    },
+    {
+      year: 2024,
+      title: "Une exposition qui a sauvé la structure",
+      text: "Même le climat le plus réputé de la commune n'a pas échappé au gel et à la grêle de 2024. Petite récolte, mais l'exposition plein sud de Palotte a permis de préserver une structure tannique fidèle à sa réputation.",
+    },
+    {
+      year: 2023,
+      title: "Un grand millésime sur le coteau le plus prestigieux",
+      text: "Climat le plus ensoleillé de la commune, Palotte a amplifié la générosité de 2023 : un vin ample et structuré, parmi les plus prestigieux de l'appellation cette année-là.",
+    },
+    {
+      year: 2022,
+      title: "Concentration maximale sous la sécheresse",
+      text: "Plein sud et particulièrement exposé, Palotte a concentré le raisin sous la sécheresse de 2022 : un vin puissant, tannique, à la structure ferme caractéristique du climat.",
+    },
+    {
+      year: 2021,
+      title: "Le gel historique du 5 avril",
+      text: "Le climat le plus réputé de la commune n'a pas non plus échappé au gel du 5 avril. La petite récolte garde la structure tannique propre à Palotte, sur une matière plus svelte que d'habitude.",
+    },
+    {
+      year: 2020,
+      title: "Le versant le plus ensoleillé face à la vallée",
+      text: "Plein sud, sur le versant le plus ensoleillé de la commune face à la vallée, Palotte a accusé la sécheresse de 2020 par une maturité phénolique très avancée, pour un vin dense et tannique.",
+    },
+  ],
+
+  "montpierreux-blanc": [
+    {
+      year: 2025,
+      title: "Canicules puis déluge de fin d'été",
+      text: "Sur le terroir de Montpierreux, les deux canicules de l'été ont concentré le Chardonnay avant les pluies de début septembre. Une cuvée mûre, sur les fleurs blanches et le fruit confit, vendangée juste avant le gros de la pluie.",
+    },
     {
       year: 2024,
       title: "Une récolte rare, sauvée par la sélection",
-      text: "La pression de mildiou a touché toutes les parcelles de Chardonnay du secteur. Petite récolte, mais un tri sévère a permis de préserver l'équilibre habituel de cette cuvée.",
+      text: "Le terroir de Montpierreux a aussi subi la pression de mildiou qui a marqué toute la Bourgogne du nord en 2024. Petite récolte, mais l'équilibre floral et minéral habituel de la cuvée a été préservé sur les raisins sains.",
     },
     {
       year: 2023,
       title: "Un millésime solaire et généreux",
-      text: "Récolte généreuse et mûre, qui a permis de reconstituer les stocks après deux années compliquées : un blanc rond, déjà ouvert et gourmand.",
+      text: "La générosité de 2023 a donné, sur le terroir de Montpierreux, un Chardonnay déjà ouvert, sur les fleurs blanches et une rondeur inhabituelle pour cette cuvée.",
     },
     {
       year: 2022,
       title: "Tension et concentration sous le soleil",
-      text: "La sécheresse a concentré le Chardonnay sur l'ensemble des parcelles, pour un Bourgogne blanc mûr et structuré, aux notes toastées plus marquées que d'habitude.",
+      text: "La sécheresse a concentré le Chardonnay de Montpierreux, donnant une cuvée plus structurée et toastée que les années plus fraîches.",
     },
     {
       year: 2021,
       title: "Le gel historique du 5 avril",
-      text: "Le gel et la pluie ont réduit les volumes sur l'ensemble des parcelles de Chardonnay, mais l'assemblage de plusieurs terroirs a permis de préserver un profil frais et équilibré malgré la rareté du millésime.",
+      text: "Le gel d'avril a réduit les volumes sur le terroir de Montpierreux comme ailleurs en Bourgogne. Le peu de Chardonnay vendangé garde une fraîcheur florale typique des années froides.",
     },
     {
       year: 2020,
       title: "Sécheresse et récolte précoce",
-      text: "Les assemblages de plusieurs parcelles ont permis de lisser l'impact de la sécheresse : un Bourgogne blanc mûr, rond, sans excès, vendangé tôt.",
+      text: "Sur le terroir de Montpierreux, la sécheresse de 2020 a donné un Chardonnay mûr et rond, vendangé tôt pour préserver l'équilibre floral propre à cette cuvée.",
     },
   ],
-  "bourgogne-rouge": [
+
+  "montpierreux-rouge": [
+    {
+      year: 2025,
+      title: "Canicules puis déluge de fin d'été",
+      text: "Sur ce même terroir de Montpierreux planté en pinot noir, les canicules de l'été ont mûri les baies en profondeur avant les pluies de septembre. Une cuvée veloutée, fidèle à la structure constante de cet assemblage de plusieurs parcelles.",
+    },
     {
       year: 2024,
       title: "Entre canicules et orages, une récolte précieuse",
-      text: "Entre canicules et orages violents, les volumes sont restés modestes sur l'ensemble des parcelles de pinot noir, mais celles qui ont été épargnées ont donné un fruit concentré et pur.",
+      text: "Le terroir de Montpierreux a aussi été touché par le gel et les orages de 2024. Petite récolte, mais l'assemblage de plusieurs parcelles a permis de conserver la structure veloutée habituelle de cette réserve.",
     },
     {
       year: 2023,
-      title: "Un grand millésime",
-      text: "Conditions climatiques quasi idéales pour la maturation du pinot noir : un Bourgogne rouge 2023 d'une grande finesse, déjà très harmonieux.",
+      title: "Un millésime généreux et harmonieux",
+      text: "Sur le terroir de Montpierreux, la générosité de 2023 a donné un pinot noir charnu et déjà harmonieux, dans la continuité du style de cette réserve.",
+    },
+    {
+      year: 2022,
+      title: "Tension et concentration sous le soleil",
+      text: "La sécheresse a concentré le pinot noir de Montpierreux, pour une réserve plus structurée et tannique que les années plus fraîches.",
+    },
+    {
+      year: 2021,
+      title: "Le gel historique du 5 avril",
+      text: "Le gel d'avril a réduit les volumes de pinot noir sur le terroir de Montpierreux comme dans toute la Bourgogne. La réserve 2021, plus rare, garde un style frais et digeste.",
+    },
+    {
+      year: 2020,
+      title: "Sécheresse et récolte précoce",
+      text: "Sur le terroir de Montpierreux, la sécheresse de 2020 a donné un pinot noir mûr et fruité, sans dureté malgré la chaleur de l'année.",
+    },
+  ],
+
+  "bourgogne-rouge": [
+    {
+      year: 2025,
+      title: "Canicules puis déluge de fin d'été",
+      text: "Les Brûlis, pensé pour être bu jeune et fruité, a profité de la concentration apportée par les deux canicules de l'été, avant les pluies de septembre qui ont un peu dilué la fin de cycle. Un vin gourmand, sur le fruit, comme toujours.",
+    },
+    {
+      year: 2024,
+      title: "Entre canicules et orages, une récolte précieuse",
+      text: "Comme sur l'ensemble de la commune, les volumes sont restés modestes en 2024, mais Les Brûlis garde son profil gourmand et fruité sur les raisins sauvés du tri.",
+    },
+    {
+      year: 2023,
+      title: "Un grand millésime, gourmand et éclatant",
+      text: "Conditions quasi idéales pour la maturation du pinot noir : Les Brûlis 2023 est particulièrement gourmand, sur un fruit rouge éclatant.",
     },
     {
       year: 2022,
       title: "Sécheresse marquée, sauvée par les pluies d'août",
-      text: "Sécheresse marquée tout l'été, avec des pluies salvatrices à la mi-août : un pinot noir concentré, aux tannins mûrs, sur un millésime jugé parmi les plus réussis de la décennie.",
+      text: "Sécheresse marquée tout l'été, avec des pluies salvatrices à la mi-août : Les Brûlis 2022 garde malgré tout sa gourmandise fruitée, avec un supplément de concentration.",
     },
     {
       year: 2021,
       title: "Le gel historique du 5 avril",
-      text: "Sur l'ensemble de la Bourgogne, le gel d'avril puis les maladies ont fait perdre la moitié à deux tiers de la récolte de pinot noir. Le peu de raisin vendangé donne un vin plus frais et plus léger, dans un style classique et digeste.",
+      text: "Le gel d'avril a réduit les volumes de pinot noir destinés à Les Brûlis. La cuvée 2021, plus rare, garde un style frais et léger, fidèle à l'esprit de ce vin de soif.",
     },
     {
       year: 2020,
       title: "Sécheresse et récolte précoce",
-      text: "La sécheresse a réduit les rendements de pinot noir jusqu'à 40 %, mais le raisin est resté parfaitement sain. Un Bourgogne rouge mûr et fruité, sans dureté, malgré la chaleur de l'année.",
+      text: "La sécheresse a réduit les rendements, mais Les Brûlis 2020 reste un vin mûr et fruité, sans dureté, vendangé tôt.",
     },
   ],
+
+  "bourgogne-rouge-vv": [
+    {
+      year: 2025,
+      title: "Canicules puis déluge de fin d'été",
+      text: "Les vieilles vignes de Renouel ont mieux résisté aux canicules de l'été grâce à leurs racines profondes, avant les pluies de septembre. Un vin dense, déjà taillé pour la garde.",
+    },
+    {
+      year: 2024,
+      title: "Une récolte rare, sauvée par la profondeur des racines",
+      text: "Comme ailleurs, les volumes ont chuté en 2024, mais la profondeur des vieilles vignes de Renouel a permis de limiter le stress hydrique et de conserver une matière de garde.",
+    },
+    {
+      year: 2023,
+      title: "Un millésime solaire et généreux",
+      text: "Sur cette parcelle de vieilles vignes, la générosité de 2023 a donné un Renouel ample et déjà complexe, avec le potentiel de garde habituel de cette cuvée.",
+    },
+    {
+      year: 2022,
+      title: "Tension et concentration sous le soleil",
+      text: "La sécheresse a été mieux supportée par les vieilles vignes de Renouel que par de jeunes plants : un vin dense, structuré, taillé pour la garde.",
+    },
+    {
+      year: 2021,
+      title: "Le gel historique du 5 avril",
+      text: "Le gel a touché Renouel comme le reste du vignoble, mais la réserve des vieilles vignes a permis de limiter la chute de rendement et de préserver une matière de garde malgré la fraîcheur du millésime.",
+    },
+    {
+      year: 2020,
+      title: "L'année la plus chaude jamais enregistrée",
+      text: "La sécheresse a été bien gérée par les vieilles vignes de Renouel, dont les racines profondes ont continué d'alimenter les grappes : un vin ample, promis à la garde.",
+    },
+  ],
+
   cremant: [
+    {
+      year: 2025,
+      title: "Vendangé avant le déluge",
+      text: "Vendangé avant les pluies diluviennes de début septembre, le Crémant a échappé au pire de l'épisode qui a marqué la fin du millésime à Chablis. Une base mousseuse fraîche, préservée par une récolte précoce.",
+    },
     {
       year: 2024,
       title: "Vendangé tôt, à l'abri du pire",
@@ -256,7 +576,13 @@ export const VINTAGES: Record<VintageGroup, VintageEntry[]> = {
       text: "Vendangé tôt pour préserver l'acidité, le Crémant a échappé à l'essentiel de la sécheresse de fin d'été. Une base mousseuse fraîche malgré une année par ailleurs très chaude.",
     },
   ],
+
   rose: [
+    {
+      year: 2025,
+      title: "Vendangé avant le déluge",
+      text: "Vinifié en saignée sur des raisins vendangés avant les pluies de septembre, le Rosé 2025 a échappé à la dilution de fin de cycle. Une cuvée fraîche et fruitée, à l'abri des excès du millésime.",
+    },
     {
       year: 2024,
       title: "Sauvé par une vendange précoce",

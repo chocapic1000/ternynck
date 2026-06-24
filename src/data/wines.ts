@@ -2,18 +2,27 @@ export type Label = "mauperthuis" | "marronniers";
 export type Color = "blanc" | "rouge" | "bulle" | "rose";
 export type Category = "standard" | "amphore";
 
-// Regroupement par appellation réelle, utilisé pour la chronique de
-// millésime : deux vins de la même appellation vivent le même climat, mais
-// pas forcément de la même façon qu'un autre vin de la même couleur.
+// Regroupement par climat / lieu-dit réel, utilisé pour la chronique de
+// millésime : deux vins du même village vivent le même climat général, mais
+// pas forcément de la même façon selon leur parcelle exacte (exposition,
+// sol, abri des vents...).
 export type VintageGroup =
   | "petit-chablis"
   | "chablis"
-  | "chablis-1er-cru"
+  | "chablis-vv"
+  | "chablis-vv-malantes"
+  | "chablis-1er-montmains"
+  | "chablis-1er-cote-jouan"
   | "chablis-grand-cru"
   | "saint-bris"
-  | "irancy"
-  | "bourgogne-blanc"
+  | "irancy-village"
+  | "irancy-cesar"
+  | "irancy-mazelots"
+  | "irancy-palotte"
+  | "montpierreux-blanc"
+  | "montpierreux-rouge"
   | "bourgogne-rouge"
+  | "bourgogne-rouge-vv"
   | "cremant"
   | "rose";
 
@@ -91,7 +100,7 @@ export const wines: Wine[] = [
     cru: "village",
     description: "Belle couleur dorée aux pâles reflets verts. Notes minérales, de mirabelle et de coquilles d'huîtres concassées. Vanille et citron vert à l'aération. Bouche structurée, saline, fraîche, finale persistante. Fruits de mer, charcuteries fines. Garde 10 ans.",
     photo: "/photos/wines/chablis-vv.png",
-    vintageGroup: "chablis",
+    vintageGroup: "chablis-vv",
     vintageNote: "Les vieilles vignes apportent une densité qui amortit les écarts du millésime, donnant toujours une matière plus ample et plus persistante.",
   },
   {
@@ -106,7 +115,7 @@ export const wines: Wine[] = [
     cru: "village",
     description: "Belle couleur dorée aux pâles reflets verts. Minéralité, mirabelle et coquilles d'huîtres concassées. Vanille et agrumes verts à l'aération. Bouche structurée, salinité marquée, texture soyeuse et fraîcheur. Fruits de mer, charcuteries, apéritif. Développera sa complexité durant les dix prochaines années.",
     photo: "/photos/wines/chablis-vv-malantes.png",
-    vintageGroup: "chablis",
+    vintageGroup: "chablis-vv-malantes",
     vintageNote: "Sur le climat des Malantes, la minéralité du Kimméridgien creuse encore l'empreinte du millésime, entre tension et salinité.",
   },
   {
@@ -121,7 +130,7 @@ export const wines: Wine[] = [
     cru: "1er cru",
     description: "Jolie robe or, délicat, fin et minéral. Ample et souple, arômes minéraux très marqués par le terroir caillouteux des Butteaux. Vin ciselé, puissant et raffiné, milieu de bouche élargi. Huîtres chaudes, Saint-Jacques poêlées, ris de veau, viandes blanches, poissons en sauce. Garde 8–10 ans.",
     photo: "/photos/wines/chablis-1er-montmains.png",
-    vintageGroup: "chablis-1er-cru",
+    vintageGroup: "chablis-1er-montmains",
     vintageNote: "Le terroir caillouteux des Butteaux à Montmains sculpte un vin ciselé, où la patte du millésime se révèle surtout en milieu de bouche.",
   },
   {
@@ -136,7 +145,7 @@ export const wines: Wine[] = [
     cru: "1er cru",
     description: "Robe or clair d'une belle intensité. Nez frais, fin et subtil dominé par des arômes de silex, de sureau et de noisettes. Bouche ronde et équilibrée, fruitée, finale sur la mandarine et le caramel. Discret et raffiné, privilégiant la finesse et la longueur. Ris de veau, viandes blanches, poissons. Garde 8–10 ans.",
     photo: "/photos/wines/chablis-1er-cote-jouan.png",
-    vintageGroup: "chablis-1er-cru",
+    vintageGroup: "chablis-1er-cote-jouan",
     vintageNote: "Plus discret et raffiné, ce climat révèle les millésimes les plus fins par sa longueur en bouche plutôt que par sa puissance.",
   },
   {
@@ -197,7 +206,7 @@ export const wines: Wine[] = [
     inStock: true,
     description: "L'âme du terroir. Arômes de fleurs blanches (aubépine) et minéralité. Bouche fraîche et fleurie dévoilant sa complexité. Accompagne poissons, fromages de chèvre et desserts. Garde 3–5 ans.",
     photo: "/photos/wines/truffieres.png",
-    vintageGroup: "bourgogne-blanc",
+    vintageGroup: "montpierreux-blanc",
     vintageNote: "Sur le terroir des Truffières, la floraison précoce ou tardive de l'année se ressent directement dans l'équilibre entre fleurs blanches et minéralité.",
   },
   {
@@ -210,8 +219,8 @@ export const wines: Wine[] = [
     price: 19,
     inStock: false,
     description: "Robe jaune d'une belle brillance. Bouquet complexe et raffiné : fruits secs, pêche, cacahuètes et épices. Bouche structurée et ample, notes fruitées rehaussées de minéralité, subtils arômes toastés et caramel. Viandes blanches en sauce, poissons, Saint-Jacques. Garde 5–10 ans.",
-    vintageGroup: "bourgogne-blanc",
-    vintageNote: "Cette réserve assemble plusieurs parcelles pour gommer les aléas du millésime et offrir un profil plus constant, structuré et toasté.",
+    vintageGroup: "montpierreux-blanc",
+    vintageNote: "Sur le terroir de Montpierreux, cette réserve assemble plusieurs rangs de chardonnay pour offrir un profil plus constant, structuré et toasté.",
   },
 
   // ─── ROUGES · MAUPERTHUIS ────────────────────────────────────────────────────
@@ -240,8 +249,8 @@ export const wines: Wine[] = [
     inStock: true,
     description: "Robe pourpre soutenue aux reflets grenats. Bouquet très fruité : cassis, cerise, griottine, mûre. Tannins fondus, structure ferme et veloutée. Pâtés en croûte, volailles, bœuf braisé, fromages affinés. Servir à 15 °C. Garde 5–10 ans.",
     photo: "/photos/wines/grande-reserve-pinot-noir.png",
-    vintageGroup: "bourgogne-rouge",
-    vintageNote: "Assemblage de plusieurs parcelles de pinot noir, cette réserve lisse les irrégularités du millésime au profit d'une structure veloutée constante.",
+    vintageGroup: "montpierreux-rouge",
+    vintageNote: "Planté sur ce même terroir de Montpierreux, cet assemblage de pinot noir lisse les irrégularités du millésime au profit d'une structure veloutée constante.",
   },
   {
     id: "renouel",
@@ -254,7 +263,7 @@ export const wines: Wine[] = [
     inStock: true,
     description: "Pinot noir issu d'une parcelle de vieilles vignes. Robe rubis profonde, nez de fruits noirs mûrs et de sous-bois. Bouche ample, tannins enrobés, belle persistance aromatique. Viandes rouges, volailles en sauce, fromages affinés. Servir à 15–16 °C. Garde 5–8 ans.",
     photo: "/photos/wines/renouel.png",
-    vintageGroup: "bourgogne-rouge",
+    vintageGroup: "bourgogne-rouge-vv",
     vintageNote: "Issu d'une parcelle de vieilles vignes, Renouel a la profondeur nécessaire pour transformer même les années compliquées en vins de garde intéressants.",
   },
   {
@@ -269,7 +278,7 @@ export const wines: Wine[] = [
     cru: "village",
     description: "Pinot noir et César à la robe pourpre, vieillis en fûts de chêne. Bouquet très fruité, ferme et velouté. Arômes de cassis, cerise griotte et mûre. Tannins intégrés, texture soyeuse, fraîcheur naturelle. Côtes de bœuf grillées, charcuteries, Camembert, Chaource, Cantal. Garde 10 ans.",
     photo: "/photos/wines/irancy.png",
-    vintageGroup: "irancy",
+    vintageGroup: "irancy-village",
     vintageNote: "Assemblage de pinot noir et de césar vieilli en fûts, l'Irancy village révèle chaque année différemment l'équilibre entre fruit noir et tanin.",
   },
   {
@@ -284,7 +293,7 @@ export const wines: Wine[] = [
     cru: "village",
     description: "Robe grenat très colorée aux reflets violacés. Nez dominé par le fruit et les épices. Bouche onctueuse et fondue, fruits confits avec une pointe d'acidité. Structure solide. Bœuf bourguignon, canard aux pruneaux, gigot d'agneau de 7 h. Garde 10 ans.",
     photo: "/photos/wines/cesar.png",
-    vintageGroup: "irancy",
+    vintageGroup: "irancy-cesar",
     vintageNote: "Cépage rare et tardif, le César est l'un des plus sensibles aux aléas climatiques de fin de saison à Irancy.",
   },
   {
@@ -299,7 +308,7 @@ export const wines: Wine[] = [
     cru: "village",
     description: "Robe pourpre intense aux reflets rubis. Puissants arômes de cerise, de violettes et de clous de girofle. Tannins soyeux et structurés, grande finesse et potentiel de garde exceptionnel. Viandes rouges saignantes, gibier. Servir à 16–18 °C. Garde 5–10 ans.",
     photo: "/photos/wines/mazelots.png",
-    vintageGroup: "irancy",
+    vintageGroup: "irancy-mazelots",
     vintageNote: "Sur le climat des Mazelots, la maturité phénolique varie sensiblement d'une année à l'autre, donnant des tanins tantôt soyeux, tantôt plus fermes.",
   },
   {
@@ -314,7 +323,7 @@ export const wines: Wine[] = [
     cru: "village",
     description: "Robe pourpre bien soutenue tirant légèrement sur le grenat. Bouquet très fruité : cassis, cerise griotte, mûre. Tannins légers et fins, structure ferme et veloutée. Côtes de bœuf grillées, volailles en cocotte. Élevage 18 mois en fûts, non filtré, non collé. Servir à 15 °C. Garde 15 ans.",
     photo: "/photos/wines/palotte.png",
-    vintageGroup: "irancy",
+    vintageGroup: "irancy-palotte",
     vintageNote: "Non filtré et élevé 18 mois en fûts, le climat de Palotte porte une empreinte du millésime qui continue de se révéler longtemps après la mise en bouteille.",
   },
 
@@ -358,7 +367,7 @@ export const wines: Wine[] = [
     inStock: true,
     description: "Robe rouge foncé aux reflets violets. Notes de cerises et de prunes, touches épicées de réglisse et de cacao, arômes subtils de violette. César vinifié en amphore de terre cuite toscane, 12 mois sans sulfites ajoutés, 6 mois en vieux fûts. Non filtré, non collé. Viandes rouges en sauce poivrée ou épicée. Servir à 14 °C. Garde 8–10 ans.",
     photo: "/photos/wines/amphore-cesar.png",
-    vintageGroup: "irancy",
+    vintageGroup: "irancy-cesar",
     vintageNote: "Sans sulfites ajoutés et vinifié en amphore, ce César amphore est l'une des cuvées les plus directement liées aux conditions de l'année de récolte.",
   },
   {
