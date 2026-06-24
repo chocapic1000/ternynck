@@ -31,26 +31,26 @@ function DomainePanel({ d }: { d: (typeof domaines)[number] }) {
   return (
     <Link
       href={d.href}
-      className="group relative h-full w-[78vw] md:w-[55vw] lg:w-[40vw] flex-shrink-0 overflow-hidden"
+      className="group flex flex-col h-full w-[78vw] md:w-[55vw] lg:w-[40vw] flex-shrink-0 py-8 px-3 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber focus-visible:outline-offset-4 rounded-md"
     >
-      <Image
-        src={imgPath(d.photo)}
-        alt={d.name}
-        fill
-        className="object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700 ease-out"
-        sizes="55vw"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/55 to-transparent" />
-      <div className="absolute inset-0 bg-amber/0 group-hover:bg-amber/5 transition-colors duration-500" />
+      <div className="relative flex-1 rounded-lg overflow-hidden">
+        <Image
+          src={imgPath(d.photo)}
+          alt={d.name.replace("\n", " ")}
+          fill
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          sizes="55vw"
+        />
+      </div>
 
-      <div className="absolute bottom-0 left-0 pl-10 pr-6 pb-12">
+      <div className="pt-6 px-1">
         <p
           className="text-cream text-2xl md:text-3xl italic leading-tight"
           style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
         >
           {d.name.replace("\n", " ")}
         </p>
-        <p className="label-caps text-amber mt-4 group-hover:opacity-70 transition-opacity duration-300">
+        <p className="label-caps text-amber mt-3 group-hover:opacity-70 transition-opacity duration-200">
           Découvrir →
         </p>
       </div>
