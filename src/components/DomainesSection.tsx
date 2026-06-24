@@ -34,14 +34,14 @@ function DomainePanel({ d }: { d: (typeof domaines)[number] }) {
   return (
     <Link
       href={d.href}
-      className="group relative h-full w-[78vw] md:w-[60vw] lg:w-[44vw] flex-shrink-0 overflow-hidden"
+      className="group relative h-full w-[78vw] md:w-[55vw] lg:w-[40vw] flex-shrink-0 overflow-hidden"
     >
       <Image
         src={imgPath(d.photo)}
         alt={d.name}
         fill
         className="object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-700 ease-out"
-        sizes="60vw"
+        sizes="55vw"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent" />
       <div className="absolute inset-0 bg-amber/0 group-hover:bg-amber/5 transition-colors duration-500" />
@@ -67,15 +67,18 @@ function DomainePanel({ d }: { d: (typeof domaines)[number] }) {
 export default function DomainesSection() {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const rowRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
   const [maxTranslate, setMaxTranslate] = useState(0);
   const [translate, setTranslate] = useState(0);
 
-  // Mesure la largeur totale du bandeau pour connaître la distance de panoramique.
+  // Mesure la largeur disponible pour le bandeau (hors panneau de texte fixe)
+  // afin de connaître la distance de panoramique nécessaire.
   useEffect(() => {
     function measure() {
       const row = rowRef.current;
-      if (!row) return;
-      setMaxTranslate(Math.max(0, row.scrollWidth - window.innerWidth));
+      const track = trackRef.current;
+      if (!row || !track) return;
+      setMaxTranslate(Math.max(0, row.scrollWidth - track.clientWidth));
     }
     measure();
     window.addEventListener("resize", measure);
@@ -107,27 +110,55 @@ export default function DomainesSection() {
 
   return (
     <>
-      {/* ── Desktop : panoramique horizontal épinglé au scroll ── */}
+      {/* ── Desktop : texte fixe à gauche + panoramique horizontal épinglé ── */}
       <div
         ref={wrapperRef}
         className="relative hidden md:block"
         style={{ height: `calc(100vh + ${maxTranslate}px)` }}
       >
-        <section className="sticky top-0 h-screen overflow-hidden bg-ink">
-          <div
-            ref={rowRef}
-            className="flex h-full"
-            style={{ transform: `translateX(-${translate}px)` }}
-          >
-            {domaines.map((d) => (
-              <DomainePanel key={d.id} d={d} />
-            ))}
+        <section className="sticky top-0 h-screen overflow-hidden bg-ink flex">
+          {/* Texte fixe, ne défile pas avec les panneaux */}
+          <div className="flex flex-col justify-center w-[26vw] min-w-[280px] px-10 lg:px-14 flex-shrink-0">
+            <p className="label-caps text-amber mb-5">— Nos domaines</p>
+            <h2
+              className="text-cream text-3xl md:text-4xl leading-tight mb-5"
+              style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+            >
+              Trois domaines,
+              <br />
+              une même famille.
+            </h2>
+            <p className="text-cream/50 leading-loose text-[13px]" style={{ fontFamily: "var(--font-body)" }}>
+              Faites défiler pour les découvrir.
+            </p>
+          </div>
+
+          {/* Bandeau panoramique */}
+          <div ref={trackRef} className="relative flex-1 h-full overflow-hidden">
+            <div
+              ref={rowRef}
+              className="flex h-full"
+              style={{ transform: `translateX(-${translate}px)` }}
+            >
+              {domaines.map((d) => (
+                <DomainePanel key={d.id} d={d} />
+              ))}
+            </div>
           </div>
         </section>
       </div>
 
       {/* ── Mobile : défilement horizontal natif ── */}
       <section className="md:hidden bg-ink py-10">
+        <div className="px-6 mb-6">
+          <p className="label-caps text-amber mb-3">— Nos domaines</p>
+          <h2
+            className="text-cream text-2xl leading-tight"
+            style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+          >
+            Trois domaines, une même famille.
+          </h2>
+        </div>
         <RevealOnScroll>
           <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory px-6 pb-2 -mx-2">
             {domaines.map((d) => (

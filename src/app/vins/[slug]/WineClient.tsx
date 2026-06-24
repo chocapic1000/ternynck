@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { getWineBySlug, type Label } from "@/data/wines";
+import { VINTAGES } from "@/data/vintages";
 import { useCart } from "@/context/CartContext";
 import { imgPath } from "@/lib/imgPath";
 
@@ -29,6 +30,10 @@ export default function WineClient({ slug }: { slug: string }) {
   const { addItem } = useCart();
   const [qty, setQty] = useState(1);
   const [added, setAdded] = useState(false);
+
+  const vintages = VINTAGES[wine.color];
+  const [activeYear, setActiveYear] = useState(vintages[0].year);
+  const activeVintage = vintages.find((v) => v.year === activeYear) ?? vintages[0];
 
   const handleAdd = () => {
     addItem({ id: wine.id, name: wine.name, price: wine.price, label: wine.labels[0] }, qty);
@@ -125,6 +130,50 @@ export default function WineClient({ slug }: { slug: string }) {
             <span className="text-center label-caps text-stone border border-stone py-4 px-6">Épuisé</span>
           )}
           <p className="body-sm text-stone mt-4">Livraison offerte, prix par bouteille</p>
+        </div>
+      </div>
+
+      {/* ── Millésimes ── */}
+      <div className="px-8 md:px-12 py-16 md:py-20 border-t border-dust bg-dust/40">
+        <p className="label-caps text-amber mb-3">— Millésimes</p>
+        <h2
+          className="text-ink text-3xl md:text-4xl font-normal mb-8 leading-tight"
+          style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+        >
+          {wine.name} d'année en année
+        </h2>
+
+        <div className="flex gap-2 mb-8">
+          {vintages.map((v) => (
+            <button
+              key={v.year}
+              onClick={() => setActiveYear(v.year)}
+              className={`label-caps px-5 py-2 rounded-full border transition-colors ${
+                activeYear === v.year
+                  ? "bg-ink text-cream border-ink"
+                  : "border-stone text-ink hover:border-ink"
+              }`}
+            >
+              {v.year}
+            </button>
+          ))}
+        </div>
+
+        <div className="max-w-2xl">
+          <h3
+            className="text-ink text-xl md:text-2xl font-normal mb-4 leading-snug"
+            style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+          >
+            {activeVintage.title}
+          </h3>
+          <p className="text-ink/70 leading-loose mb-6 text-[14px]" style={{ fontFamily: "var(--font-body)" }}>
+            {activeVintage.text}
+          </p>
+          {wine.vintageNote && (
+            <p className="body-sm text-ink/60 leading-loose border-l-2 border-amber pl-4">
+              {wine.vintageNote}
+            </p>
+          )}
         </div>
       </div>
     </div>
