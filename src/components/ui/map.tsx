@@ -22,7 +22,9 @@ import { cn } from "@/lib/utils";
 // localisation simple, avec les couleurs du site (cream/ink/amber) à la place
 // des tokens shadcn (bg-background, etc.) que ce projet n'utilise pas.
 
-const defaultStyle = "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json";
+// Style sombre par défaut pour contraster avec le fond clair des pages,
+// dans le même esprit que les sections "ink" utilisées ailleurs sur le site.
+const defaultStyle = "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json";
 
 type MapContextValue = {
   map: MapLibreGL.Map | null;
@@ -48,11 +50,11 @@ type MapProps = {
 
 function DefaultLoader() {
   return (
-    <div className="absolute inset-0 z-10 flex items-center justify-center bg-cream/60 backdrop-blur-xs">
+    <div className="absolute inset-0 z-10 flex items-center justify-center bg-ink backdrop-blur-xs">
       <div className="flex gap-1">
-        <span className="size-1.5 animate-pulse rounded-full bg-stone" />
-        <span className="size-1.5 animate-pulse rounded-full bg-stone [animation-delay:150ms]" />
-        <span className="size-1.5 animate-pulse rounded-full bg-stone [animation-delay:300ms]" />
+        <span className="size-1.5 animate-pulse rounded-full bg-cream/40" />
+        <span className="size-1.5 animate-pulse rounded-full bg-cream/40 [animation-delay:150ms]" />
+        <span className="size-1.5 animate-pulse rounded-full bg-cream/40 [animation-delay:300ms]" />
       </div>
     </div>
   );
