@@ -215,7 +215,8 @@ function PopupCloseButton({ onClick }: { onClick: () => void }) {
       type="button"
       onClick={onClick}
       aria-label="Fermer"
-      className="absolute top-1 right-1 z-10 inline-flex size-5 cursor-pointer items-center justify-center rounded-sm text-cream/60 transition-colors hover:bg-cream/10 hover:text-cream"
+      className="absolute top-2 right-2.5 z-10 cursor-pointer text-cream/40 transition-colors hover:text-cream"
+      style={{ fontFamily: "var(--font-display)", fontSize: "13px" }}
     >
       ×
     </button>
@@ -253,7 +254,7 @@ function MarkerPopup({ children, className, closeButton = false, ...popupOptions
   const handleClose = () => popup.remove();
 
   return createPortal(
-    <div className={cn("relative min-w-44 rounded-md bg-ink p-3 text-cream shadow-md", className)}>
+    <div className={cn("relative min-w-52 border border-amber/40 bg-ink px-5 py-4 text-cream", className)}>
       {closeButton && <PopupCloseButton onClick={handleClose} />}
       {children}
     </div>,

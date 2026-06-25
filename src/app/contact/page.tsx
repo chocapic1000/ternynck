@@ -198,23 +198,29 @@ export default function ContactPage() {
                 </MarkerContent>
                 <MarkerTooltip>Famille Ternynck — Préhy</MarkerTooltip>
                 <MarkerPopup closeButton>
-                  <p className="label-caps text-amber mb-3 pr-4">Famille Ternynck</p>
-                  <div className="flex flex-col gap-2">
+                  <p
+                    className="text-amber text-lg italic text-center mb-3"
+                    style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+                  >
+                    Famille Ternynck
+                  </p>
+                  <div className="w-9 h-px bg-amber mx-auto mb-4" />
+                  <div className="flex flex-col">
                     <a
                       href={GOOGLE_MAPS_DIRECTIONS_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-cream text-[13px] hover:text-amber transition-colors"
+                      className="text-cream text-[13px] text-center pb-2.5 mb-2 border-b border-cream/10 hover:text-amber transition-colors"
                     >
-                      Itinéraire Google Maps →
+                      Itinéraire Google Maps <span className="text-amber">→</span>
                     </a>
                     <a
                       href={WAZE_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-cream text-[13px] hover:text-amber transition-colors"
+                      className="text-cream text-[13px] text-center hover:text-amber transition-colors"
                     >
-                      Itinéraire Waze →
+                      Itinéraire Waze <span className="text-amber">→</span>
                     </a>
                   </div>
                 </MarkerPopup>

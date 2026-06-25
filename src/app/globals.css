@@ -70,3 +70,29 @@
     font-family: var(--font-script);
   }
 }
+
+/* Carte (MapLibre) : la carte de contenu et la pointe sont stylées par nos
+   composants (bg-ink, bordure ambre) ; on neutralise le fond blanc et l'ombre
+   par défaut de maplibre-gl.css pour ne garder que notre propre habillage. */
+.maplibregl-popup-content {
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+.maplibregl-popup-anchor-top .maplibregl-popup-tip,
+.maplibregl-popup-anchor-top-left .maplibregl-popup-tip,
+.maplibregl-popup-anchor-top-right .maplibregl-popup-tip {
+  border-bottom-color: #1a1410 !important;
+}
+.maplibregl-popup-anchor-bottom .maplibregl-popup-tip,
+.maplibregl-popup-anchor-bottom-left .maplibregl-popup-tip,
+.maplibregl-popup-anchor-bottom-right .maplibregl-popup-tip {
+  border-top-color: #1a1410 !important;
+}
+.maplibregl-popup-anchor-left .maplibregl-popup-tip {
+  border-right-color: #1a1410 !important;
+}
+.maplibregl-popup-anchor-right .maplibregl-popup-tip {
+  border-left-color: #1a1410 !important;
+}
