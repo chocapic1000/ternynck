@@ -134,25 +134,18 @@ export default function HistoireTimeline() {
         style={{ height: `calc(100vh + ${maxTranslate}px)` }}
       >
         <section className="sticky top-0 h-screen overflow-hidden bg-ink">
-          {/* Frise de progression */}
+          {/* Frise de progression : pas de couleur, seulement taille / poids / soulignement */}
           <div className="absolute top-28 left-0 right-0 z-20 px-10 md:px-20">
-            <div className="relative h-px bg-cream/20 max-w-4xl mx-auto">
+            <div className="flex justify-between items-baseline max-w-4xl mx-auto">
               {timeline.map((item, i) => (
-                <button
-                  key={item.year}
-                  onClick={() => goTo(i)}
-                  className="absolute -top-2 flex flex-col items-center -translate-x-1/2"
-                  style={{ left: `${(i / (timeline.length - 1)) * 100}%` }}
-                >
+                <button key={item.year} onClick={() => goTo(i)} className="group cursor-pointer">
                   <span
-                    className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                      i === active ? "bg-amber" : "bg-cream/30 hover:bg-cream/50"
+                    className={`inline-block transition-all duration-300 ${
+                      i === active
+                        ? "text-cream text-sm font-semibold border-b border-cream pb-1.5"
+                        : "text-cream/30 text-[11px] group-hover:text-cream/50"
                     }`}
-                  />
-                  <span
-                    className={`label-caps mt-2 transition-colors ${
-                      i === active ? "text-amber" : "text-cream/30"
-                    }`}
+                    style={{ fontFamily: "var(--font-body)", letterSpacing: "0.14em" }}
                   >
                     {item.year}
                   </span>
