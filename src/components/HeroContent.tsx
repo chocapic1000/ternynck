@@ -59,7 +59,7 @@ export default function HeroContent() {
             Famille Ternynck
           </h1>
           <p
-            className="mb-5 text-[11px] tracking-[0.28em] uppercase text-amber"
+            className="mb-5 text-[11px] tracking-[0.28em] uppercase text-amber font-bold"
             style={{ fontFamily: "var(--font-body)", textShadow: "0 1px 4px rgba(0,0,0,0.6)" }}
           >
             Chablis, Irancy, Bourgogne, depuis 1993

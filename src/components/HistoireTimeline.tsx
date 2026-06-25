@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { imgPath } from "@/lib/imgPath";
 
@@ -43,123 +43,147 @@ const timeline = [
   },
 ];
 
+function Slide({ item }: { item: (typeof timeline)[number] }) {
+  return (
+    <div className="relative w-full h-full flex-shrink-0 flex items-center">
+      <Image src={imgPath(item.photo)} alt="" fill className="object-cover opacity-30" aria-hidden />
+      <div className="absolute inset-0 bg-ink/60" />
+
+      <div className="relative z-10 px-10 md:px-20 max-w-4xl mx-auto w-full">
+        <p className="font-sans font-bold text-[100px] md:text-[160px] text-cream/10 leading-none mb-4 select-none">
+          {item.year}
+        </p>
+        <p className="label-caps text-amber mb-4">{item.year}</p>
+        <h2
+          className="text-4xl md:text-6xl text-cream font-normal mb-6 leading-tight"
+          style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+        >
+          {item.title}
+        </h2>
+        <p className="text-cream/55 leading-loose max-w-xl" style={{ fontFamily: "var(--font-body)", fontSize: "15px" }}>
+          {item.text}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export default function HistoireTimeline() {
-  const [active, setActive] = useState(0);
-  const touchStartX = useRef<number | null>(null);
-  const wheelLocked = useRef(false);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const rowRef = useRef<HTMLDivElement>(null);
+  const [maxTranslate, setMaxTranslate] = useState(0);
+  const [translate, setTranslate] = useState(0);
 
-  const goTo = (i: number) => setActive(Math.max(0, Math.min(timeline.length - 1, i)));
-
-  function onTouchStart(e: React.TouchEvent) {
-    touchStartX.current = e.touches[0].clientX;
-  }
-  function onTouchEnd(e: React.TouchEvent) {
-    if (touchStartX.current === null) return;
-    const delta = e.changedTouches[0].clientX - touchStartX.current;
-    if (Math.abs(delta) > 50) {
-      goTo(active + (delta < 0 ? 1 : -1));
+  // Mesure la largeur totale du bandeau de slides pour connaître la distance
+  // de panoramique nécessaire (même logique que DomainesSection).
+  useEffect(() => {
+    function measure() {
+      const row = rowRef.current;
+      const track = trackRef.current;
+      if (!row || !track) return;
+      setMaxTranslate(Math.max(0, row.scrollWidth - track.clientWidth));
     }
-    touchStartX.current = null;
-  }
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
 
-  function onWheel(e: React.WheelEvent) {
-    // Balayage au pavé tactile : deltaX horizontal. On verrouille pendant la
-    // durée de l'animation pour qu'un seul geste ne saute pas plusieurs années.
-    if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) return;
-    if (Math.abs(e.deltaX) < 25 || wheelLocked.current) return;
-    wheelLocked.current = true;
-    goTo(active + (e.deltaX > 0 ? 1 : -1));
-    setTimeout(() => {
-      wheelLocked.current = false;
-    }, 600);
+  // Convertit le défilement vertical dans la zone "épinglée" en translation horizontale.
+  useEffect(() => {
+    let frame = 0;
+    function onScroll() {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const wrapper = wrapperRef.current;
+        if (!wrapper || maxTranslate <= 0) return;
+        const scrollableDistance = wrapper.offsetHeight - window.innerHeight;
+        if (scrollableDistance <= 0) return;
+        const top = wrapper.getBoundingClientRect().top;
+        const progress = Math.min(1, Math.max(0, -top / scrollableDistance));
+        setTranslate(progress * maxTranslate);
+      });
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(frame);
+    };
+  }, [maxTranslate]);
+
+  const progress = maxTranslate > 0 ? translate / maxTranslate : 0;
+  const active = Math.round(progress * (timeline.length - 1));
+
+  function goTo(i: number) {
+    const wrapper = wrapperRef.current;
+    if (!wrapper || maxTranslate <= 0) return;
+    const clamped = Math.max(0, Math.min(timeline.length - 1, i));
+    const scrollableDistance = wrapper.offsetHeight - window.innerHeight;
+    const wrapperTop = wrapper.getBoundingClientRect().top + window.scrollY;
+    const target = wrapperTop + (clamped / (timeline.length - 1)) * scrollableDistance;
+    window.scrollTo({ top: target, behavior: "smooth" });
   }
 
   return (
-    <div className="relative h-screen overflow-hidden bg-ink">
-      {/* Frise de progression */}
-      <div className="absolute top-28 left-0 right-0 z-20 px-10 md:px-20">
-        <div className="relative h-px bg-cream/20 max-w-4xl mx-auto">
-          {timeline.map((item, i) => (
-            <button
-              key={item.year}
-              onClick={() => goTo(i)}
-              className="absolute -top-2 flex flex-col items-center -translate-x-1/2"
-              style={{ left: `${(i / (timeline.length - 1)) * 100}%` }}
-            >
-              <span
-                className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                  i === active ? "bg-amber" : "bg-cream/30 hover:bg-cream/50"
-                }`}
-              />
-              <span
-                className={`label-caps mt-2 transition-colors ${
-                  i === active ? "text-amber" : "text-cream/30"
-                }`}
-              >
-                {item.year}
-              </span>
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Slides */}
+    <>
+      {/* ── Desktop : panoramique horizontal épinglé au scroll ── */}
       <div
-        className="flex h-full transition-transform duration-500 ease-out"
-        style={{ transform: `translateX(-${active * 100}%)` }}
-        onTouchStart={onTouchStart}
-        onTouchEnd={onTouchEnd}
-        onWheel={onWheel}
+        ref={wrapperRef}
+        className="relative hidden md:block"
+        style={{ height: `calc(100vh + ${maxTranslate}px)` }}
       >
-        {timeline.map((item) => (
-          <div key={item.year} className="relative w-full h-full flex-shrink-0 flex items-center">
-            <Image
-              src={imgPath(item.photo)}
-              alt=""
-              fill
-              className="object-cover opacity-30"
-              aria-hidden
-            />
-            <div className="absolute inset-0 bg-ink/60" />
-
-            <div className="relative z-10 px-10 md:px-20 max-w-4xl mx-auto w-full">
-              <p className="font-sans font-bold text-[100px] md:text-[160px] text-cream/10 leading-none mb-4 select-none">
-                {item.year}
-              </p>
-              <p className="label-caps text-amber mb-4">{item.year}</p>
-              <h2
-                className="text-4xl md:text-6xl text-cream font-normal mb-6 leading-tight"
-                style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
-              >
-                {item.title}
-              </h2>
-              <p className="text-cream/55 leading-loose max-w-xl" style={{ fontFamily: "var(--font-body)", fontSize: "15px" }}>
-                {item.text}
-              </p>
+        <section className="sticky top-0 h-screen overflow-hidden bg-ink">
+          {/* Frise de progression */}
+          <div className="absolute top-28 left-0 right-0 z-20 px-10 md:px-20">
+            <div className="relative h-px bg-cream/20 max-w-4xl mx-auto">
+              {timeline.map((item, i) => (
+                <button
+                  key={item.year}
+                  onClick={() => goTo(i)}
+                  className="absolute -top-2 flex flex-col items-center -translate-x-1/2"
+                  style={{ left: `${(i / (timeline.length - 1)) * 100}%` }}
+                >
+                  <span
+                    className={`w-2.5 h-2.5 rounded-full transition-colors ${
+                      i === active ? "bg-amber" : "bg-cream/30 hover:bg-cream/50"
+                    }`}
+                  />
+                  <span
+                    className={`label-caps mt-2 transition-colors ${
+                      i === active ? "text-amber" : "text-cream/30"
+                    }`}
+                  >
+                    {item.year}
+                  </span>
+                </button>
+              ))}
             </div>
           </div>
-        ))}
+
+          {/* Bandeau panoramique */}
+          <div ref={trackRef} className="relative h-full overflow-hidden">
+            <div ref={rowRef} className="flex h-full" style={{ transform: `translateX(-${translate}px)` }}>
+              {timeline.map((item) => (
+                <div key={item.year} className="w-screen h-full flex-shrink-0">
+                  <Slide item={item} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       </div>
 
-      {/* Flèches navigation */}
-      {active > 0 && (
-        <button
-          onClick={() => goTo(active - 1)}
-          aria-label="Étape précédente"
-          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 text-cream/40 hover:text-amber transition-colors text-3xl"
-        >
-          ←
-        </button>
-      )}
-      {active < timeline.length - 1 && (
-        <button
-          onClick={() => goTo(active + 1)}
-          aria-label="Étape suivante"
-          className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 text-cream/40 hover:text-amber transition-colors text-3xl"
-        >
-          →
-        </button>
-      )}
-    </div>
+      {/* ── Mobile : défilement horizontal natif ── */}
+      <section className="md:hidden bg-ink">
+        <div className="flex overflow-x-auto snap-x snap-mandatory">
+          {timeline.map((item) => (
+            <div key={item.year} className="snap-center w-screen h-[640px] flex-shrink-0">
+              <Slide item={item} />
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }

@@ -76,7 +76,7 @@ type View = "diaporama" | "grille";
 const domaineAnchorId = (label: string) => `domaine-${label}`;
 
 export default function VinsPage() {
-  const [view, setView] = useState<View>("diaporama");
+  const [view, setView] = useState<View>("grille");
   const [selectedWine, setSelectedWine] = useState<Wine | null>(null);
   let backdropIndex = 0;
 
