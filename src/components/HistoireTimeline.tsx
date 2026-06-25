@@ -53,7 +53,6 @@ function Slide({ item }: { item: (typeof timeline)[number] }) {
         <p className="font-sans font-bold text-[100px] md:text-[160px] text-cream/10 leading-none mb-4 select-none">
           {item.year}
         </p>
-        <p className="label-caps text-cream/40 mb-4">{item.year}</p>
         <h2
           className="text-4xl md:text-6xl text-cream font-normal mb-6 leading-tight"
           style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
