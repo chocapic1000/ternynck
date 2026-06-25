@@ -209,5 +209,57 @@ function MarkerTooltip({
   );
 }
 
-export { Map, useMap, MapMarker, MarkerContent, MarkerTooltip };
+function PopupCloseButton({ onClick }: { onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label="Fermer"
+      className="absolute top-1 right-1 z-10 inline-flex size-5 cursor-pointer items-center justify-center rounded-sm text-cream/60 transition-colors hover:bg-cream/10 hover:text-cream"
+    >
+      ×
+    </button>
+  );
+}
+
+type MarkerPopupProps = {
+  children: ReactNode;
+  className?: string;
+  closeButton?: boolean;
+} & Omit<PopupOptions, "className" | "closeButton">;
+
+function MarkerPopup({ children, className, closeButton = false, ...popupOptions }: MarkerPopupProps) {
+  const { marker, map } = useMarkerContext();
+  const container = useMemo(() => document.createElement("div"), []);
+
+  const popup = useMemo(
+    () =>
+      new MapLibreGL.Popup({ offset: 16, ...popupOptions, closeButton: false })
+        .setMaxWidth("none")
+        .setDOMContent(container),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  );
+
+  useEffect(() => {
+    if (!map) return;
+    popup.setDOMContent(container);
+    marker.setPopup(popup);
+    return () => {
+      marker.setPopup(undefined);
+    };
+  }, [map, marker, popup, container]);
+
+  const handleClose = () => popup.remove();
+
+  return createPortal(
+    <div className={cn("relative min-w-44 rounded-md bg-ink p-3 text-cream shadow-md", className)}>
+      {closeButton && <PopupCloseButton onClick={handleClose} />}
+      {children}
+    </div>,
+    container,
+  );
+}
+
+export { Map, useMap, MapMarker, MarkerContent, MarkerTooltip, MarkerPopup };
 export type { MapRef };

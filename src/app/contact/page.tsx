@@ -3,12 +3,15 @@
 import { useState } from "react";
 import Image from "next/image";
 import { imgPath } from "@/lib/imgPath";
-import { Map, MapMarker, MarkerContent, MarkerTooltip } from "@/components/ui/map";
+import { Map, MapMarker, MarkerContent, MarkerTooltip, MarkerPopup } from "@/components/ui/map";
 
 const MAPS_URL = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("3 Grande Rue de Chablis, 89800 Préhy, France");
 
 // 3 Grande Rue de Chablis, 89800 Préhy, France
 const DOMAINE_COORDS: [number, number] = [3.755332, 47.756766];
+const GOOGLE_MAPS_DIRECTIONS_URL =
+  `https://www.google.com/maps/dir/?api=1&destination=${DOMAINE_COORDS[1]},${DOMAINE_COORDS[0]}`;
+const WAZE_URL = `https://waze.com/ul?ll=${DOMAINE_COORDS[1]},${DOMAINE_COORDS[0]}&navigate=yes`;
 
 const VISIT_TYPES = ["Dégustation"];
 
@@ -194,6 +197,27 @@ export default function ContactPage() {
                   <div className="size-4 rounded-full border-2 border-cream bg-amber shadow-md transition-transform hover:scale-110" />
                 </MarkerContent>
                 <MarkerTooltip>Famille Ternynck — Préhy</MarkerTooltip>
+                <MarkerPopup closeButton>
+                  <p className="label-caps text-amber mb-3 pr-4">Famille Ternynck</p>
+                  <div className="flex flex-col gap-2">
+                    <a
+                      href={GOOGLE_MAPS_DIRECTIONS_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-cream text-[13px] hover:text-amber transition-colors"
+                    >
+                      Itinéraire Google Maps →
+                    </a>
+                    <a
+                      href={WAZE_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-cream text-[13px] hover:text-amber transition-colors"
+                    >
+                      Itinéraire Waze →
+                    </a>
+                  </div>
+                </MarkerPopup>
               </MapMarker>
             </Map>
           </div>
