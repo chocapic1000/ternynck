@@ -93,7 +93,7 @@ export default function DomainesPage() {
               </p>
               <Link
                 href={`/vins?domaine=${d.id}`}
-                className="inline-flex items-center gap-3 label-caps text-amber border-b border-amber pb-0.5 w-fit hover:opacity-70 transition-opacity"
+                className="inline-flex items-center gap-3 label-caps text-amber link-ink pb-2 w-fit"
               >
                 Voir les vins →
               </Link>

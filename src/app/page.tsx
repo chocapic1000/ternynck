@@ -86,7 +86,7 @@ export default function HomePage() {
           </h2>
           <Link
             href="/boutique"
-            className="label-caps text-amber border-b border-amber pb-0.5 hidden md:block hover:opacity-70 transition-opacity"
+            className="label-caps text-amber link-ink pb-2 hidden md:block"
           >
             Voir toute la boutique →
           </Link>
@@ -101,7 +101,7 @@ export default function HomePage() {
         <div className="mt-10 text-center md:hidden">
           <Link
             href="/boutique"
-            className="label-caps text-amber border-b border-amber pb-0.5"
+            className="label-caps text-amber link-ink pb-2"
           >
             Voir toute la boutique →
           </Link>

@@ -238,13 +238,13 @@ export default function VinsPage() {
                             <div className="flex flex-wrap gap-6 mt-8">
                               <a
                                 href="#"
-                                className="label-caps text-amber border-b border-amber/40 pb-0.5 hover:opacity-70 transition-opacity"
+                                className="label-caps text-amber link-ink pb-2"
                               >
                                 Fiche technique
                               </a>
                               <a
                                 href="#"
-                                className="label-caps text-amber border-b border-amber/40 pb-0.5 hover:opacity-70 transition-opacity"
+                                className="label-caps text-amber link-ink pb-2"
                               >
                                 Technical sheet
                               </a>
@@ -312,13 +312,13 @@ export default function VinsPage() {
               <div className="flex flex-wrap gap-6 mt-8">
                 <a
                   href="#"
-                  className="label-caps text-amber border-b border-amber/40 pb-0.5 hover:opacity-70 transition-opacity"
+                  className="label-caps text-amber link-ink pb-2"
                 >
                   Fiche technique
                 </a>
                 <a
                   href="#"
-                  className="label-caps text-amber border-b border-amber/40 pb-0.5 hover:opacity-70 transition-opacity"
+                  className="label-caps text-amber link-ink pb-2"
                 >
                   Technical sheet
                 </a>

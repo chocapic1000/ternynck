@@ -273,7 +273,7 @@ export default function ContactPage() {
                   setStatus("idle");
                   setForm({ nom: "", email: "", telephone: "", personnes: "2", date: "", heure: "", type: VISIT_TYPES[0], message: "" });
                 }}
-                className="label-caps text-amber border-b border-amber pb-0.5 hover:opacity-70 transition-opacity"
+                className="label-caps text-amber link-ink pb-2"
               >
                 Nouvelle demande →
               </button>

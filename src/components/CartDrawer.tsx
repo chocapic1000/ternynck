@@ -54,7 +54,7 @@ export default function CartDrawer() {
               </p>
               <button
                 onClick={() => setOpen(false)}
-                className="label-caps text-amber border-b border-amber pb-0.5"
+                className="label-caps text-amber link-ink pb-2"
               >
                 Continuer mes achats →
               </button>
