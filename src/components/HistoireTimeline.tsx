@@ -59,7 +59,7 @@ function Slide({ item }: { item: (typeof timeline)[number] }) {
         >
           {item.title}
         </h2>
-        <p className="text-cream/55 leading-loose max-w-xl" style={{ fontFamily: "var(--font-body)", fontSize: "15px" }}>
+        <p className="text-cream/70 leading-loose max-w-xl" style={{ fontFamily: "var(--font-body)", fontSize: "16px" }}>
           {item.text}
         </p>
       </div>

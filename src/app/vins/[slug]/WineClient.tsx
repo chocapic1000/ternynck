@@ -40,7 +40,7 @@ export default function WineClient({ slug }: { slug: string }) {
   return (
     <div className="pt-24 min-h-screen">
       <div className="px-8 md:px-12 py-6">
-        <nav className="flex items-center gap-2 text-[10px] tracking-widest uppercase text-stone" style={{ fontFamily: "var(--font-body)" }}>
+        <nav className="flex items-center gap-2 text-[12px] tracking-[0.18em] uppercase text-stone" style={{ fontFamily: "var(--font-label)" }}>
           <Link href="/boutique" className="hover:text-ink transition-colors">Boutique</Link>
           <span>/</span>
           <span className="text-ink">{wine.name}</span>
@@ -95,7 +95,7 @@ export default function WineClient({ slug }: { slug: string }) {
           </dl>
 
           {wine.description && (
-            <p className="text-ink/70 leading-loose mb-8 text-[14px]" style={{ fontFamily: "var(--font-body)" }}>
+            <p className="text-ink/70 leading-loose mb-8 text-[16px]" style={{ fontFamily: "var(--font-body)" }}>
               {wine.description}
             </p>
           )}

@@ -228,7 +228,7 @@ export default function VinsPage() {
                               {wine.name}
                             </h3>
                             {wine.description && (
-                              <p className="text-cream/55 leading-loose max-w-md" style={{ fontFamily: "var(--font-body)", fontSize: "15px" }}>
+                              <p className="text-cream/70 leading-loose max-w-md" style={{ fontFamily: "var(--font-body)", fontSize: "16px" }}>
                                 {wine.description}
                               </p>
                             )}
@@ -302,7 +302,7 @@ export default function VinsPage() {
                 {selectedWine.name}
               </h3>
               {selectedWine.description && (
-                <p className="text-cream/55 leading-loose max-w-md" style={{ fontFamily: "var(--font-body)", fontSize: "15px" }}>
+                <p className="text-cream/70 leading-loose max-w-md" style={{ fontFamily: "var(--font-body)", fontSize: "16px" }}>
                   {selectedWine.description}
                 </p>
               )}

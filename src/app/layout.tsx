@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Lato:wght@400;700&family=Caveat:wght@500;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Fraunces:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant+Garamond:wght@500;600&family=Caveat:wght@500;600&display=swap"
           rel="stylesheet"
         />
       </head>

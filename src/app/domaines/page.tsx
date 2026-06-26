@@ -122,7 +122,7 @@ export default function DomainesPage() {
             <br />
             Irancy · depuis 2025
           </h2>
-          <p className="text-cream/60 leading-loose" style={{ fontFamily: "var(--font-body)", fontSize: "15px" }}>
+          <p className="text-cream/70 leading-loose" style={{ fontFamily: "var(--font-body)", fontSize: "16px" }}>
             Fils aîné de Laurent et Marie-Noëlle, Louis-Bénigne a repris en 2025
             dix hectares à Irancy — Irancy Village, Aligoté, Crémant. Son domaine
             est déjà en conversion biodynamique. Une nouvelle page s'écrit,

@@ -59,13 +59,13 @@ export default function HeroContent() {
             Famille Ternynck
           </h1>
           <p
-            className="mb-5 text-[11px] tracking-[0.28em] uppercase text-amber font-bold"
-            style={{ fontFamily: "var(--font-body)", textShadow: "0 1px 4px rgba(0,0,0,0.6)" }}
+            className="mb-5 text-[14px] tracking-[0.22em] uppercase text-amber font-medium"
+            style={{ fontFamily: "var(--font-label)", textShadow: "0 1px 4px rgba(0,0,0,0.6)" }}
           >
             Chablis, Irancy, Bourgogne, depuis 1993
           </p>
           <p
-            className="text-cream/70 max-w-md mb-8 leading-loose text-[13px]"
+            className="text-cream/70 max-w-md mb-8 leading-loose text-[16px]"
             style={{ fontFamily: "var(--font-body)", textShadow: "0 1px 4px rgba(0,0,0,0.5)" }}
           >
             Vins biologiques et biodynamiques. Viticulture vivante,

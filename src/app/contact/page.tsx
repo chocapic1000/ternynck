@@ -97,8 +97,8 @@ export default function ContactPage() {
       <div className="flex flex-col gap-1.5">
         <label
           htmlFor={id}
-          className="text-[11px] tracking-widest uppercase text-ink/60"
-          style={{ fontFamily: "var(--font-body)" }}
+          className="text-[12px] tracking-[0.18em] uppercase text-ink/60"
+          style={{ fontFamily: "var(--font-label)" }}
         >
           {label}{required && <span className="text-amber ml-1">*</span>}
         </label>
@@ -142,7 +142,7 @@ export default function ContactPage() {
             Découvrez nos vins.
           </h1>
           <p className="text-cream/60 mt-4 max-w-xl leading-loose text-lg" style={{ fontFamily: "var(--font-body)" }}>
-            Nous vous accueillons sur rendez-vous du lundi au vendredi,
+  Nous vous accueillons sur rendez-vous du lundi au vendredi,
             et le week-end sur rendez-vous.
           </p>
         </div>
@@ -162,8 +162,8 @@ export default function ContactPage() {
             {INFOS.map((info) => (
               <div key={info.label} className="flex gap-6">
                 <p
-                  className="text-[10px] tracking-widest uppercase text-amber w-24 flex-shrink-0 pt-0.5"
-                  style={{ fontFamily: "var(--font-body)" }}
+                  className="text-[13px] tracking-[0.18em] uppercase text-amber w-24 flex-shrink-0 pt-0.5"
+                  style={{ fontFamily: "var(--font-label)" }}
                 >
                   {info.label}
                 </p>
@@ -231,12 +231,12 @@ export default function ContactPage() {
           {/* Accès */}
           <div className="bg-dust px-6 py-5 space-y-3">
             <p className="label-caps text-amber mb-3">Accès & stationnement</p>
-            <p className="text-ink/60 leading-relaxed text-[14px]" style={{ fontFamily: "var(--font-body)" }}>
+            <p className="text-ink/60 leading-relaxed text-[16px]" style={{ fontFamily: "var(--font-body)" }}>
               <span className="text-ink/80">En voiture</span> — Depuis Chablis, prendre la D91
               en direction de Préhy. Le domaine se trouve sur la Grande Rue,
               panneau Famille Ternynck sur la droite.
             </p>
-            <p className="text-ink/60 leading-relaxed text-[14px]" style={{ fontFamily: "var(--font-body)" }}>
+            <p className="text-ink/60 leading-relaxed text-[16px]" style={{ fontFamily: "var(--font-body)" }}>
               <span className="text-ink/80">Stationnement</span> — Parking gratuit devant
               le domaine, places disponibles sur la rue.
             </p>
@@ -288,8 +288,8 @@ export default function ContactPage() {
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="personnes"
-                  className="text-[11px] tracking-widest uppercase text-ink/60"
-                  style={{ fontFamily: "var(--font-body)" }}
+                  className="text-[12px] tracking-[0.18em] uppercase text-ink/60"
+                  style={{ fontFamily: "var(--font-label)" }}
                 >
                   Nombre de personnes
                 </label>
@@ -311,8 +311,8 @@ export default function ContactPage() {
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="date"
-                  className="text-[11px] tracking-widest uppercase text-ink/60"
-                  style={{ fontFamily: "var(--font-body)" }}
+                  className="text-[12px] tracking-[0.18em] uppercase text-ink/60"
+                  style={{ fontFamily: "var(--font-label)" }}
                 >
                   Date souhaitée<span className="text-amber ml-1">*</span>
                 </label>
@@ -338,8 +338,8 @@ export default function ContactPage() {
               {/* Créneau horaire */}
               <div className="flex flex-col gap-3">
                 <label
-                  className="text-[11px] tracking-widest uppercase text-ink/60"
-                  style={{ fontFamily: "var(--font-body)" }}
+                  className="text-[12px] tracking-[0.18em] uppercase text-ink/60"
+                  style={{ fontFamily: "var(--font-label)" }}
                 >
                   Créneau souhaité<span className="text-amber ml-1">*</span>
                   <span className="text-stone/40 ml-2 normal-case tracking-normal text-[10px]">durée 1h</span>
@@ -372,8 +372,8 @@ export default function ContactPage() {
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="type"
-                  className="text-[11px] tracking-widest uppercase text-ink/60"
-                  style={{ fontFamily: "var(--font-body)" }}
+                  className="text-[12px] tracking-[0.18em] uppercase text-ink/60"
+                  style={{ fontFamily: "var(--font-label)" }}
                 >
                   Type de dégustation
                 </label>
@@ -395,8 +395,8 @@ export default function ContactPage() {
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="message"
-                  className="text-[11px] tracking-widest uppercase text-ink/60"
-                  style={{ fontFamily: "var(--font-body)" }}
+                  className="text-[12px] tracking-[0.18em] uppercase text-ink/60"
+                  style={{ fontFamily: "var(--font-label)" }}
                 >
                   Message / demande spéciale
                   <span className="text-stone/50 ml-2 normal-case tracking-normal text-[10px]">optionnel</span>
