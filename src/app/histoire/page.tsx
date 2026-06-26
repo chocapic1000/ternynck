@@ -16,7 +16,6 @@ export default function HistoirePage() {
         <p className="body-sm text-stone mt-6 max-w-xl leading-loose">
           Laurent Ternynck a grandi dans les caves de ses parents. Ce qui a
           commencé comme un jeu est devenu une vocation, puis une maison.
-          Trente ans plus tard, deux domaines, une femme, trois enfants.
         </p>
       </div>
 
