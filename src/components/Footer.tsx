@@ -42,7 +42,7 @@ export default function Footer() {
               <li key={d.href}>
                 <Link
                   href={d.href}
-                  className="body-sm text-cream/50 hover:text-cream transition-colors"
+                  className="body-sm text-cream/50 hover:text-cream transition-colors link-ink pb-1"
                 >
                   {d.name}
                 </Link>
@@ -59,7 +59,7 @@ export default function Footer() {
               <li key={e.href}>
                 <Link
                   href={e.href}
-                  className="body-sm text-cream/50 hover:text-cream transition-colors"
+                  className="body-sm text-cream/50 hover:text-cream transition-colors link-ink pb-1"
                 >
                   {e.name}
                 </Link>
@@ -94,7 +94,7 @@ export default function Footer() {
                 href={MAPS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="body-sm text-cream/30 hover:text-cream/60 transition-colors leading-relaxed"
+                className="body-sm text-cream/30 hover:text-cream/60 transition-colors leading-relaxed link-ink pb-1"
               >
                 3 Grande Rue de Chablis<br />
                 89800 Préhy, France

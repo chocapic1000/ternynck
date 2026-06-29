@@ -210,7 +210,7 @@ export default function ContactPage() {
                       href={GOOGLE_MAPS_DIRECTIONS_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-cream text-[13px] text-center pb-2.5 mb-2 border-b border-cream/10 hover:text-amber transition-colors"
+                      className="text-cream text-[13px] text-center pb-2.5 mb-2 border-b border-cream/10 hover:text-amber transition-colors link-ink"
                     >
                       Itinéraire Google Maps <span className="text-amber">→</span>
                     </a>
@@ -218,7 +218,7 @@ export default function ContactPage() {
                       href={WAZE_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-cream text-[13px] text-center hover:text-amber transition-colors"
+                      className="text-cream text-[13px] text-center hover:text-amber transition-colors link-ink pb-1"
                     >
                       Itinéraire Waze <span className="text-amber">→</span>
                     </a>

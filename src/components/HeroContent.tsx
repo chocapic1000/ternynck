@@ -73,8 +73,8 @@ export default function HeroContent() {
           </p>
           <Link
             href="/domaines"
-            className="inline-flex items-center gap-3 text-cream border-b border-cream/40 pb-1 hover:border-amber hover:text-amber transition-colors text-[10px] tracking-[0.22em] uppercase"
-            style={{ fontFamily: "var(--font-body)" }}
+            className="inline-flex items-center gap-3 text-cream hover:text-amber transition-colors text-[10px] tracking-[0.22em] uppercase link-ink pb-1"
+            style={{ fontFamily: "var(--font-label)" }}
           >
             Découvrir le domaine <span>→</span>
           </Link>

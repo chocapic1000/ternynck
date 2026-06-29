@@ -41,7 +41,7 @@ export default function WineClient({ slug }: { slug: string }) {
     <div className="pt-24 min-h-screen">
       <div className="px-8 md:px-12 py-6">
         <nav className="flex items-center gap-2 text-[12px] tracking-[0.18em] uppercase text-stone" style={{ fontFamily: "var(--font-label)" }}>
-          <Link href="/boutique" className="hover:text-ink transition-colors">Boutique</Link>
+          <Link href="/boutique" className="hover:text-ink transition-colors link-ink pb-1">Boutique</Link>
           <span>/</span>
           <span className="text-ink">{wine.name}</span>
         </nav>

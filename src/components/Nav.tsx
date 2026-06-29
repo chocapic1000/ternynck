@@ -45,8 +45,8 @@ export default function Nav() {
             <li key={l.href}>
               <Link
                 href={l.href}
-                className="text-cream/70 hover:text-cream transition-colors text-[10px] tracking-widest uppercase"
-                style={{ fontFamily: "var(--font-body)" }}
+                className="text-cream/70 hover:text-cream transition-colors text-[12px] tracking-[0.18em] uppercase link-ink pb-1"
+                style={{ fontFamily: "var(--font-label)" }}
               >
                 {l.label}
               </Link>
@@ -58,8 +58,8 @@ export default function Nav() {
         <div className="flex items-center gap-6">
           <button
             onClick={() => setOpen(true)}
-            className="text-cream/70 hover:text-cream transition-colors text-[10px] tracking-widest uppercase hidden md:flex items-center gap-2"
-            style={{ fontFamily: "var(--font-body)" }}
+            className="text-cream/70 hover:text-cream transition-colors text-[12px] tracking-[0.18em] uppercase hidden md:flex items-center gap-2 link-ink pb-1"
+            style={{ fontFamily: "var(--font-label)" }}
           >
             Panier
             {count > 0 && (
@@ -107,7 +107,7 @@ export default function Nav() {
                 <Link
                   href={l.href}
                   onClick={() => setMenuOpen(false)}
-                  className="text-cream text-xl"
+                  className="text-cream text-xl link-ink pb-1"
                   style={{ fontFamily: "var(--font-display)" }}
                 >
                   {l.label}

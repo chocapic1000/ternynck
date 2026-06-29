@@ -95,6 +95,29 @@
   .link-ink:hover::after {
     clip-path: inset(0 0 0 0);
   }
+
+  .link-ink-group {
+    position: relative;
+    display: inline-block;
+  }
+
+  .link-ink-group::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 6px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 6" preserveAspectRatio="none"><path d="M0,3 C20,1 35,5 50,3 C65,1 80,4 100,2" stroke="%23B8892A" stroke-width="1.6" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    clip-path: inset(0 50% 0 50%);
+    transition: clip-path 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .group:hover .link-ink-group::after {
+    clip-path: inset(0 0 0 0);
+  }
 }
 
 /* Carte (MapLibre) : la carte de contenu et la pointe sont stylées par nos

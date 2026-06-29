@@ -50,7 +50,7 @@ function DomainePanel({ d }: { d: (typeof domaines)[number] }) {
         >
           {d.name.replace("\n", " ")}
         </p>
-        <p className="label-caps text-amber mt-3 group-hover:opacity-70 transition-opacity duration-200">
+        <p className="label-caps text-amber mt-3 link-ink-group pb-1">
           Découvrir →
         </p>
       </div>
