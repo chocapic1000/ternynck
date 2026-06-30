@@ -72,10 +72,14 @@ export default function HistoireTimeline() {
   const trackRef = useRef<HTMLDivElement>(null);
   const rowRef = useRef<HTMLDivElement>(null);
   const [maxTranslate, setMaxTranslate] = useState(0);
-  const [translate, setTranslate] = useState(0);
+  const [active, setActive] = useState(0);
+  const activeRef = useRef(0);
 
   // Mesure la largeur totale du bandeau de slides pour connaître la distance
-  // de panoramique nécessaire (même logique que DomainesSection).
+  // de panoramique nécessaire (même logique que DomainesSection). Un
+  // ResizeObserver recapture aussi les changements de largeur dus au contenu
+  // (polices/images qui finissent de charger), qui sinon laissaient parfois
+  // maxTranslate obsolète et cassaient l'animation de panoramique.
   useEffect(() => {
     function measure() {
       const row = rowRef.current;
@@ -84,23 +88,39 @@ export default function HistoireTimeline() {
       setMaxTranslate(Math.max(0, row.scrollWidth - track.clientWidth));
     }
     measure();
+    const ro = new ResizeObserver(measure);
+    if (rowRef.current) ro.observe(rowRef.current);
+    if (trackRef.current) ro.observe(trackRef.current);
     window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", measure);
+    };
   }, []);
 
   // Convertit le défilement vertical dans la zone "épinglée" en translation horizontale.
+  // Écrit directement le style sur le DOM (pas de setState par frame) pour éviter
+  // de déclencher un re-render React à chaque scroll, source des lags. Seul
+  // l'index actif de la frise (qui ne change que ~5 fois sur tout le scroll)
+  // passe par un setState, et seulement quand sa valeur change réellement.
   useEffect(() => {
     let frame = 0;
     function onScroll() {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
         const wrapper = wrapperRef.current;
-        if (!wrapper || maxTranslate <= 0) return;
+        const row = rowRef.current;
+        if (!wrapper || !row || maxTranslate <= 0) return;
         const scrollableDistance = wrapper.offsetHeight - window.innerHeight;
         if (scrollableDistance <= 0) return;
         const top = wrapper.getBoundingClientRect().top;
         const progress = Math.min(1, Math.max(0, -top / scrollableDistance));
-        setTranslate(progress * maxTranslate);
+        row.style.transform = `translateX(-${progress * maxTranslate}px)`;
+        const newActive = Math.round(progress * (timeline.length - 1));
+        if (newActive !== activeRef.current) {
+          activeRef.current = newActive;
+          setActive(newActive);
+        }
       });
     }
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -110,9 +130,6 @@ export default function HistoireTimeline() {
       cancelAnimationFrame(frame);
     };
   }, [maxTranslate]);
-
-  const progress = maxTranslate > 0 ? translate / maxTranslate : 0;
-  const active = Math.round(progress * (timeline.length - 1));
 
   function goTo(i: number) {
     const wrapper = wrapperRef.current;
@@ -155,7 +172,7 @@ export default function HistoireTimeline() {
 
           {/* Bandeau panoramique */}
           <div ref={trackRef} className="relative h-full overflow-hidden">
-            <div ref={rowRef} className="flex h-full" style={{ transform: `translateX(-${translate}px)` }}>
+            <div ref={rowRef} className="flex h-full">
               {timeline.map((item) => (
                 <div key={item.year} className="w-screen h-full flex-shrink-0">
                   <Slide item={item} />

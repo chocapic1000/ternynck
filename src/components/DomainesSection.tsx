@@ -63,10 +63,13 @@ export default function DomainesSection() {
   const rowRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const [maxTranslate, setMaxTranslate] = useState(0);
-  const [translate, setTranslate] = useState(0);
 
   // Mesure la largeur disponible pour le bandeau (hors panneau de texte fixe)
-  // afin de connaître la distance de panoramique nécessaire.
+  // afin de connaître la distance de panoramique nécessaire. Un ResizeObserver
+  // (plutôt qu'un simple listener "resize") recapture aussi les changements de
+  // largeur dus au contenu (polices/images qui finissent de charger), qui
+  // sinon laissaient parfois maxTranslate à une valeur obsolète et cassaient
+  // l'animation de panoramique.
   useEffect(() => {
     function measure() {
       const row = rowRef.current;
@@ -75,23 +78,32 @@ export default function DomainesSection() {
       setMaxTranslate(Math.max(0, row.scrollWidth - track.clientWidth));
     }
     measure();
+    const ro = new ResizeObserver(measure);
+    if (rowRef.current) ro.observe(rowRef.current);
+    if (trackRef.current) ro.observe(trackRef.current);
     window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", measure);
+    };
   }, []);
 
   // Convertit le défilement vertical dans la zone "épinglée" en translation horizontale.
+  // Écrit directement le style sur le DOM (pas de setState par frame) pour éviter
+  // de déclencher un re-render React à chaque scroll, source des lags.
   useEffect(() => {
     let frame = 0;
     function onScroll() {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
         const wrapper = wrapperRef.current;
-        if (!wrapper || maxTranslate <= 0) return;
+        const row = rowRef.current;
+        if (!wrapper || !row || maxTranslate <= 0) return;
         const scrollableDistance = wrapper.offsetHeight - window.innerHeight;
         if (scrollableDistance <= 0) return;
         const top = wrapper.getBoundingClientRect().top;
         const progress = Math.min(1, Math.max(0, -top / scrollableDistance));
-        setTranslate(progress * maxTranslate);
+        row.style.transform = `translateX(-${progress * maxTranslate}px)`;
       });
     }
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -129,11 +141,7 @@ export default function DomainesSection() {
 
           {/* Bandeau panoramique */}
           <div ref={trackRef} className="relative flex-1 h-full overflow-hidden">
-            <div
-              ref={rowRef}
-              className="flex h-full"
-              style={{ transform: `translateX(-${translate}px)` }}
-            >
+            <div ref={rowRef} className="flex h-full">
               {domaines.map((d) => (
                 <DomainePanel key={d.id} d={d} />
               ))}
