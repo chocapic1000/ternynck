@@ -11,7 +11,7 @@ const explorer = [
   { name: "Vins blancs", href: "/boutique?couleur=blanc" },
   { name: "Vins rouges", href: "/boutique?couleur=rouge" },
   { name: "Crémant & Rosé", href: "/boutique?couleur=bulle" },
-  { name: "Collection Amphore", href: "/boutique?categorie=amphore" },
+  { name: "Amphore", href: "/boutique?categorie=amphore" },
 ];
 
 export default function Footer() {
@@ -28,7 +28,7 @@ export default function Footer() {
           <p className="body-sm text-cream/40 leading-loose">
             Vignerons indépendants depuis 1993.
             <br />
-            Biologiques, Biodynamiques.
+            Vins biologique et biodynamique.
             <br />
             Chablis, Irancy, Bourgogne.
           </p>

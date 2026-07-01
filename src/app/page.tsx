@@ -70,7 +70,7 @@ export default function HomePage() {
             <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/logos/bio.png`} alt="Agriculture Biologique" className="h-16 w-auto flex-shrink-0" />
             <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/logos/demeter2.png`} alt="Demeter Bio-Dynamic" className="h-16 w-auto flex-shrink-0" />
             <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/logos/demeter.png`} alt="Demeter Biodynamie" className="h-16 w-auto flex-shrink-0" />
-            <p className="label-caps text-sage">Biologique, Biodynamique, Vitiforesterie</p>
+            <p className="label-caps text-sage" style={{ fontWeight: 700 }}>Biologique, Biodynamique, Vitiforesterie</p>
           </div>
         </div>
       </section>
@@ -121,7 +121,7 @@ export default function HomePage() {
           />
         </div>
         <div className="relative z-10 max-w-xl">
-          <p className="label-caps text-amber mb-6">1993, 2025</p>
+          <p className="label-caps text-amber mb-6" style={{ fontSize: "18px" }}>1993, 2025</p>
           <h2
             className="text-cream text-4xl md:text-5xl leading-tight font-normal mb-6"
             style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}

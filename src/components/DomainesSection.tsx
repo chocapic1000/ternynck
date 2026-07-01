@@ -21,7 +21,7 @@ const domaines = [
   },
   {
     id: "fontaine-goby",
-    name: "Domaine\nFontaine-Goby",
+    name: "Fontaine-Goby",
     photo: "/photos/domaine-fontaine-goby.jpg",
     href: "/domaines",
   },
