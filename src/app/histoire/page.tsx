@@ -6,7 +6,7 @@ export default function HistoirePage() {
   return (
     <div>
       {/* Hero */}
-      <div className="pt-32 px-8 md:px-12 mb-20">
+      <div className="pt-28 px-8 md:px-12 mb-10">
         <p className="label-caps text-amber mb-5">— L'histoire</p>
         <h1 className="font-serif text-5xl md:text-7xl text-ink font-normal leading-[1.05] max-w-3xl">
           Du vin comme on transmet
