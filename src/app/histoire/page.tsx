@@ -5,15 +5,15 @@ import HistoireTimeline from "@/components/HistoireTimeline";
 export default function HistoirePage() {
   return (
     <div>
-      {/* Hero */}
-      <div className="pt-28 px-8 md:px-12 mb-10">
+      {/* Hero — fond sombre pour enchaîner directement sur la photo */}
+      <div className="bg-ink pt-28 px-8 md:px-12 pb-14">
         <p className="label-caps text-amber mb-5">— L'histoire</p>
-        <h1 className="font-serif text-5xl md:text-7xl text-ink font-normal leading-[1.05] max-w-3xl">
+        <h1 className="font-serif text-5xl md:text-7xl text-cream font-normal leading-[1.05] max-w-3xl">
           Du vin comme on transmet
           <br />
           une langue maternelle.
         </h1>
-        <p className="body-sm text-stone mt-6 max-w-xl leading-loose">
+        <p className="body-sm text-cream/60 mt-6 max-w-xl leading-loose">
           Laurent Ternynck a grandi dans les caves de ses parents. Ce qui a
           commencé comme un jeu est devenu une vocation, puis une maison.
         </p>
